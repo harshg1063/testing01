@@ -1,7 +1,0 @@
-{
-    "accept_all_btn_privacy":{
-        "locator": {
-            "id": "FuFConsents.FuFConsents.AcceptAllButton"
-        }
-    }
-}
