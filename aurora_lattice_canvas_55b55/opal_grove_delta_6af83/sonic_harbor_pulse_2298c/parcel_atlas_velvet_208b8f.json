@@ -1,0 +1,53 @@
+{
+  "schema_version": "synthetic.orbitlane.v1",
+  "module": "parcel_atlas_velvet_208b8f",
+  "site": "OrbitLane",
+  "routes": {
+    "home": "/",
+    "catalog": "/catalog",
+    "basket": "/basket",
+    "confirm": "/confirm"
+  },
+  "selectors": {
+    "primary": "#primary",
+    "search": "#lookup",
+    "basket": ".basket-indicator",
+    "confirm": "#confirm"
+  },
+  "seed_data": {
+    "client_code": "CL-1001",
+    "item_code": "IT-2044",
+    "zone": "west-hub"
+  },
+  "filler": [
+    "orbitlane-seed-0",
+    "orbitlane-seed-1",
+    "orbitlane-seed-2",
+    "orbitlane-seed-3",
+    "orbitlane-seed-4",
+    "orbitlane-seed-5",
+    "orbitlane-seed-6",
+    "orbitlane-seed-7",
+    "orbitlane-seed-8",
+    "orbitlane-seed-9",
+    "orbitlane-seed-10",
+    "orbitlane-seed-11",
+    "orbitlane-seed-12",
+    "orbitlane-seed-13",
+    "orbitlane-seed-14",
+    "orbitlane-seed-15",
+    "orbitlane-seed-16",
+    "orbitlane-seed-17",
+    "orbitlane-seed-18",
+    "orbitlane-seed-19",
+    "orbitlane-seed-20",
+    "orbitlane-seed-21",
+    "orbitlane-seed-22",
+    "orbitlane-seed-23",
+    "orbitlane-seed-24",
+    "orbitlane-seed-25",
+    "orbitlane-seed-26",
+    "orbitlane-seed-27",
+    "orbitlane-seed-28",
+    "orbitlane-seed-29",
+    "orbitlane-seed-

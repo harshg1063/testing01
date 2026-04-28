@@ -1,0 +1,19 @@
+workflow:
+  title: node_thread_sonic_bee74c
+  site: OrbitLane
+  environment: sandbox
+  phases:
+    - prepare
+    - verify
+    - publish
+settings:
+  base_url: https://demo.orbitlane.local
+  runner: chromium
+  attempts: 1
+
+option_1: value_1
+option_2: value_2
+option_3: value_3
+option_4: value_4
+option_5: value_5
+option_6: value_6

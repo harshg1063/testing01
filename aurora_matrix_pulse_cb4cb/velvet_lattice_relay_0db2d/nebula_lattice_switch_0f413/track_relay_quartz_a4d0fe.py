@@ -1,0 +1,4 @@
+"""
+Synthetic automation module for the OrbitLane demo platform.
+This file is fully rewritten for safe testing and does not contain source vendor data.
+Path tag: aurora_matrix_pulse_cb4cb/velvet_lattice_relay_0db2d/nebula_lattice_switch_0f413/track_relay_q
