@@ -1,0 +1,8 @@
+{
+    "@hp-af/logging/transports": "fileAsyncTransport",
+    "@hp-af/logging/severity": "debug",
+    "@env/DEBUG_TOOLS": "true",
+    "@hp-af/feature-switch/overrides": {
+      "apptelemetry-stopwatch": true
+    }
+  }

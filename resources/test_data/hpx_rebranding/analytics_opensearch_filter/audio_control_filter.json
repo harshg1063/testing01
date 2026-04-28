@@ -1,0 +1,59 @@
+{
+    "must": [
+        {
+            "match_phrase": {
+                "fields.xray.bodyString": "\"version\":\"\""
+            }
+        },
+        {
+            "match_phrase": {
+                "fields.xray.bodyString": "\"viewHierarchy\":"
+            }
+        },
+        {
+            "match_phrase": {
+                "fields.xray.bodyString": "\"viewName\":\"\""
+            }
+        },
+        {
+            "match_phrase": {
+                "fields.xray.bodyString": "\"viewModule\":\"Audio\""
+            }
+        },
+        {
+            "match_phrase": {
+                "fields.xray.bodyString": "\"action\":\"\""
+            }
+        },
+        {
+            "match_phrase": {
+                "fields.xray.bodyString": "\"actionDetail\":\"\""
+            }
+        },
+        {
+            "match_phrase": {
+                "fields.xray.bodyString": "\"actionAuxParams\":\"\""
+            }
+        },
+        {
+            "match_phrase": {
+                "fields.xray.bodyString": "\"controlName\":\"\""
+            }
+        },
+        {
+            "match_phrase": {
+                "fields.xray.bodyString": "\"controlLabel\":\"\""
+            }
+        },
+        {
+            "match_phrase": {
+                "fields.xray.bodyString": "\"controlAuxParams\":\"\""
+            }
+        },
+        {
+            "match_phrase": {
+                "fields.xray.bodyString": "serial number"
+            }
+        }
+    ]
+}

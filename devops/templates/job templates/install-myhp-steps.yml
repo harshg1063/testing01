@@ -1,0 +1,216 @@
+# Install myHP Application Step Template
+# 
+# Purpose: Manages the complete myHP application installation workflow on test agents
+# This template handles intelligent install/skip decisions, package downloads, and installation
+#
+# Installation Workflow:
+# 1. Determines target build version from Azure DevOps pipeline
+# 2. Checks if currently installed version matches target (skips if already installed)
+# 3. Downloads HPX package artifact only if installation is needed
+# 4. Installs signing certificate for package verification
+# 5. Removes old myHP installation cleanly
+# 6. Installs new myHP package from downloaded artifact
+#
+# Smart Installation Logic:
+# - Avoids unnecessary downloads by checking installed version first
+# - Skips download if package already exists in artifacts directory
+# - Only installs when target version differs from current version
+# - Reduces pipeline execution time by skipping redundant installations
+#
+# Parameters:
+#   projectId: Azure DevOps project ID containing the build pipeline
+#              Default: $(Project ID) from variable group
+#   
+#   pipelineId: Build pipeline ID for myHP/HPX builds (REQUIRED)
+#               Example values from Build Environments variable group:
+#               - $(Pipeline ID Development) for dev builds
+#               - $(Pipeline ID Main) for main branch builds
+#   
+#   buildId: Specific build ID to install (optional)
+#            Leave empty to use latest successful build from pipeline
+#   
+#   buildVersionToDownload: Build selection strategy
+#            - 'latest': Latest successful build (default)
+#            - 'latestFromBranch': Latest from specific branch
+#            - 'specific': Specific build ID (requires buildId parameter)
+#
+# Required Variable Groups:
+# - Test Configuration Variables: Contains all script path variables
+# - HP App Build Pipeline Variables: Contains Project ID and pipeline IDs
+#
+# Script Variables Used (from Test Configuration Variables group):
+# - $(getBuildVersionScriptPath): Queries Azure DevOps API for target build version
+# - $(checkInstallationNeededScriptPath): Compares installed vs target version
+# - $(checkPackageDownloadedScriptPath): Checks if artifact already downloaded
+# - $(installCertificateScriptPath): Installs package signing certificate
+# - $(removeOldMyHPScriptPath): Uninstalls current myHP version
+# - $(installMyHPPackageScriptPath): Installs myHP package from artifact
+
+parameters:
+- name: projectId
+  type: string
+  default: '$(Project ID)'  # From HP App Build Pipeline Variables group
+- name: pipelineId
+  type: string  # Required - no default, must be provided by caller
+- name: buildId
+  type: string
+  default: ''  # Empty = use latest successful build
+- name: buildVersionToDownload
+  type: string
+  default: 'latest'  # Options: latest, latestFromBranch, specific
+- name: branchName
+  type: string
+  default: 'refs/heads/main'  # Branch name for latestFromBranch option
+
+steps:
+
+  # ============================================================================
+  # Step 1: Determine Target Build Version
+  # ============================================================================
+  # Purpose: Queries Azure DevOps API to identify which build version to install
+  # Script: $(getBuildVersionScriptPath) - get-target-build-version.ps1
+  # Output Variables:
+  # - GetTargetVersion.TargetVersion: Version string of target build (e.g., "1.2.3.4")
+  # - GetTargetVersion.ActualBuildId: Build ID to download (resolved from latest/specific selection)
+  # Uses: System.AccessToken for Azure DevOps API authentication
+  - task: PowerShell@2
+    displayName: 'Get Target Build and Version'
+    name: GetTargetVersion
+    inputs:
+      targetType: 'filePath'
+      filePath: $(getBuildVersionScriptPath)
+      arguments: >-
+        -organization "$(System.TeamFoundationCollectionUri)"
+        -project "${{ parameters.projectId }}"
+        -pipelineId "${{ parameters.pipelineId }}"
+        -providedBuildId "${{ parameters.buildId }}"
+        -buildVersionToDownload "${{ parameters.buildVersionToDownload }}"
+        -branchName "${{ parameters.branchName }}"
+        -accessToken "$(System.AccessToken)"
+
+  # ============================================================================
+  # Step 2: Check If Installation Is Needed
+  # ============================================================================
+  # Purpose: Compares currently installed myHP version against target version
+  # Script: $(checkInstallationNeededScriptPath) - check-installation-needed.ps1
+  # Output Variable:
+  # - CheckVersion.NeedsInstall: 'true' if versions differ, 'false' if already installed
+  # Logic: Queries Windows Package Manager for installed myHP version
+  # Optimization: Skips all remaining steps if versions match (saves 2-5 minutes per run)
+  - task: PowerShell@2
+    displayName: 'Check if Installation Needed'
+    name: CheckVersion
+    inputs:
+      targetType: 'filePath'
+      filePath: $(checkInstallationNeededScriptPath)
+      arguments: '-targetVersion "$(GetTargetVersion.TargetVersion)"'
+
+  # ============================================================================
+  # Step 3: Check If Package Already Downloaded
+  # ============================================================================
+  # Purpose: Verifies if HPX package artifact already exists in artifacts directory
+  # Script: $(checkPackageDownloadedScriptPath) - check-package-downloaded.ps1
+  # Condition: Only runs if installation is needed (CheckVersion.NeedsInstall='true')
+  # Output Variable:
+  # - CheckDownload.NeedsDownload: 'true' if package missing, 'false' if already present
+  # Optimization: Skips download task if package already exists from previous run
+  - task: PowerShell@2
+    displayName: 'Check if Package Already Downloaded'
+    name: CheckDownload
+    condition: eq(variables['CheckVersion.NeedsInstall'], 'true')
+    inputs:
+      targetType: 'filePath'
+      filePath: $(checkPackageDownloadedScriptPath)
+      arguments: '-artifactsDirectory "$(System.ArtifactsDirectory)"'
+
+  # ============================================================================
+  # Step 4: Download HPX Package Artifact
+  # ============================================================================
+  # Purpose: Downloads myHP application package (HPX format) from Azure DevOps build artifacts
+  # Condition: Runs only if installation needed AND package not already downloaded
+  # Artifact Pattern: Downloads *_REBRAND_*.zip excluding ARM and x64 variants
+  # Target: $(System.ArtifactsDirectory)/HPX/ directory
+  # Uses: Build ID from GetTargetVersion.ActualBuildId variable
+  - task: DownloadBuildArtifacts@1
+    displayName: 'Download HPX Package'
+    condition: and(eq(variables['CheckVersion.NeedsInstall'], 'true'), eq(variables['CheckDownload.NeedsDownload'], 'true'))
+    inputs:
+      buildType: 'specific'
+      project: '${{ parameters.projectId }}'
+      pipeline: '${{ parameters.pipelineId }}'
+      buildVersionToDownload: '${{ parameters.buildVersionToDownload }}'
+      branchName: '${{ parameters.branchName }}'
+      buildId: '$(GetTargetVersion.ActualBuildId)'
+      downloadType: 'single'
+      artifactName: 'HPX'
+      downloadPath: '$(System.ArtifactsDirectory)'
+      itemPattern: |
+        **/*_x64_REBRAND_*.zip
+        !**/*ARM*REBRAND_*.zip
+        !**/*REBRAND_*_MFE_composition.zip
+
+  # ============================================================================
+  # Step 5: Extract HPX Package
+  # ============================================================================
+  # Purpose: Unzips the downloaded HPX package to access installation files
+  # Condition: Runs only if installation needed AND download occurred
+  # Source: $(System.ArtifactsDirectory)/HPX/*_REBRAND_*.zip
+  # Destination: $(System.ArtifactsDirectory)/HPX/Extracted/
+  # Behavior: Cleans destination folder before extraction to ensure clean state
+  - task: ExtractFiles@1
+    displayName: 'Extract HPX Package'
+    condition: and(eq(variables['CheckVersion.NeedsInstall'], 'true'), eq(variables['CheckDownload.NeedsDownload'], 'true'))
+    inputs:
+      archiveFilePatterns: '$(System.ArtifactsDirectory)/HPX/*_REBRAND_*.zip'
+      destinationFolder: '$(System.ArtifactsDirectory)/HPX/Extracted'
+      cleanDestinationFolder: true
+
+  # ============================================================================
+  # Step 6: Install Package Signing Certificate
+  # ============================================================================
+  # Purpose: Installs the code signing certificate required for myHP package installation
+  # Script: $(installCertificateScriptPath) - install-signing-certificate.ps1
+  # Condition: Runs if installation is needed (regardless of download - certificate may already exist)
+  # Location: Certificate file is extracted from HPX package artifact
+  # Required: Windows requires valid code signing cert to install UWP/MSIX packages
+  - task: PowerShell@2
+    displayName: 'Install Signing Certificate'
+    condition: eq(variables['CheckVersion.NeedsInstall'], 'true')
+    continueOnError: true  # Certificate installation is nice-to-have, don't fail the job
+    inputs:
+      targetType: 'filePath'
+      filePath: $(installCertificateScriptPath)
+      arguments: '-artifactsDirectory "$(System.ArtifactsDirectory)"'
+
+  # ============================================================================
+  # Step 7: Remove Old myHP Installation
+  # ============================================================================
+  # Purpose: Cleanly uninstalls the current version of myHP before installing new version
+  # Script: $(removeOldMyHPScriptPath) - remove-old-myhp.ps1
+  # Condition: Runs if installation is needed
+  # Method: Uses Windows Package Manager to remove existing myHP package
+  # Ensures: Clean installation without conflicts from previous version
+  - task: PowerShell@2
+    displayName: 'Remove Old myHP Installation'
+    condition: eq(variables['CheckVersion.NeedsInstall'], 'true')
+    inputs:
+      targetType: 'filePath'
+      filePath: $(removeOldMyHPScriptPath)
+
+  # ============================================================================
+  # Step 8: Install myHP Package
+  # ============================================================================
+  # Purpose: Installs the new myHP application package on the agent
+  # Script: $(installMyHPPackageScriptPath) - install-myhp-package.ps1
+  # Condition: Runs if installation is needed
+  # Source: Extracted HPX package from $(System.ArtifactsDirectory)/HPX/Extracted/
+  # Method: Uses Windows PowerShell Add-AppxPackage cmdlet for MSIX/UWP installation
+  # Timeout: 5 minutes to allow for package registration and installation completion
+  - task: PowerShell@2
+    displayName: 'Install myHP Package'
+    condition: eq(variables['CheckVersion.NeedsInstall'], 'true')
+    inputs:
+      targetType: 'filePath'
+      filePath: $(installMyHPPackageScriptPath)
+      arguments: '-artifactsDirectory "$(System.ArtifactsDirectory)"'
+    timeoutInMinutes: 5

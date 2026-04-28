@@ -1,0 +1,147 @@
+{
+    "let_myHP_access_your_camera": {
+        "locator": {
+            "id": "Title"
+        }
+    },
+    "yes_button_in_let_access_dialog": {
+        "locator": {
+            "id": "Button1"
+        }
+    },
+    "camera_and_presence_detection_action_item": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureCard_cameraandpresencedetection-core"
+        }
+    },
+    "onlooker_detection_text": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_FEATURE_DETAILS_TITLE_ONLOOKERDETECTION"
+        }
+    },
+    "onlooker_detection_button": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_FEATURE_DETAILS_TOGGLE_ONLOOKERDETECTION"
+        }
+    },
+    "enable_sureview_button": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_FEATURE_DETAILS_SUBFEATURE_SUREVIEW"
+        }
+    },
+    "auto_hdr_text": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_FEATURE_DETAILS_TITLE_AUTOHDR"
+        }
+    },
+    "auto_hdr_toggle": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_FEATURE_DETAILS_TOGGLE_AUTOHDR"
+        }
+    },
+    "auto_hdr_description_text": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_FEATURE_DETAILS_DESCRIPTION_AUTOHDR"
+        }
+    },
+    "auto_hdr_image": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_FEATURE_DETAILS_IMAGE_AUTO HDR"
+        }
+    },
+    "onlooker_detection_description_text": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_FEATURE_DETAILS_DESCRIPTION_ONLOOKERDETECTION"
+        }
+    },
+    "onlooker_detection_image": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_FEATURE_DETAILS_IMAGE_ONLOOKER DETECTION"
+        }
+    },
+    "enable_sureview_text": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_SUBFEATURE_TITLE_ENABLE SUREVIEW"
+        }
+    },
+    "enable_sureview_tips_icon": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_SUBFEATURE_ICON_ENABLE SUREVIEW"
+        }
+    },
+    "restore_default_button": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_RESTORE_DEFAULT_BUTTON"
+        }
+    },
+    "intelligent_dynamic_contrast_text": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_FEATURE_DETAILS_TITLE_INTELLIGENTDYNAMICCONTRAST"
+        }
+    },
+    "intelligent_dynamic_contrast_toggle": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_FEATURE_DETAILS_TOGGLE_INTELLIGENTDYNAMICCONTRAST"
+        }
+    },
+    "intelligent_dynamic_contrast_description_text": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_FEATURE_DETAILS_DESCRIPTION_INTELLIGENTDYNAMICCONTRAST"
+        }
+    },
+    "intelligent_dynamic_contrast_image": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_FEATURE_DETAILS_IMAGE_INTELLIGENT DYNAMIC CONTRAST"
+        }
+    },
+    "attention_focus_text": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_FEATURE_DETAILS_TITLE_ATTENTIONFOCUS"
+        }
+    },
+    "attention_focus_toggle": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_FEATURE_DETAILS_TOGGLE_ATTENTIONFOCUS"
+        }
+    },
+    "attention_focus_description_text": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_FEATURE_DETAILS_DESCRIPTION_ATTENTIONFOCUS"
+        }
+    },
+    "attention_focus_image": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_FEATURE_DETAILS_IMAGE_ATTENTION FOCUS"
+        }
+    },
+    "enable_screen_blur_text": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_SUBFEATURE_TITLE_SCREENBLUR"
+        }
+    },
+    "enable_screen_blur_tips_icon": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_SUBFEATURE_ICON_SCREENBLUR"
+        }
+    },
+    "enable_screen_blur_button": {
+        "locator": {
+            "id": "AUID_SMARTEXPERIENCE_FEATURE_DETAILS_SUBFEATURE_SCREENBLUR"
+        }
+    },
+    "presence_detection_title": {
+        "locator": {
+            "id": "AUID_smartexperiences-core_NavBreadcrumb_Presencedetection-core"
+        }
+    },
+    "windows_hdr_toggle": {
+        "locator": {
+            "id": "SystemSettings_Video_HDRPlayback_ToggleSwitch"
+        }
+    },
+    "top_title": {
+        "locator": {
+            "id": "AUID_smartexperiences-core_NavBreadcrumb_Cameraandpresencedetection-core"
+        }
+    }
+}

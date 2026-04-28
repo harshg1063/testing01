@@ -1,0 +1,157 @@
+{
+    "camera_and_presence_detection_key_header_masadan_ltwo_page": {
+        "locator": {
+            "id": "SmartExperiences.MainContainer.PresenceDetection"
+        }
+    },
+    "presence_detection_key_header_ultron_ltwo_page": {
+        "locator": {
+            "class name": "styles__Header-pc-hw-enablers-react-pc-smartexperiences-mfe__sc-6f5r1w-2 jSdDeO"
+        }
+    },
+    "auto_hdr_text_ltwo_page": {
+        "locator": {
+            "id": "SmartExperiences.FeatureCard.Autohdr"
+        }
+    },
+    "auto_hdr_description_two_page": {
+        "locator": {
+            "id": "SmartExperiences.FeatureCard.AutohdrDescription"
+        }
+    },
+    "auto_hdr_toggle_button_ltwo_page": {
+        "locator": {
+            "id": "SmartExperiences.FeatureCard.AutohdrToggle__toggle"
+        }
+    },
+    "intelligent_dynamic_contrast_text_ltwo_page": {
+        "locator": {
+            "id": "SmartExperiences.FeatureCard.Intelligentdynamiccontrast"
+        }
+    },
+    "intelligent_dynamic_contrast_description_ltwo_page": {
+        "locator": {
+            "id": "SmartExperiences.FeatureCard.IntelligentdynamiccontrastDescription"
+        }
+    },
+    "intelligent_dynamic_contrast_toggle_switch_ltwo_page": {
+        "locator": {
+            "id": "SmartExperiences.FeatureCard.IntelligentdynamiccontrastToggle"
+        }
+    },
+    "attention_focus_text_ltwo_page": {
+        "locator": {
+            "id": 	"SmartExperiences.FeatureCard.Attentionfocus"
+        }
+    },
+    "attention_focus_description_ltwo_page": {
+        "locator": {
+            "id": "SmartExperiences.FeatureCard.AttentionfocusDescription"
+        }
+    },
+    "attention_focus_toggle_switch_ltwo_page": {
+        "locator": {
+            "id": "SmartExperiences.FeatureCard.AttentionfocusToggle__toggle"
+        }
+    },
+    "onlooker_detection_text_ltwo_page": {
+        "locator": {
+            "id": "SmartExperiences.FeatureCard.Onlookerdetection"
+        }
+    },
+    "onlooker_detection_description_ltwo_page": {
+        "locator": {
+            "id": "SmartExperiences.FeatureCard.OnlookerdetectionDescription"
+        }
+    },
+    "onlooker_detection_toggle_switch_ltwo_page": {
+        "locator": {
+            "id": "SmartExperiences.FeatureCard.OnlookerdetectionToggle__toggle"
+        }
+    },
+    "enable_screen_blur_card_ltwo_page": {
+        "locator": {
+            "id": "SmartExperiences.FeatureCard.Screenblur"
+        }
+    },
+    "enable_screen_blur_info_tooltip_ltwo_page": {
+        "locator": {
+            "class name": "css-e6kgum"
+        }
+    },
+    "enable_screen_blur_info_toggle_switch_ltwo_page": {
+        "locator": {
+            "id": "SmartExperiences.FeatureCard.ScreenblurToggle__toggle"
+        }
+    },    
+    "restore_default_ltwo_page": {
+        "locator": {
+            "id": "SmartExperiences.RestoreDefault.RestoreDefaultButton"
+        }
+    },
+    "auto_screen_dimming_text_ltwo_page": {
+        "locator": {
+            "id": "SmartExperiences.FeatureCard.Autoscreendimming"
+        }
+    },
+    "auto_screen_dimming_description_two_page": {
+        "locator": {
+            "id":"SmartExperiences.FeatureCard.AutoscreendimmingDescription"
+        }
+    },
+    "auto_screen_dimming_toggle_button_ltwo_page": {
+        "locator": {
+            "id": "SmartExperiences.FeatureCard.AutoscreendimmingToggle__toggle"
+        }
+    },
+    "privacy_alert_text_ltwo_page": {
+        "locator": {
+            "id":"SmartExperiences.FeatureCard.Privacyalert"
+        }
+    },
+    "privacy_alert_description_two_page": {
+        "locator": {
+            "id": "SmartExperiences.FeatureCard.PrivacyalertDescription"
+        }
+    },
+    "privacy_alert_toggle_button_ltwo_page": {
+        "locator": {
+            "id": "SmartExperiences.FeatureCard.PrivacyalertToggle__toggle"
+        }
+    },
+    "enable_sureview_card_ltwo_page": {
+        "locator": {
+            "id": "SmartExperiences.FeatureCard.Sureview"
+        }
+    },
+    "enable_sure_view_tooltip_ltwo_page": {
+        "locator": {
+            "class name": "css-e6kgum"
+        }
+    },
+    "enable_sureview_info_toggle_switch_ltwo_page": {
+        "locator": {
+            "id": "SmartExperiences.FeatureCard.SureviewToggle__toggle"
+        }
+    },
+    "contextual_text_presence_detection_lone_page": {
+        "locator": {
+            "id": "PcDeviceCards.PcDeviceActionCards.SmartexperiencesXCoreCard__subheader"
+        }
+    },
+    "sure_view_tooltip_description_ltwo_page": {
+        "locator": {
+            "id": "SmartExperiences.FeatureCard.Sureview__tooltip__children"
+        }
+    },
+    "presence_detection_module_image": {
+        "locator": {
+            "id": "RootWebArea"
+        }
+    },
+    "presence_detection_card_lone_page":{
+        "locator":{
+            "id":"PcDeviceCards.PcDeviceActionCards.SmartexperiencesXCoreCard"
+        }
+    }
+}

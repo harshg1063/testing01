@@ -1,0 +1,261 @@
+[
+  {
+    "name": "Warpath",
+    "url": "tgtwinftc36.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc36.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "MasadanSku4",
+    "url": "tgtwinftc73.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc73.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "Machu_13X_with_Roo_Pen",
+    "url": "tgtwinftc79.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc79.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "Willie",
+    "url": "HOST-tgtwinftc1.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "HOST-tgtwinftc1.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "MasadanSku4_Robotics3",
+    "url": "HOST-robotics3.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "HOST-robotics3.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "Sammy",
+    "url": "tgtwinftc04.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc04.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "Ernesto",
+    "url": "tgtwinftc13.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc13.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "Divinity",
+    "url": "tgtwinftc70.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc70.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "GoldyFTC",
+    "url": "tgtwinftc19.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc19.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "Enstrom",
+    "url": "HOST-robotics2.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "HOST-robotics2.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "Ultron",
+    "url": "tgtwinftc56.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc56.tgt.ftc.rd.hpicorp.net"
+  },
+   {
+    "name": "Longhornz",
+    "url": "tgtwinftc18.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc18.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "GoldySH",
+    "url": "PS0IMMSHWIN16.scs.rd.hpicorp.net",
+    "port": 11000,
+    "target": "PS0IMMSHWIN16.scs.rd.hpicorp.net"
+  },
+  {
+    "name": "MasadanSku5",
+    "url": "PS0IMMSHWIN06.scs.rd.hpicorp.net",
+    "port": 11000,
+    "target": "PS0IMMSHWIN06.scs.rd.hpicorp.net"
+  },
+  {
+    "name": "EnstromSH",
+    "url": "PS0IMMSHWIN37.scs.rd.hpicorp.net",
+    "port": 11000,
+    "target": "PS0IMMSHWIN37.scs.rd.hpicorp.net"
+  },
+  {
+    "name": "Lapaz",
+    "url": "tgtwinftc83.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc83.tgt.ftc.rd.hpicorp.net"
+  },
+  
+  {
+    "name": "Snowwhite",
+    "url": "tgtwinftc58.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc58.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "Keelung32",
+    "url": "HOST-tgtwinftc5.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "HOST-tgtwinftc5.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "Keelung32_2",
+    "url": "HOST-tgtwinftc6.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "HOST-tgtwinftc6.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "Keelung27fhd",
+    "url": "HOST-tgtwinftc7.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "HOST-tgtwinftc7.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "Bucky",
+    "url": "PS0IMMSHWIN18.scs.rd.hpicorp.net",
+    "port": 11000,
+    "target": "PS0IMMSHWIN18.scs.rd.hpicorp.net"
+  },
+  {
+    "name": "Thompson",
+    "url": "HOST-robotics1.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "HOST-robotics1.tgt.ftc.rd.hpicorp.net"
+  }, 
+  {
+    "name": "Bopeep",
+    "url": "tgtwinftc09.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc09.tgt.ftc.rd.hpicorp.net"
+  },
+   {
+    "name": "Testudo",
+    "url": "tgtwinftc61.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc61.tgt.ftc.rd.hpicorp.net"
+   },
+  {
+    "name": "Machu13x",
+    "url": "tgtwinftc71.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc71.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "Baymax",
+    "url": "tgtwinftc81.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc81.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "Rex",
+    "url": "tgtwinftc59.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc59.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "Keelung27uhd",
+    "url": "HOST-tgtwinftc9.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "HOST-tgtwinftc9.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "Bopeeprobo",
+    "url": "HOST-tgtwinftc3.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "HOST-tgtwinftc3.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "Maokong",
+    "url": "tgtwinftc31.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc31.tgt.ftc.rd.hpicorp.net"
+  },  
+  {
+    "name": "Roc",
+    "url": "PS0IMMSHWIN25.scs.rd.hpicorp.net",
+    "port": 11000,
+    "target": "PS0IMMSHWIN25.scs.rd.hpicorp.net"
+  },
+  {
+    "name": "Pudding",
+    "url": "tgtwinftc74.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc74.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "Machu",
+    "url": "tgtwinftc67.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc67.tgt.ftc.rd.hpicorp.net"
+  },
+   {
+    "name": "Eviee",
+    "url": "PS0IMMSHWIN41.scs.rd.hpicorp.net",
+    "port": 11000,
+    "target": "PS0IMMSHWIN41.scs.rd.hpicorp.net"
+  },
+  {
+    "name": "Modric27",
+    "url": "PS0IMMSHWIN42.scs.rd.hpicorp.net",
+    "port": 11000,
+    "target": "PS0IMMSHWIN42.scs.rd.hpicorp.net"
+  },
+  {
+    "name": "Herbie",
+    "url": "tgtwinftc21.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc21.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "Masadansku5Robo06",
+    "url": "HOST-robotics06.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "HOST-robotics06.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "Park",
+    "url": "tgtwinftc14.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc14.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "Zonin",
+    "url": "tgtwinftc33.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc33.tgt.ftc.rd.hpicorp.net"
+  },
+  {
+    "name": "Trekker",
+    "url": "tgtwinftc82.tgt.ftc.rd.hpicorp.net",
+    "port": 11000,
+    "target": "tgtwinftc82.tgt.ftc.rd.hpicorp.net"
+  }, 
+  {
+    "name": "CashmereXI",
+    "url": "PS0IMMSHWIN28.scs.rd.hpicorp.net",
+    "port": 11000,
+    "target": "PS0IMMSHWIN28.scs.rd.hpicorp.net"
+  },
+  {
+    "name": "willie_sh",
+    "url": "PS0IMMSHWIN22.scs.rd.hpicorp.net",
+    "port": 11000,
+    "target": "PS0IMMSHWIN22.scs.rd.hpicorp.net"
+  },
+  {
+    "name": "Gidget",
+    "url": "PS0IMMSHWIN12.scs.rd.hpicorp.net",
+    "port": 11000,
+    "target": "PS0IMMSHWIN12.scs.rd.hpicorp.net"
+  }
+]

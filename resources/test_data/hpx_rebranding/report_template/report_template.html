@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        HPX_Rebrand_SH_Automation
+    </title>
+    <style>
+        h1, table {
+           text-align: center;
+           margin: auto;
+       }
+       table {
+           width: 50%;
+           border: 1px solid black;
+           border-collapse: collapse;
+           font-size: 20px;
+       }
+       th, td {
+           border: 1px solid black;
+       }
+
+       .passed {
+           background-color: lightgreen;
+       }
+       .failed {
+           background-color: lightcoral;
+       }
+       .skipped {
+           background-color: lightyellow;
+           display: none;
+       }
+
+    </style>
+
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Configuration Matrix</th>
+                <th>Pie</th>
+                <th>Stage</th>
+                <th>Production</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% set configurations_results = {} %}
+            {% for test_case in data %}
+            {% set configuration = test_case.configurationMatrix %}
+            {% if configuration not in configurations_results %}
+            {% set _ = configurations_results.update({configuration: {'Pie': '', 'Stage': '', 'Production': ''}}) %}
+            {% endif %}
+            {% set _ = configurations_results[configuration].update({test_case.stack: test_case.result}) %}
+            {% endfor %}
+            {% for configuration, results in configurations_results.items() %}
+            <tr>
+                <td>{{ configuration }}</td>
+                <td class="{{ 'passed' if results.get('pie') == 'Passed' else 'failed' if results.get('pie') == 'Failed' else '' }}">{{ results.get('pie', '') }}</td>
+                <td class="{{ 'passed' if results.get('stage') == 'Passed' else 'failed' if results.get('stage') == 'Failed' else '' }}">{{ results.get('stage', '') }}</td>
+                <td class="{{ 'passed' if results.get('production') == 'Passed' else 'failed' if results.get('production') == 'Failed' else '' }}">{{ results.get('production', '') }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td>Version</td>
+                <td>{{ additional_data[0].pie }}</td>
+                <td>{{ additional_data[0].stage }}</td>
+                <td>{{ additional_data[0].production }}</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

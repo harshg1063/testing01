@@ -1,0 +1,84 @@
+{
+    "support_home_navbar_btn": {
+        "locator": {
+            "id":"sec-nav-support-home"
+        }
+    },
+    "contact_us_navbar_btn": {
+        "locator": {
+            "id":"sec-nav-contact-support"
+        }
+    },
+    "business_support_navbar_btn": {
+        "locator": {
+            "id":"sec-nav-business-support"
+        }
+    },
+    "support_home_link": {
+        "locator": {
+            "id": "support-home"
+        }
+    },
+    "printing_support_link": {
+        "locator": {
+            "id":"printer-landing"
+        }
+    },
+    "computing_support_link":{
+        "locator": {
+             "id":"computer-landing"
+        }
+    },
+    "support_side_panel_title": {
+        "locator": {
+            "xpath":"//Text[@Name='Support']"
+        }
+    },
+    "support_panel_device_card": {
+        "locator": {
+            "id": ["Support.SupportDeviceList.DeviceCard-0__content", "SideFlyout.Support.Drawer__content", "Support.SupportDeviceList.DeviceCard"],
+            "xpath": "//Button[@ClassName='clientos-ui-toolkit-empty-card__content css-1j9mwei']"
+        }
+    },
+    "support_goto_support_hp_com": {
+        "locator": {
+            "id": "Support.SupportDeviceList.SupportWebRedirectButton",
+            "xpath": "//Button[@Name='Go to support.hp.com']"
+        }
+    },
+    "tab_name_browser": {
+        "locator": {
+            "class name": "Chrome_WidgetWin_1"
+        }
+    },
+    "create_account_btn":{
+        "locator": {
+            "id": "sign-up",
+            "xpath": "//Button[@Name='Create account']"
+        }
+    },
+    "username_or_email_placeholder":{
+        "locator": {
+            "id": "username-label",
+            "xpath": "//Text[@Name='Username or Email Address']"
+        }
+    },
+    "sign_in_mobile_num":{
+        "locator":{
+            "id":"switch-username",
+            "xpath":"//Button[@Name='Sign in with mobile number']"
+        }
+    },
+    "use_password_btn":{
+        "locator":{
+            "id":"user-name-form-submit",
+            "xpath":"//Button[@Name='Use password']"
+        }
+    },
+    "add_a_device_btn_support_page": {
+        "locator": {
+            "id": "Support.SupportDeviceList.AddDeviceButton",
+            "xpath": "//Button[@Name='Add a device']"
+        }
+    }
+}

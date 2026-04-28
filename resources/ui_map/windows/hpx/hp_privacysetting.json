@@ -1,0 +1,87 @@
+{
+    "privacy_title":{
+        "locator": {
+            "name": "About your privacy"
+        }
+    },
+    "privacy_subtitle_1":{
+        "locator": {
+            "name": "HP may use information about my system to provide me with customer support. Enable my PC to show HP contact options, warranty information, and important support messages."
+        }
+    },
+    "privacy_subtitle_2":{
+        "locator": {
+            "name": "HP may use information about my system to improve HP products and services. "
+        }
+    },
+    "privacy_subtitle_3":{
+        "locator": {
+            "name": "HP may use my contact details and information about my system to send me personalized offers and news."
+        }
+    },
+    "accept_all_btn":{
+        "locator": {
+            "id": "AUID_first-use-common-consents_welcome_BTN_AcceptAll"
+        }
+    },
+    "decline_all_btn":{
+        "locator": {
+            "id": "AUID_firstuse_privacy_PrivacyView_BTN_DeclineAll"
+        }
+    },
+    "manage_options_btn":{
+        "locator": {
+            "id": "AUID_firstuse_privacy_PrivacyView_BTN_ManageOptions"
+        }
+    },
+    "done_button":{
+        "locator": {
+            "id": "DoneButton"
+        }
+    },
+    "privacy_consent_yes_to_all":{
+        "locator": {
+            "id": "YesToAllButton"
+        }
+    },
+    "warranty_consent_yes_button":{
+        "locator": {
+            "id": "WarrantyConsentYesRadioButton"
+        }
+    },
+    "sysinfo_consent_yes_button":{
+        "locator": {
+            "id": "SysInfoYesRadioButton"
+        }
+    },
+    "marketing_consent_yes_button":{
+        "locator": {
+            "id": "MarketingYesRadioButton"
+        }
+    },
+    "aboutprivacy_header":{
+        "locator": {
+            "id": "AUID_firstuse_privacy_PrivacyView_Heading_Privacy"
+        }
+    },
+    "desc_customer_support":{
+        "locator": {
+            "id": "AUID_firstuse_privacy_PrivacyView_Desc_Customer_Support"
+        }
+    },
+    "desc_learnmore_link":{
+        "locator": {
+            "id": "AUID_firstuse_privacy_PrivacyView_Lnk_TelemetryLink"
+        }
+    }, 
+    "desc_news_offers":{
+        "locator": {
+            "id": "AUID_firstuse_privacy_PrivacyView_Desc_Offers_News"
+        }
+    },
+    "accept_all_btn_privacy":{
+        "locator": {
+            "id": "AUID_first-use-common-consents_welcome_BTN_AcceptAll"
+        }
+    }
+}

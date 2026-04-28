@@ -1,0 +1,16 @@
+*.pyc
+__pycache__
+.idea
+.DS_Store
+.project
+.pydevproject
+results/*
+*.log
+*.prefs
+results
+venv/
+
+.vscode/
+.env
+user_config.json
+system_config.json

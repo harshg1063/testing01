@@ -1,0 +1,32 @@
+{
+    "accept_all_button":{
+        "locator": {
+            "id": "FuFConsents.FuFConsents.AcceptAllButton"
+        }
+    },
+    "continue_as_guest_button":{
+        "locator": {
+            "id": "WelcomeScreen.WelcomeScreenView.ContinueAsGuestButton"
+        }
+    },
+    "yes_button_in_let_access_dialog": {
+        "locator": {
+            "id": "Button1"
+        }
+    },
+    "what_is_new_skip_button": {
+        "locator": {
+            "xpath": "//*[@ClassName='clientos-ui-toolkit-button label clientos-ui-toolkit-button__ghost-flush clientos-ui-toolkit-button__large css-c73gym']"
+        }
+    },
+    "privacy_page_heading": {
+        "locator": {
+            "xpath": "//*[starts-with(@ClassName,'globalstyles__H3-hpx-core-experiences-react-consents-mfe__sc-uri')]"
+        }
+    }, 
+    "accept_cookies_button": {
+        "locator": {
+            "xpath": "//*[@AutomationId = 'onetrust-accept-btn-handler']"
+        }
+    }
+}

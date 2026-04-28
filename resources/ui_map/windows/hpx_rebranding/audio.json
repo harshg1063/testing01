@@ -1,0 +1,1399 @@
+{
+    "audio_card_on_home_page":{
+        "locator": {
+            "id": "PcDeviceCards.PcDeviceActionCards.PcaudioXCoreCard"
+        }
+    },
+    "global_icon":{
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.AllAppsButton"
+        }
+    },
+    "add_application_button":{
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.AddButton"
+        }
+    },
+    "add_application_button_text":{
+        "locator": {
+            "name": "Custom application profile"
+        }
+    },
+    "for_all_applications_text":{
+        "locator": {
+            "name": "For all applications"
+        }
+    },
+    "audio_presets_title":{
+        "locator": {
+            "name": "Presets"
+        }
+    },
+    "audio_presets_music_txt":{
+        "locator": {
+            "name": "Music"
+        }
+    },
+    "audio_presets_music_button":{
+        "locator": {
+            "id": "Audio.BasicSettings.SelectedPresetmusic__radio-button"
+        }
+    },
+    "audio_presets_movie_txt":{
+        "locator": {
+            "name": "Movie"
+        }
+    },
+    "audio_presets_movie_button":{
+        "locator": {
+            "id": "Audio.BasicSettings.SelectedPresetmovie__radio-button"
+        }
+    },
+    "audio_presets_voice_txt":{
+        "locator": {
+            "name": "Voice"
+        }
+    },
+    "audio_presets_voice_button":{
+        "locator": {
+            "id": "Audio.BasicSettings.SelectedPresetvoice__radio-button"
+        }
+    },
+    "scroll_window":{
+        "locator": {
+            "xpath": "//Window[@ClassName=\"ApplicationFrameWindow\"]"
+        }
+    },
+    "ai_noise_removal_title":{
+        "locator": {
+            "name": "AI noise removal"
+        }
+    },
+    "ai_noise_removal_tooltip":{
+        "locator": {
+            "name": "This feature will remove background noise coming from your speaker"
+        }
+    },
+    "ai_noise_removal_toggle_off":{
+        "locator": {
+            "id": "Audio.BasicSettings.AiNoiseRemovalToggle-true__toggle"
+        }
+    },
+    "ai_noise_reduction_title":{
+        "locator": {
+            "name": "Noise reduction"
+        }
+    },
+    "noise_reduction_tooltip":{
+        "locator": {
+            "name": "Removes background noise coming from your microphone"
+        }
+    },
+    "ai_noise_reduction_toggle_off":{
+        "locator": {
+            "id": "Audio.BasicSettings.AiNoiseReductionToggle-true__toggle"
+        }
+    },
+    "output_title":{
+        "locator": {
+            "name": "Output"
+        }
+    },
+    "output_source_title":{
+        "locator": {
+            "name": "Source"
+        }
+    },
+    "output_combobox":{
+        "locator": {
+            "name": "output source"
+        }
+    },
+    "output_combobox_open_button":{
+        "locator": {
+            "id": "Audio.BasicSettings.DefaultOutputDevice-select"
+        }
+    },
+    "output_volume_title":{
+        "locator": {
+            "name": "Volume"
+        }
+    },
+    "output_volume_0":{
+        "locator": {
+            "name": "Speaker Volume 0"
+        }
+    },
+    "output_volume_slider":{
+        "locator": {
+            "id": "Audio.BasicSettings.OutputVolumeSlider"
+        }
+    },
+    "output_volume_100":{
+        "locator": {
+            "name": "Speaker Volume 100"
+        }
+    },
+    "input_title":{
+        "locator": {
+            "name": "Input"
+        }
+    },
+    "input_source_title":{
+        "locator": {
+            "name": "Source"
+        }
+    },
+    "input_combobox":{
+        "locator": {
+            "name": "input source"
+        }
+    },
+    "input_combobox_open_button":{
+        "locator": {
+            "id": "Audio.BasicSettings.DefaultInputDevice-select"
+        }
+    },
+    "input_volume_title":{
+        "locator": {
+            "name": "Volume"
+        }
+    },
+    "input_volume_0":{
+        "locator": {
+            "name": "Microphone Off"
+        }
+    },
+    "input_volume_slider":{
+        "locator": {
+            "id": "Audio.BasicSettings.InputVolumeSlider"
+        }
+    },
+    "input_volume_100":{
+        "locator": {
+            "name": "Microphone"
+        }
+    },
+    "restore_default":{
+        "locator": {
+            "id": "Audio.RestoreDefaults.Button"
+        }
+    },
+    "audio_presets_RPG_txt":{
+        "locator": {
+            "name": "RPG"
+        }
+    },
+    "audio_presets_RPG_button":{
+        "locator": {
+            "id": "Audio.BasicSettings.SelectedPresetrpg__radio-button"
+        }
+    },
+    "audio_presets_strategy_txt":{
+        "locator": {
+            "name": "Strategy"
+        }
+    },
+    "audio_presets_strategy_button":{
+        "locator": {
+            "id": "Audio.BasicSettings.SelectedPresetstrategy__radio-button"
+        }
+    },
+    "audio_presets_shooter_txt":{
+        "locator": {
+            "name": "Shooter"
+        }
+    },
+    "audio_presets_shooter_button":{
+        "locator": {
+            "id": "Audio.BasicSettings.SelectedPresetshooter__radio-button"
+        }
+    },
+    "mic_mode_title":{
+        "locator": {
+            "name": "Mic mode"
+        }
+    },
+    "mic_mode_tooltip":{
+        "locator": {
+            "id": "audio.audioInput.micModeTitle__tooltip"
+
+        }
+    },
+    "mic_mode_combobox_open_button":{
+        "locator": {
+            "name": "input mic mode"
+        }
+    },
+    "conference":{
+        "locator": {
+            "name": "Conference"
+        }
+    },
+    "personal":{
+        "locator": {
+            "name": "Personal"
+        }
+    },
+    "studio_recording_mode":{
+        "locator": {
+            "name": "Studio recording"
+        }
+    },
+    "output_device_3.5mm_headphone_gidget":{
+        "locator": {
+            "name": "Headphone (Realtek(R) Audio)"
+        }
+    },
+    "output_device_internal_speaker_gidget":{
+        "locator": {
+            "name": "Speaker (Realtek(R) Audio)"
+        }
+    },
+    "eq_title":{
+        "locator": {
+            "name": "Equalizer"
+        }
+    },
+    "eq_slider":{
+        "locator": {
+            "id": "Audio.AdvancedEQ.Slider"
+        }
+    },
+    "horizontal_axis_32":{
+        "locator": {
+            "id": "Audio.BasicSettings.EqSlider-0"
+        }
+    },
+    "horizontal_axis_64":{
+        "locator": {
+            "id": "Audio.BasicSettings.EqSlider-1"
+        }
+    },
+    "horizontal_axis_125":{
+        "locator": {
+            "id": "Audio.BasicSettings.EqSlider-2"
+        }
+    },
+    "horizontal_axis_250":{
+        "locator": {
+            "id": "Audio.BasicSettings.EqSlider-3"
+        }
+    },
+    "horizontal_axis_500":{
+        "locator": {
+            "id": "Audio.BasicSettings.EqSlider-4"
+        }
+    },
+    "horizontal_axis_1k":{
+        "locator": {
+            "id": "Audio.BasicSettings.EqSlider-5"
+        }
+    },
+    "horizontal_axis_2k":{
+        "locator": {
+            "id": "Audio.BasicSettings.EqSlider-6"
+        }
+    },
+    "horizontal_axis_4k":{
+        "locator": {
+            "id": "Audio.BasicSettings.EqSlider-7"
+        }
+    },
+    "horizontal_axis_8k":{
+        "locator": {
+            "id": "Audio.BasicSettings.EqSlider-8"
+        }
+    },
+    "horizontal_axis_16k":{
+        "locator": {
+            "id": "Audio.BasicSettings.EqSlider-9"
+        }
+    },
+    "vertical_axis_6":{
+        "locator": {
+            "name": "+6"
+        }
+    },
+    "vertical_axis_3":{
+        "locator": {
+            "name": "+3"
+        }
+    },
+    "vertical_axis_0":{
+        "locator": {
+            "name": "0"
+        }
+    },
+    "vertical_axis_minus_3":{
+        "locator": {
+            "name": "-3"
+        }
+    },
+    "vertical_axis_minus_6":{
+        "locator": {
+            "name": "-6"
+        }
+    },
+    "advanced_audio_settings_title":{
+        "locator": {
+            "name": "Advanced audio settings"
+        }
+    },
+    "advanced_audio_settings_arrow":{
+        "locator": {
+            "name": "Arrow Right"
+        }
+    },
+    "audio_title_on_advanced_audio_settings_page":{
+        "locator": {
+            "name": "Audio"
+        }
+    },
+    "speaker_swap_title":{
+        "locator": {
+            "name": "Speaker swap"
+        }
+    },
+    "speaker_swap_toggle":{
+        "locator": {
+            "id": "Audio.AdvancedAudioSettings.SpeakerSwap-false__toggle"
+        }
+    },
+    "back_button_on_audio_page":{
+        "locator": {
+            "id": "NavBar.NavBarView.BackButton"
+        }
+    },
+    "mute_txt_for_output":{
+        "locator": {
+            "name": "Mute"
+        }
+    },
+    "mute_txt_for_input":{
+        "locator": {
+            "name": "Mute"
+        }
+    },
+    "mute_toggle_for_input":{
+        "locator": {
+            "id": "Audio.BasicSettings.InputMuteToggle__toggle"
+        }
+    },
+    "windows_system_sound_output_volume_tab": {
+        "locator": {
+            "id": "SystemSettings_Audio_Output_VolumeValue_Slider"
+        }
+    },
+    "maximize_system_settings": {
+        "locator": {
+            "id": "Maximize"
+        }
+    },
+    "restore_defaults_button": {
+        "locator": {
+            "id": "Audio.BasicSettings.RestoreDefaultsButton"
+        }
+    },
+    "advanced_settings_restore_defaults_button": {
+        "locator": {
+            "id": "Audio.AdvancedAudioSettings.RestoreDefaultsButton"
+        }
+    },
+    "windows_system_sound_input_volume_tab": {
+        "locator": {
+            "id": "SystemSettings_Audio_Input_VolumeValue_Slider"
+        }
+    },
+    "disney+_on_application_list": {
+        "locator": {
+            "name": "carousel-item-Disney+"
+        }
+    },
+    "aiqiyi_on_application_list": {
+        "locator": {
+            "name": "carousel-item-爱奇艺"
+        }
+    },
+    "tencent_on_application_list": {
+        "locator": {
+            "name": "carousel-item-腾讯视频"
+        }
+    },
+    "access_on_application_list": {
+        "locator": {
+            "name": "carousel-item-Access"
+        }
+    },
+    "add_application_txt_on_dialog": {
+        "locator": {
+            "name": "Add Application"
+        }
+    },
+    "search_application_txt_on_search_frame": {
+        "locator": {
+            "id": "ReactPCContextAware.InstalledAppsModal.SearchApplication-label"
+        }
+    },
+    "search_application_frame": {
+        "locator": {
+            "id": "ReactPCContextAware.InstalledAppsModal.SearchApplication__text-box"
+        }
+    },
+    "application_list_on_dialog": {
+        "locator": {
+            "class name": "clientos-ui-toolkit-list-container"
+        }
+    },
+    "cancel_button_on_dialog": {
+        "locator": {
+            "name": "Cancel"
+        }
+    },
+    "continue_button_on_dialog": {
+        "locator": {
+            "id": "ReactPCContextAware.InstalledAppsModal.ContinueButton"
+        }
+    },
+    "search_access_on_application_list": {
+        "locator": {
+            "name": "Access"
+        }
+    },
+    "delete_button": {
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.DeleteProfileButton"
+        }
+    },
+    "delete_profile_txt_on_dialog": {
+        "locator": {
+            "name": "Delete profile"
+        }
+    },
+    "continue_button_on_delete_app_dialog": {
+        "locator": {
+            "id": "ReactPCContextAware.DeleteProfileModal.ContinueButton"
+        }
+    },
+    "audio_title_on_header": {
+        "locator": {
+            "id": "Audio.BasicSettings__header__title"
+        }
+    },
+    "output_35mm_external_headphone": {
+        "locator": {
+            "id": ["Audio.BasicSettings.DefaultOutputDevice-{0.0.0.00000000}.{c5af9d17-5f86-4bfa-9a2e-9e84aca11ee9}-option-0, Audio.BasicSettings.DefaultOutputDevice-{0.0.0.00000000}.{53982b58-8f26-4979-acd2-61fea360a0fc}-option-0", "Audio.BasicSettings.DefaultOutputDevice-{0.0.0.00000000}.{db187fe1-36b6-4614-808b-553f6fa23d7f}-option-0"]
+        }
+    },
+    "output_internal_headphone": {
+        "locator": {
+            "id": ["Audio.BasicSettings.DefaultOutputDevice-{0.0.0.00000000}.{c5af9d17-5f86-4bfa-9a2e-9e84aca11ee9}-option-2, Audio.BasicSettings.DefaultOutputDevice-{0.0.0.00000000}.{53982b58-8f26-4979-acd2-61fea360a0fc}-option-2", "Audio.BasicSettings.DefaultOutputDevice-{0.0.0.00000000}.{db187fe1-36b6-4614-808b-553f6fa23d7f}-option-2"]
+        }
+    },
+    "output_usb_external_headphone": {
+        "locator": {
+            "id": ["Audio.BasicSettings.DefaultOutputDevice-{0.0.0.00000000}.{c5af9d17-5f86-4bfa-9a2e-9e84aca11ee9}-option-1, Audio.BasicSettings.DefaultOutputDevice-{0.0.0.00000000}.{53982b58-8f26-4979-acd2-61fea360a0fc}-option-1", "Audio.BasicSettings.DefaultOutputDevice-{0.0.0.00000000}.{db187fe1-36b6-4614-808b-553f6fa23d7f}-option-1"]
+        }
+    },
+    "input_35mm_external_headphone": {
+        "locator": {
+            "id": "Audio.BasicSettings.DefaultInputDevice-Headset Microphone (Plantronics Blackwire 3215 Series)-option-0"
+        }
+    },
+    "input_internal_headphone": {
+        "locator": {
+            "id": "Audio.BasicSettings.DefaultInputDevice-Headset Microphone (Plantronics Blackwire 3215 Series)-option-1"
+        }
+    },
+    "input_usb_external_headphone": {
+        "locator": {
+            "id": "Audio.BasicSettings.DefaultInputDevice-Headset Microphone (Plantronics Blackwire 3215 Series)-option-2"
+        }
+    },
+    "ai_noise_removal_toggle_on":{
+        "locator": {
+            "id": "Audio.BasicSettings.AiNoiseRemovalToggle-false__toggle"
+        }
+    },
+    "ai_noise_reduction_toggle_on":{
+        "locator": {
+            "id": "Audio.BasicSettings.AiNoiseReductionToggle-false__toggle"
+        }
+    },
+    "conference_selected":{
+        "locator": {
+            "id": "Audio.BasicSettings.SelectedMicMode-Conference-select"
+        }
+    },
+    "personal_selected":{
+        "locator": {
+            "id": "Audio.BasicSettings.SelectedMicMode-Personal-select"
+        }
+    },
+    "studio_recording_selected":{
+        "locator": {
+            "id": "Audio.BasicSettings.SelectedMicMode-Studio Recording"
+        }
+    },
+    "arrow_next_on_application_list":{
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.NextButton"
+        }
+    },
+    "searched_app":{
+        "locator": {
+            "class name": "clientos-ui-toolkit-list-container__item padding-end hoverable"
+        }
+    },
+    "immersive_title":{
+        "locator": {
+            "id": "Audio.AdvancedAudioSettings.ImmersiveAudio-header__title"
+        }
+    },
+    "immersive_toggle_on":{
+        "locator": {
+            "name": "immersive audio"
+        }
+    },
+    "immersive_toggle_off":{
+        "locator": {
+            "name": "immersive audio"
+        }
+    },
+    "usb_headphone_input_selected_willie_robotics":{
+        "locator": {
+            "xpath": "//*[contains(@AutomationId, 'Audio.BasicSettings.DefaultInputDevice') and contains(@Name, 'Headset Microphone (Plantronics C620-M)')]"
+        }
+    },
+    "speaker_selected_willie_robotics":{
+        "locator": {
+            "xpath": "//*[contains(@AutomationId, 'Audio.BasicSettings.DefaultOutputDevice') and contains(@Name, 'Speaker (Realtek(R) Audio)')]"
+        }
+    },
+    "microphone_array_selected_willie_robotics":{
+        "locator": {
+            "xpath": "//*[contains(@AutomationId, 'Audio.BasicSettings.DefaultInputDevice') and contains(@Name, 'Microphone Array (Intel® Smart Sound Technology for Digital Microphones')]"
+        }
+    },
+    "usb_headphone_output_selected_willie_robotics":{
+        "locator": {
+            "xpath": "//*[contains(@AutomationId, 'Audio.BasicSettings.DefaultOutputDevice') and contains(@Name, 'Headset Earphone (Plantronics C620-M)')]"
+        }
+    },
+    "3_5_headphone_output_selected_willie_robotics":{
+        "locator": {
+            "xpath": "//*[contains(@AutomationId, 'Audio.BasicSettings.DefaultOutputDevice') and contains(@Name, 'Headphone (Realtek(R) Audio)')]"
+        }
+    },
+    "3_5_headphone_input_selected_willie_robotics":{
+        "locator": {
+            "xpath": "//*[contains(@AutomationId, 'Audio.BasicSettings.DefaultInputDevice') and contains(@Name, 'Headset Microphone (Realtek(R) Audio)')]"
+        }
+    },
+    "3_5_headphone_input_dropbox_show_up_willie_robotics":{
+        "locator": {
+            "xpath": "//*[contains(@AutomationId, 'Audio.BasicSettings.DefaultInputDevice-option') and contains(@Name, 'Headset Microphone (Realtek(R) Audio)')]"
+        }
+    },
+    "usb_headphone_input_dropbox_show_up_willie_robotics":{
+        "locator": {
+            "xpath": "//*[contains(@AutomationId, 'Audio.BasicSettings.DefaultInputDevice-option') and contains(@Name, 'Headset Microphone (Plantronics C620-M)')]"
+        }
+    },
+    "usb_headphone_output_dropbox_show_up_willie_robotics":{
+        "locator": {
+            "xpath": "//*[contains(@AutomationId, 'Audio.BasicSettings.DefaultOutputDevice-option') and contains(@Name, 'Headset Earphone (Plantronics C620-M)')]"
+        }
+    },
+    "microphone_array_dropbox_show_up_willie_robotics":{
+        "locator": {
+            "xpath": "//*[contains(@AutomationId, 'Audio.BasicSettings.DefaultInputDevice-option') and contains(@Name, 'Microphone Array (Intel® Smart Sound Technology for Digital Microphones)')]"
+        }
+    },
+    "search_bar_on_windows": {
+        "locator": {
+            "id": "SearchButton"
+        }
+    },
+    "myhp_on_task_bar": {
+        "locator": {
+            "xpath": "//*[contains(@AutomationId, 'AD2F1837.myHP_v10z8vjag6ke6!App') or contains(@AutomationId, 'Appid: AD2F1837.myHP_v10z8vjag6ke6!App')]"
+        }
+    },
+    "calculator_on_application_list": {
+        "locator": {
+            "name": "carousel-item-Calculator"
+        }
+    },
+    "privacy_on_application_list": {
+        "locator": {
+            "name": "carousel-item-HP Privacy Settings"
+        }
+    },
+    "error_icon_on_application_list": {
+        "locator": {
+            "class name": "styles__WarningImage-pc-hw-enablers-react-pc-contextaware-mfe__sc-1cgfe4q-12 SYsME"
+        }
+    },
+    "retask_notification_toast": {
+        "locator": {
+            "id": "NormalToastView"
+        }
+    },
+    "retask_notification_toast_select_option": {
+        "locator": {
+            "name": "Speaker Out"
+        }
+    },
+    "retask_notification_toast_x_button": {
+        "locator": {
+            "id": "DismissButton"
+        }
+    },
+    "retask_notification_settings_button": {
+        "locator": {
+            "id": "SettingsButton"
+        }
+    },
+    "retask_notification_turn_off_notifications": {
+        "locator": {
+            "id": "TurnOffNotificationsMenuItem"
+        }
+    },
+    "retask_notification_combo_box": {
+        "locator": {
+            "id": "Picker"
+        }
+    },
+    "retask_notification_toast_select_option_line_in": {
+        "locator": {
+            "name": "Line In"
+        }
+    },
+    "retask_notification_toast_ok_button": {
+        "locator": {
+            "id": "VerbButton"
+        }
+    },
+    "retask_notification_toast_go_to_notification": {
+        "locator": {
+            "id": "GoToNotificationSettingsMenuItem"
+        }
+    },
+    "output_headphone": {
+        "locator": {
+            "id": "Audio.BasicSettings.DefaultOutputDevice-Speaker / Headphone (Realtek(R) Audio)"
+        }
+    },
+    "output_usb_headphone": {
+        "locator": {
+            "id": "Audio.BasicSettings.DefaultOutputDevice-Headset Earphone (Plantronics Blackwire 3215 Series)"
+        }
+    },
+    "input_headphone": {
+        "locator": {
+            "id": "Audio.BasicSettings.DefaultInputDevice-Microphone in (Realtek(R) Audio)"
+        }
+    },
+    "input_usb_headphone": {
+        "locator": {
+            "id": "Audio.BasicSettings.DefaultInputDevice-Headset Microphone (Plantronics Blackwire 3215 Series)"
+        }
+    },
+    "input_array_headphone": {
+        "locator": {
+            "id": "Audio.BasicSettings.DefaultInputDevice-Microphone Array (Intel® Smart Sound Technology for Digital Microphones)"
+        }
+    },
+    "mute_toggle_for_output":{
+        "locator": {
+            "id": "Audio.BasicSettings.OutputMuteToggle__toggle"
+        }
+    },
+    "mute_toggle_for_intput_on":{
+        "locator": {
+            "id": "Audio.BasicSettings.InputMuteToggle-true"
+        }
+    },
+    "speaker_swap_toggle_on":{
+        "locator": {
+            "id": "Audio.AdvancedAudioSettings.SpeakerSwap-true__toggle"
+        }
+    },
+    "adaptive_toggle_on":{
+        "locator": {
+            "id": "Audio.AdvancedAudioSettings.AdaptiveAudio-true"
+        }
+    },
+    "adaptive_toggle_off":{
+        "locator": {
+            "id": "Audio.AdvancedAudioSettings.AdaptiveAudio-false__toggle"
+        }
+    },
+    "play_all_button":{
+        "locator": {
+            "id": "Audio.ExternalSpeakerSettings.PlayAllButton"
+        }
+    },
+    "access_txt":{
+        "locator": {
+            "name": "Access"
+        }
+    },
+    "disney_txt":{
+        "locator": {
+            "name": "Disney+"
+        }
+    },
+    "output_slider_value":{
+        "locator": {
+            "id": "Audio.BasicSettings.OutputVolumeSlider"
+        }
+    },
+    "input_slider_value":{
+        "locator": {
+            "id": "Audio.BasicSettings.InputVolumeSlider"
+        }
+    },
+    "advanced_audio_settings_title_on_detail_page":{
+        "locator": {
+            "name": "Advanced audio settings"
+        }
+    },
+    "adaptive_audio_title":{
+        "locator": {
+            "name": "Adaptive audio"
+        }
+    },
+    "adaptive_audio_toggle":{
+        "locator": {
+            "name": "adaptive audio"
+        }
+    },
+    "automatic_title":{
+        "locator": {
+            "name": "Automatic"
+        }
+    },
+    "automatic_toggle":{
+        "locator": {
+            "id": "Audio.AdvancedAudioSettings.AdvancedAudioRadio-99999__radio-button"
+        }
+    },
+    "far_from_display_title":{
+        "locator": {
+            "name": "Far from display"
+        }
+    },
+    "far_from_display_toggle":{
+        "locator": {
+            "id": "Audio.AdvancedAudioSettings.AdvancedAudioRadio-4__radio-button"
+        }
+    },
+    "near_to_display_title":{
+        "locator": {
+            "name": "Near to display"
+        }
+    },
+    "near_to_display_toggle":{
+        "locator": {
+            "id": "Audio.AdvancedAudioSettings.AdvancedAudioRadio-3__radio-button"
+        }
+    },
+    "immersive_toggle":{
+        "locator": {
+            "name": "immersive audio"
+        }
+    },
+    "output_device_usb_headphone_gidget":{
+        "locator": {
+            "name": "Headset Earphone (Jabra UC VOICE 550a MS)"
+        }
+    },
+    "output_device_internal_speaker":{
+        "locator": {
+            "name": "Speakers (Realtek(R) Audio)"
+        }
+    },
+    "output_device_3.5mm_headphone":{
+        "locator": {
+            "name": "Headphones (Realtek(R) Audio)"
+        }
+    },
+    "input_35mm_external_headphone_gidget": {
+        "locator": {
+            "name": "Headset Microphone (Realtek(R) Audio)"
+        }
+    },
+    "input_internal_headphone_gidget": {
+        "locator": {
+            "name": "Microphone Array (Intel® Smart Sound Technology for Digital Microphones)"
+        }
+    },
+    "input_usb_external_headphone_gidget": {
+        "locator": {
+            "name": "Headset Microphone (Jabra UC VOICE 550a MS)"
+        }
+    },
+    "apm_mode_title":{
+        "locator": {
+            "name": "Advanced personal mode"
+        }
+    },
+    "apm_mode_tips":{
+        "locator": {
+            "xpath": "//*[@Name='Advanced personal mode']/following-sibling::*[1]"
+        }
+    },
+    "apm_mode_toggle":{
+        "locator": {
+            "id": "Audio.BasicSettings.VoiceTrackingToggle__toggle"
+        }
+    },
+    "output_device_usb_headphone_arti":{
+        "locator": {
+            "name": "Headset Earphone (Plantronics Blackwire 3220 Series)"
+        }
+    },
+    "input_usb_external_headphone_arti":{
+        "locator": {
+            "name": "Headset Microphone (Plantronics Blackwire 3220 Series)"
+        }
+    },
+    "input_35mm_external_headphone_arti":{
+        "locator": {
+            "name": "Headset Microphone (Realtek(R) Audio)"
+        }
+    },
+    "output_device_35mm_headphone_arti":{
+        "locator": {
+            "name": "Headphones (Realtek(R) Audio)"
+        }
+    },
+    "close_button_on_windows_settings":{
+        "locator":{
+            "name":"Close Settings"
+        }
+    },
+    "output_internal_device_london":{
+        "locator":{
+            "name":"Speakers (SoundWire Audio)"
+        }
+    },
+    "input_internal_device_thompson":{
+        "locator":{
+            "name":"Microphone Array (Intel® Smart Sound Technology for Digital Microphones)"
+        }
+    },
+    "input_35mm_headphone_thompson":{
+        "locator":{
+            "name":"Headset Microphone (Realtek(R) Audio)"
+        }
+    },
+    "audio_standalone_app":{
+        "locator":{
+            "name":"carousel-item-HP Audio Control"
+        }
+    },
+    "output_device_3.5mm_headphone_willie_robotics":{
+        "locator": {
+            "xpath": "//*[contains(@AutomationId, 'Audio.BasicSettings.DefaultOutputDevice-option') and contains(@Name, 'Headphone (Realtek(R) Audio)')]"
+        }
+    },
+    "mic_mode_tooltip_contents":{
+        "locator":{
+            "id":"audio.audioInput.micModeTitle__tooltip__children"
+        }
+    },
+    "apm_tooltip_contents":{
+        "locator":{
+            "name":"Capture only your voice, filtering other voices and background noises, for crystal-clear conversations as you move around your PC."
+        }
+    },
+    "external_speaker_settings_title":{
+        "locator":{
+            "name":"External speaker settings"
+        }
+    },
+    "arrow_right_on_external_speaker_settings":{
+        "locator":{
+            "name":"Arrow Right"
+        }
+    },
+    "output_internal_device_arti":{
+        "locator":{
+            "name":"Speakers (Realtek(R) Audio)"
+        }
+    },
+    "speaker_configuration_text":{
+        "locator":{
+            "name":"Speaker Configuration"
+        }
+    },
+    "speaker_configuration_option_combox":{
+        "locator":{
+            "id":"Audio.ExternalSpeakerSettings.SpeakerConfigSelect-select"
+        }
+    },
+    "speaker_configuration_option":{
+        "locator":{
+            "id":"Audio.ExternalSpeakerSettings.SpeakerConfigSelect-select"
+        }
+    },
+    "speaker_configuration_drop_down_list_option_stereo":{
+        "locator":{
+            "id":"Audio.ExternalSpeakerSettings.SpeakerConfigSelect-select-option-0"
+        }
+    },
+    "speaker_configuration_drop_down_list_option_quad":{
+        "locator":{
+            "id":"Audio.ExternalSpeakerSettings.SpeakerConfigSelect-select-option-1"
+        }
+    },
+    "speaker_configuration_drop_down_list_option_surround":{
+        "locator":{
+            "id":"Audio.ExternalSpeakerSettings.SpeakerConfigSelect-select-option-2"
+        }
+    },
+    "front_left_speaker_distance":{
+        "locator":{
+            "id":"Audio.ExternalSpeakerSettings.FrontLeftSpeakerDistSelect-select"
+        }
+    },
+    "front_left_speaker_volume":{
+        "locator":{
+            "id":"Audio.ExternalSpeakerSettings.FrontLeftSpeakerVolDropSelect-select"
+        }
+    },
+    "front_left_speaker_distance_14.9":{
+        "locator":{
+            "id":"Audio.ExternalSpeakerSettings.FrontLeftSpeakerDistSelect-select-option-149"
+        }
+    },
+    "front_left_speaker_volume_-1":{
+        "locator":{
+            "id":"Audio.ExternalSpeakerSettings.FrontLeftSpeakerVolDropSelect-select-option-9"
+        }
+    },
+    "output_device_internal_speaker_willie_robotics":{
+        "locator": {
+            "xpath": "//*[contains(@AutomationId, 'Audio.BasicSettings.DefaultOutputDevice-option') and contains(@Name, 'Speaker (Realtek(R) Audio)')]"
+        }
+    },
+    "audio_presets_auto_txt":{
+        "locator": {
+            "name": "Automatic"
+        }
+    },
+    "audio_presets_auto_button":{
+        "locator": {
+            "id": "Audio.BasicSettings.SelectedPresetautomatic__radio-button"
+        }
+    },
+    "output_internal_speaker_commercial":{
+        "locator": {
+            "name": "Speakers (Realtek(R) Audio)"
+        }
+    },
+    "input_internal_mic_commercial":{
+        "locator": {
+            "name": "Microphone Array (Intel® Smart Sound Technology for Digital Microphones)"
+        }
+    },
+    "input_35mm_headphone_commercial":{
+        "locator": {
+            "name": "External Microphone (Realtek(R) Audio)"
+        }
+    },
+    "output_35mm_headphone_commercial":{
+        "locator": {
+            "name": "Headphones (Realtek(R) Audio)"
+        }
+    },
+    "input_usb_headphone_commercial":{
+        "locator": {
+            "name": "Microphone (Logi USB Headset)"
+        }
+    },
+    "output_usb_headphone_commercial":{
+        "locator": {
+            "name": "Speakers (Logi USB Headset)"
+        }
+    },
+    "vertical_value_0":{
+        "locator": {
+            "name": "0"
+        }
+    },
+    "vertical_value_20":{
+        "locator": {
+            "name": "+20"
+        }
+    },
+    "vertical_value_40":{
+        "locator": {
+            "name": "+40"
+        }
+    },
+    "vertical_value_60":{
+        "locator": {
+            "name": "+60"
+        }
+    },
+    "vertical_value_80":{
+        "locator": {
+            "name": "+80"
+        }
+    },
+    "vertical_value_100":{
+        "locator": {
+            "name": "+100"
+        }
+    },
+    "input_mic_on_windows":{
+        "locator": {
+            "xpath": "//*[@Name='Microphone Array' and @AutomationId='EntityItemButton']"
+        }
+    },
+    "audio_enhancements_on_windows":{
+        "locator": {
+            "id": "SystemSettings_Audio_Input_Enhance_Audio_EntityItem "
+        }
+    },
+    "audio_enhancements_combobox_on_windows":{
+        "locator": {
+            "id": "SystemSettings_Audio_Input_Enhance_Audio_ComboBox"
+        }
+    },
+    "mep_option_on_windows":{
+        "locator": {
+            "name": "Microsoft Windows Studio Voice Focus"
+        }
+    },
+    "non_mep_option_on_windows":{
+        "locator": {
+            "name": "Device Default Effects"
+        }
+    },
+    "mep_notification_toast":{
+        "locator": {
+            "name": "Switch back"
+        }
+    },
+    "windows_sound_settings_mep":{
+        "locator": {
+            "name": "Windows sound settings"
+        }
+    },
+    "learn_more_link_on_mep":{
+        "locator": {
+            "name": "Learn more"
+        }
+    },
+    "mep_ui":{
+        "locator": {
+            "name": "Warning Alt"
+        }
+    },
+    "sound_title_on_windows":{
+        "locator": {
+            "name": "Sound"
+        }
+    },
+    "settings_on_taskbar":{
+        "locator": {
+            "name": "Settings - 1 running window"
+        }
+    },
+    "mep_contents_on_myhp":{
+        "locator": {
+            "name": "Enjoy the best audio experience with HP recommended device default settings. For optimal performance and access to all the features, we suggest switching back to these settings in your Windows Sound Settings."
+        }
+    },
+    "mep_pop_up_dialog_title":{
+        "locator": {
+            "name": "Enhance Your Audio Experience with Device Defaults"
+        }
+    },
+    "cancel_button_on_mep_pop_up_dialog":{
+        "locator": {
+            "name": "Cancel"
+        }
+    },
+    "go_to_windows_sound_settings_button_on_mep_pop_up_dialog":{
+        "locator": {
+            "name": "Go to Windows Sound Settings"
+        }
+    },
+    "mep_pop_up_dialog_close_button":{
+        "locator": {
+            "name": "Close"
+        }
+    },
+    "noise_reduction_contents_on_mep_pop_up_dialog":{
+        "locator": {
+            "name": "Noise reductionEnjoy crystal-clear audio, free from background distractions."
+        }
+    },
+    "conference_mode_contents_on_mep_pop_up_dialog":{
+        "locator": {
+            "name": "Conference mic modeIdeal for group meetings and calls, ensuring your voice is heard loud and clear."
+        }
+    },
+    "personal_mode_contents_on_mep_pop_up_dialog":{
+        "locator": {
+            "name": "Personal mic modePerfect for one-on-one conversations, prioritizing your voice."
+        }
+    },
+    "studio_recording_mode_contents_on_mep_pop_up_dialog":{
+        "locator": {
+            "name": "Studio recording modeCapture professional-quality audio for podcasts, music recordings."
+        }
+    },
+    "mep_pop_up_dialog_second_title":{
+        "locator": {
+            "name": "Experience the best your device has to offer. By switching to default audio settings, you’ll unlock below features designed to enhance your listening experience."
+        }
+    },
+    "input_device_on_windows":{
+        "locator": {
+            "name": "Choose a device for speaking or recording. Microphone Array selected. Apps might have their own settings."
+        }
+    },
+    "system_button_on_windows":{
+        "locator": {
+            "name": "System"
+        }
+    },
+    "sound_button_on_windows":{
+        "locator": {
+            "name": "Sound"
+        }
+    },
+    "mic_mode_combobox_status":{
+        "locator": {
+            "xpath": "//*[@Name='input mic mode']/*[1]"
+        }
+    },
+    "off_option_on_windows_input_side":{
+        "locator": {
+            "name": "Off"
+        }
+    },
+    "35mm_headphone_for_divinity_output_device":{
+        "locator":{
+            "name":"Headphones (Qualcomm(R) Aqstic(TM))"
+        }
+    },
+    "35mm_headphone_for_divinity_input_device":{
+        "locator":{
+            "name":"Headset Microphone (Qualcomm(R) Aqstic(TM))"
+        }
+    },
+    "mep_notification_windows_toast":
+    {
+        "locator":{
+            "name":"New notification from HP, Audio Effects Switch, You've switched to Windows Studio Voice Focus. HP's audio effects offer more features and are optimized for your HP PC. Switch back for a better audio experience... . Actions. 1 of 1"
+        }
+    },
+    "mep_notification_contents":
+    {
+        "locator":{
+            "name":"You've switched to Windows Studio Voice Focus. HP's audio effects offer more features and are optimized for your HP PC. Switch back for a better audio experience."
+        }
+    },
+    "mep_notification_hp_title":
+    {
+        "locator":{
+            "name":"HP"
+        }
+    },
+    "settings_for_this_notification":
+    {
+        "locator":{
+            "name":"Settings for this notification"
+        }
+    },
+    "mep_notification_switch_back_button":
+    {
+        "locator":{
+            "name":"Switch back"
+        }
+    },
+    "mep_notification_dismiss_button":
+    {
+        "locator":{
+            "name":"Dismiss"
+        }
+    },
+    "move_this_notification_to_notification_center":
+    {
+        "locator":{
+            "name":"Move this notification to Notification Center"
+        }
+    },
+    "audio_effects_switch":
+    {
+        "locator":{
+            "name":"Audio Effects Switch"
+        }
+    },
+    "all_sounds_devices_on_windows":
+    {
+        "locator":{
+            "name":"All sound devices"
+        }
+    },
+    "usb_headphone_for_divinity_output_device":{
+        "locator":{
+            "name":"Headset Earphone (OMEN Mindframe Prime)"
+        }
+    },
+    "usb_headphone_for_divinity_input_device":{
+        "locator":{
+            "name":"Headset Microphone (OMEN Mindframe Prime)"
+
+        }
+    },
+    "internal_speaker_for_divinity_output_device":{
+        "locator":{
+            "name":"Speakers (Qualcomm(R) Aqstic(TM) Audio Adapter Device)"
+        }
+    },
+    "internal_mic_for_divinity_input_device":{
+        "locator":{
+            "name":"Microphone Array (Qualcomm(R) Aqstic(TM) ACX Static Endpoints Audio Device)"
+        }
+    },
+    "audio_standalone_app_in_app_list":{
+        "locator":{
+            "id":"ReactPCContextAware.InstalledAppsModal.AppItemD8E1552EF12F0953678013035808E2FA"
+        }
+    },
+    "dts_sound_unbound_on_ms_store":{
+        "locator":{
+            "id":"9PJ0NKL8MCSJ"
+        }
+    },
+    "dts_sound_unbound_link_on_myhp":{
+        "locator":{
+            "id":"Audio.BasicSettings.DTSSoundUnbound"
+        }
+    },
+    "dts_sound_unbound_dialog_privacy_page_title":{
+        "locator":{
+            "name":"End User License Agreement and Privacy Policy"
+        }
+    },
+    "dts_sound_unbound_dialog_title":{
+        "locator":{
+            "name":"DTS Sound Unbound"
+        }
+    },
+    "cancel_button_on_dts_sound_unbound_dialog":{
+        "locator":{
+            "name":"Cancel"
+        }
+    },
+    "multistreaming_toggle_on_state":{
+        "locator":{
+            "id":"Audio.ExternalSpeakerSettings.MultiStreaming-false__toggle"
+        }
+    },
+    "multistreaming_toggle_off_state":{
+        "locator":{
+            "id":"Audio.ExternalSpeakerSettings.MultiStreaming-true__toggle"    
+        }
+    },
+    "output_device_external_speaker_headphone":{
+        "locator":{
+            "name":"Speaker/Headphone (Realtek(R) Audio)"
+        }
+    },
+    "speaker_not_support_dialog_pop_up":{
+        "locator":{
+            "name":"verify_speaker_not_support_dialog_pop_up"
+        }
+    },
+    "continue_button_on_speaker_not_support_dialog":{
+        "locator":{
+            "name":"Continue"
+        }
+    },
+    "tooltips_for_app_on_the_application_list":{
+        "locator":{
+            "xpath":"//*[@Name='[object Object]']/following-sibling::*[1]"
+        }
+    },
+    "settings_on_MEP_notification":{
+        "locator":{
+            "name":"Settings for this notification"
+        }
+    },
+    "go_to_notification_settings_button_on_MEP_notification":{
+        "locator":{
+            "name":"Go to notification settings"
+        }
+    },
+    "turn_off_notifications_for_hp_button_on_MEP_notification":{
+        "locator":{
+            "name":"Turn off all notifications for HP"
+        }
+    },
+    "notification_toggle_on_windows_settings_page":{
+        "locator":{
+            "id":"SystemSettings_Notifications_AppNotifications_ToggleSwitch"
+        }
+    },
+    "open_myhp_button":{
+        "locator":{
+            "name":"Open myHP"
+        }
+    },
+    "not_now_button":{
+        "locator":{
+            "name":"Not now"
+        }
+    },
+    "close_audio_standalone_app_button":{
+        "locator":{
+            "id":"Close"
+        }
+    },
+    "external_speaker_settings_restore_default":{
+        "locator":{
+            "id":"Audio.ExternalSpeakerSettings.RestoreDefaultsButton"
+        }
+    },
+    "turn_off_notification_from_myhp_side":{
+        "locator":{
+            "name":"Turn off all notifications for HP"
+        }
+    },
+    "hp_notification_toggle_on_windows_settings_page":{
+        "locator":{
+            "id":"AD2F1837.myHP_v10z8vjag6ke60_ToggleSwitch"
+        }
+    },
+    "audio_control_card":{
+        "locator":{
+            "id":"PcDeviceCards.PcDeviceActionCards.PcaudioXCoreCard"
+        }
+    },
+    "eq_vertical_axis_minus_value_100":{
+        "locator": {
+            "name": "-100"
+        }
+    },
+     "eq_vertical_axis_minus_value_50":{
+        "locator": {
+            "name": "-50"
+        }
+    },
+    "eq_vertical_axis_value_50":{
+        "locator": {
+            "name": "+50"
+        }
+    }
+
+}

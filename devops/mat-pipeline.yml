@@ -1,0 +1,332 @@
+# MAT (Marker-Based) Multi-Environment Pipeline with TestRail Upload
+#
+# Runs MAT tests once per compatible machine (agent routing via @pytest.mark.platform / @pytest.mark.connected_device)
+# across multiple environments (itg/stg/prod), then aggregates and uploads results to TestRail.
+#
+# TestRail behavior:
+# - Results are uploaded under milestone parameter `testrailMilestoneId` (default: 28758).
+# - Upload creates/reuses one plan per day and one run per environment (ITG/STG/PROD).
+# - Manual runs can still target an existing run via `testrailRunId` (single-run re-execution mode).
+#
+# Notes:
+# - Test execution stages publish JUnit XML as pipeline artifacts.
+# - Upload stage downloads env-specific artifacts and calls aggregate-test-results.py.
+# - If testrailRunId is NOT provided, aggregate-test-results.py will CREATE a new run using
+#   TESTRAIL_PROJECT_ID / TESTRAIL_SUITE_ID from variable groups.
+# - myHP build pipeline definition IDs can be overridden per env via parameters below.
+#   If you leave pipelineId* as "auto", the pipeline resolves IDs from variable groups using:
+#     ITG:  MYHP_PIPELINE_ID_ITG / ITG / Itg
+#     STG:  MYHP_PIPELINE_ID_STG / STG / Stg
+#     PROD: MYHP_PIPELINE_ID_PROD / PROD / Prod / Production
+#   Final hardcoded fallback IDs:
+#     ITG: 48795
+#     STG: 48805
+#     PROD: 48806
+
+trigger: none
+pr: none
+
+schedules:
+- cron: '0 6 * * *'  # 06:00 UTC daily (adjust as needed)
+  displayName: 'Daily MAT scheduled run'
+  branches:
+    include:
+    - master
+  always: true
+
+parameters:
+- name: buildVersion
+  displayName: 'Build Version (optional; keep default "latest" to use latest successful)'
+  type: string
+  default: 'latest'
+
+- name: testrailMilestoneId
+  displayName: 'TestRail Milestone ID (default Daily milestone)'
+  type: string
+  default: '28758'
+
+- name: testrailRunId
+  displayName: 'Existing TestRail Run ID (manual runs only; keep default "auto" to auto-create run)'
+  type: string
+  default: 'auto'
+
+- name: runItg
+  displayName: 'Run ITG stage'
+  type: boolean
+  default: true
+
+- name: runStg
+  displayName: 'Run STG stage'
+  type: boolean
+  default: true
+
+- name: runProd
+  displayName: 'Run PROD stage'
+  type: boolean
+  default: true
+
+- name: pipelineIdItg
+  displayName: 'ITG env pipelineId override (optional; default "auto" resolves from variable group)'
+  type: string
+  default: 'auto'
+
+- name: pipelineIdStg
+  displayName: 'STG env pipelineId override (optional; default "auto" resolves from variable group)'
+  type: string
+  default: 'auto'
+
+- name: pipelineIdProd
+  displayName: 'PROD env pipelineId override (optional; default "auto" resolves from variable group)'
+  type: string
+  default: 'auto'
+
+variables:
+- group: secrets
+- group: HP App Build Pipeline Variables
+- name: appBuildProjectId
+  value: '14cc2b54-d419-4fb9-bc1c-6bc8d9f4c8a1'
+- name: pipelineIdItgResolved
+  value: '48795'
+- name: pipelineIdStgResolved
+  value: '48805'
+- name: pipelineIdProdResolved
+  value: '48806'
+- name: testSuiteBasePath
+  value: 'tests/hp_app'
+- name: milestoneType
+  value: 'Daily'
+
+stages:
+- stage: PrepareTestRun
+  displayName: 'Prepare Test Run'
+  dependsOn: []
+
+  jobs:
+  - job: CategorizeTests
+    displayName: 'Categorize TestRail Tests by Suite'
+    pool:
+      name: ASQE-QAMA-VM
+
+    steps:
+    - checkout: self
+
+    - ${{ if and(ne(parameters.testrailRunId, ''), ne(parameters.testrailRunId, 'auto')) }}:
+      - task: PythonScript@0
+        name: CategorizeTestRailTests
+        displayName: 'Categorize TestRail Tests by Suite'
+        env:
+          TESTRAIL_URL: $(TESTRAIL_URL)
+          TESTRAIL_USER_NAME: $(TESTRAIL_USER_NAME)
+          TESTRAIL_API_KEY: $(TESTRAIL_API_KEY)
+        inputs:
+          scriptSource: 'filePath'
+          scriptPath: '$(Build.Repository.LocalPath)/devops/utils/test-execution/categorize-testrail-tests.py'
+          arguments: '--run-id "${{ parameters.testrailRunId }}" --base-path "$(Build.Repository.LocalPath)/$(testSuiteBasePath)" --output "$(Build.ArtifactStagingDirectory)/testrail-suite-categorization.json"'
+          workingDirectory: '$(Build.Repository.LocalPath)'
+          failOnStderr: false
+
+    - ${{ if and(ne(parameters.testrailRunId, ''), ne(parameters.testrailRunId, 'auto')) }}:
+      - task: PublishPipelineArtifact@1
+        displayName: 'Publish TestRail Categorization'
+        inputs:
+          targetPath: '$(Build.ArtifactStagingDirectory)/testrail-suite-categorization.json'
+          artifact: 'TestRail Categorization'
+          publishLocation: 'pipeline'
+
+    - ${{ if or(eq(parameters.testrailRunId, ''), eq(parameters.testrailRunId, 'auto')) }}:
+      - task: PowerShell@2
+        displayName: 'Skip TestRail Categorization (Auto Run Mode)'
+        inputs:
+          targetType: 'inline'
+          script: |
+            Write-Host "##[section]No explicit TestRail run ID provided; skipping categorization artifact generation"
+            
+- stage: ResolveBuildVersion
+  displayName: 'Resolve Build Version'
+  dependsOn: []
+  condition: succeeded()
+  jobs:
+  - job: Resolve
+    displayName: 'Resolve ITG/STG/PROD build versions'
+    pool:
+      name: ASQE-QAMA-VM
+    steps:
+    - task: PowerShell@2
+      name: SetVersions
+      displayName: 'Resolve versions for MAT environments'
+      env:
+        SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+        SYSTEM_TEAMFOUNDATIONCOLLECTIONURI: $(System.TeamFoundationCollectionUri)
+        SYSTEM_TEAMPROJECT: $(System.TeamProject)
+      inputs:
+        targetType: 'filePath'
+        filePath: '$(Build.Repository.LocalPath)/devops/utils/test-execution/mat-resolve-build-version.ps1'
+        arguments: >-
+          -RequestedBuildVersion "${{ parameters.buildVersion }}"
+          -RunItg "${{ parameters.runItg }}"
+          -RunStg "${{ parameters.runStg }}"
+          -RunProd "${{ parameters.runProd }}"
+          -PipelineIdItgInput "${{ parameters.pipelineIdItg }}"
+          -PipelineIdStgInput "${{ parameters.pipelineIdStg }}"
+          -PipelineIdProdInput "${{ parameters.pipelineIdProd }}"
+          -PipelineIdItgResolved "$(pipelineIdItgResolved)"
+          -PipelineIdStgResolved "$(pipelineIdStgResolved)"
+          -PipelineIdProdResolved "$(pipelineIdProdResolved)"
+          -AppBuildProjectId "$(appBuildProjectId)"
+
+- stage: MAT_ITG
+  displayName: 'MAT: ITG'
+  dependsOn:
+  - ResolveBuildVersion
+  - PrepareTestRun
+  condition: and(succeeded(), eq('${{ parameters.runItg }}', 'true'))
+  variables:
+  - name: resolvedBuildVersion
+    value: $[ stageDependencies.ResolveBuildVersion.Resolve.outputs['SetVersions.BuildVersionItg'] ]
+  - name: resolvedBuildId
+    value: $[ stageDependencies.ResolveBuildVersion.Resolve.outputs['SetVersions.BuildIdItg'] ]
+  jobs:
+  - template: templates/job templates/marker-based-test-execution-job.yml
+    parameters:
+      suitePath: '$(testSuiteBasePath)/MAT'
+      ${{ if and(ne(parameters.pipelineIdItg, ''), ne(parameters.pipelineIdItg, 'auto')) }}:
+        pipelineId: '${{ parameters.pipelineIdItg }}'
+      ${{ else }}:
+        pipelineId: '$(pipelineIdItgResolved)'
+      buildVersion: '$(resolvedBuildVersion)'
+      buildId: '$(resolvedBuildId)'
+      pytestArgs: '-v --tb=short'
+      additionalMarkerFilter: 'not robotics and not image_comparison'
+      workingDirectory: '$(Build.SourcesDirectory)'
+      milestoneType: '$(milestoneType)'
+      artifactNamePrefix: 'mat-itg-'
+      ${{ if and(ne(parameters.testrailRunId, ''), ne(parameters.testrailRunId, 'auto')) }}:
+        testrailRunId: '${{ parameters.testrailRunId }}'
+
+- stage: MAT_STG
+  displayName: 'MAT: STG'
+  dependsOn:
+  - ResolveBuildVersion
+  - PrepareTestRun
+  condition: and(succeeded(), eq('${{ parameters.runStg }}', 'true'))
+  variables:
+  - name: resolvedBuildVersion
+    value: $[ stageDependencies.ResolveBuildVersion.Resolve.outputs['SetVersions.BuildVersionStg'] ]
+  - name: resolvedBuildId
+    value: $[ stageDependencies.ResolveBuildVersion.Resolve.outputs['SetVersions.BuildIdStg'] ]
+  jobs:
+  - template: templates/job templates/marker-based-test-execution-job.yml
+    parameters:
+      suitePath: '$(testSuiteBasePath)/MAT'
+      ${{ if and(ne(parameters.pipelineIdStg, ''), ne(parameters.pipelineIdStg, 'auto')) }}:
+        pipelineId: '${{ parameters.pipelineIdStg }}'
+      ${{ else }}:
+        pipelineId: '$(pipelineIdStgResolved)'
+      buildVersion: '$(resolvedBuildVersion)'
+      buildId: '$(resolvedBuildId)'
+      pytestArgs: '-v --tb=short'
+      additionalMarkerFilter: 'not robotics and not image_comparison'
+      workingDirectory: '$(Build.SourcesDirectory)'
+      milestoneType: '$(milestoneType)'
+      artifactNamePrefix: 'mat-stg-'
+      ${{ if and(ne(parameters.testrailRunId, ''), ne(parameters.testrailRunId, 'auto')) }}:
+        testrailRunId: '${{ parameters.testrailRunId }}'
+
+- stage: MAT_PROD
+  displayName: 'MAT: PROD'
+  dependsOn:
+  - ResolveBuildVersion
+  - PrepareTestRun
+  condition: and(succeeded(), eq('${{ parameters.runProd }}', 'true'))
+  variables:
+  - name: resolvedBuildVersion
+    value: $[ stageDependencies.ResolveBuildVersion.Resolve.outputs['SetVersions.BuildVersionProd'] ]
+  - name: resolvedBuildId
+    value: $[ stageDependencies.ResolveBuildVersion.Resolve.outputs['SetVersions.BuildIdProd'] ]
+  jobs:
+  - template: templates/job templates/marker-based-test-execution-job.yml
+    parameters:
+      suitePath: '$(testSuiteBasePath)/MAT'
+      ${{ if and(ne(parameters.pipelineIdProd, ''), ne(parameters.pipelineIdProd, 'auto')) }}:
+        pipelineId: '${{ parameters.pipelineIdProd }}'
+      ${{ else }}:
+        pipelineId: '$(pipelineIdProdResolved)'
+      buildVersion: '$(resolvedBuildVersion)'
+      buildId: '$(resolvedBuildId)'
+      pytestArgs: '-v --tb=short'
+      additionalMarkerFilter: 'not robotics and not image_comparison'
+      workingDirectory: '$(Build.SourcesDirectory)'
+      milestoneType: '$(milestoneType)'
+      artifactNamePrefix: 'mat-prod-'
+      ${{ if and(ne(parameters.testrailRunId, ''), ne(parameters.testrailRunId, 'auto')) }}:
+        testrailRunId: '${{ parameters.testrailRunId }}'
+
+- stage: UploadToTestRail
+  displayName: 'MAT: Aggregate + Upload to TestRail'
+  dependsOn:
+  - ResolveBuildVersion
+  - MAT_ITG
+  - MAT_STG
+  - MAT_PROD
+  condition: always()
+  variables:
+  - name: resolvedBuildVersionItg
+    value: $[ stageDependencies.ResolveBuildVersion.Resolve.outputs['SetVersions.BuildVersionItg'] ]
+  - name: resolvedBuildVersionStg
+    value: $[ stageDependencies.ResolveBuildVersion.Resolve.outputs['SetVersions.BuildVersionStg'] ]
+  - name: resolvedBuildVersionProd
+    value: $[ stageDependencies.ResolveBuildVersion.Resolve.outputs['SetVersions.BuildVersionProd'] ]
+
+  jobs:
+  - job: AggregateAndUpload
+    displayName: 'Aggregate results and upload (plan + env runs)'
+    pool:
+      name: ASQE-QAMA-VM
+
+    steps:
+    - checkout: self
+
+    - task: PowerShell@2
+      displayName: 'Clean test-results folder'
+      condition: always()
+      inputs:
+        targetType: 'inline'
+        script: |
+          $resultsPath = "$(Pipeline.Workspace)/test-results"
+          if (Test-Path $resultsPath) {
+            Remove-Item -Recurse -Force "$resultsPath/*"
+          }
+
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Download MAT results (all envs)'
+      continueOnError: true
+      inputs:
+        source: 'current'
+        patterns: '**/test-results-*.xml'
+        path: '$(Pipeline.Workspace)/test-results'
+
+    - task: PowerShell@2
+      displayName: 'Aggregate + Upload results to TestRail'
+      env:
+        TESTRAIL_API_KEY: $(TESTRAIL_API_KEY)
+        TESTRAIL_USER_NAME: $(TESTRAIL_USER_NAME)
+        TESTRAIL_URL: $(TESTRAIL_URL)
+        TESTRAIL_PROJECT_ID: $(TESTRAIL_PROJECT_ID)
+        TESTRAIL_SUITE_ID: $(TESTRAIL_SUITE_ID)
+        SYSTEM_TEAMFOUNDATIONCOLLECTIONURI: $(System.TeamFoundationCollectionUri)
+        SYSTEM_TEAMPROJECT: $(System.TeamProject)
+        BUILD_BUILDID: $(Build.BuildId)
+        PYTHONPATH: $(System.DefaultWorkingDirectory)
+      inputs:
+        targetType: 'filePath'
+        filePath: '$(Build.Repository.LocalPath)/devops/utils/test-execution/mat-aggregate-upload-testrail.ps1'
+        arguments: >-
+          -RepositoryLocalPath "$(Build.Repository.LocalPath)"
+          -ArtifactDir "$(Pipeline.Workspace)/test-results"
+          -MilestoneId "${{ parameters.testrailMilestoneId }}"
+          -RequestedBuildVersion "${{ parameters.buildVersion }}"
+          -RunId "${{ parameters.testrailRunId }}"
+          -ResolvedBuildVersionItg "$(resolvedBuildVersionItg)"
+          -ResolvedBuildVersionStg "$(resolvedBuildVersionStg)"
+          -ResolvedBuildVersionProd "$(resolvedBuildVersionProd)"
+        workingDirectory: '$(Build.Repository.LocalPath)'

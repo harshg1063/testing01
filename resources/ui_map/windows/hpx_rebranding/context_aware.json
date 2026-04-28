@@ -1,0 +1,182 @@
+{   
+    "all_application_button_ltwo_page": {
+    "locator": {
+        "id": "ReactPCContextAware.Carousel.AllAppsButton"
+        }
+    },
+    "disney_plus_app_carousel": {
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.CarouselItemA07DDB88965F20AE0E1C2E89F36F5B07"
+        }
+    },
+    "disney_app_on_install_modal":{
+        "locator": {
+            "id": "ReactPCContextAware.InstalledAppsModal.AppItemA07DDB88965F20AE0E1C2E89F36F5B07"
+        }
+    },
+    "tencent_app_carousel": {
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.CarouselItem41A61336B059C3F8CEB51A343050E228"
+        }
+    },
+    "tencent_app_on_install_modal":{
+        "locator": {
+            "id": "ReactPCContextAware.InstalledAppsModal.AppItem41A61336B059C3F8CEB51A343050E228"
+        }
+    },
+    "iqiyi_app_carousel": {
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.CarouselItem96D443B8FDA8B07AAB692A8F386CF8C0"
+        }
+    },
+    "iqiyi_app_on_install_modal":{
+        "locator": {
+            "id": "ReactPCContextAware.InstalledAppsModal.AppItem96D443B8FDA8B07AAB692A8F386CF8C0"
+        }
+    },
+    "access_app_carousel": {
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.CarouselItem52598671F3C527E9CC5C802D45A048C8"
+        }
+    },
+    "access_app_on_install_modal":{
+        "locator": {
+            "id": "ReactPCContextAware.InstalledAppsModal.AppItem52598671F3C527E9CC5C802D45A048C8"
+        }
+    },
+    "calculator_app_carousel": {
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.CarouselItem2399C925B35566234AB600C70B12C40E"
+        }
+    },
+    "calculator_app_on_install_modal":{
+        "locator": {
+            "id": "ReactPCContextAware.InstalledAppsModal.AppItem2399C925B35566234AB600C70B12C40E"
+        }
+    },
+    "clock_app_carousel": {
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.CarouselItem394766A9BD87112DA3EF0663591D0A21"
+        }
+    },
+    "clock_app_on_install_modal":{
+        "locator": {
+            "id": "ReactPCContextAware.InstalledAppsModal.AppItem394766A9BD87112DA3EF0663591D0A21"
+        }
+    },
+    "paint_app_carousel": {
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.CarouselItem3CCFC9AE6B677BB11F9D857BAFC08A27"
+        }
+    },
+    "paint_app_on_install_modal":{
+        "locator": {
+            "id": "ReactPCContextAware.InstalledAppsModal.AppItem3CCFC9AE6B677BB11F9D857BAFC08A27"
+        }
+    },
+    "excel_app_carousel": {
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.CarouselItemF96D8100FACC49768852F77F63A0D94F"
+        }
+    },
+    "excel_app_on_install_modal":{
+        "locator": {
+            "id": "ReactPCContextAware.InstalledAppsModal.AppItemF96D8100FACC49768852F77F63A0D94F"
+        }
+    },
+    "camera_app_carousel": {
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.CarouselItem4215361D692F4C119ED804ACC4F8118B"
+        }
+    },
+    "camera_app_on_install_modal":{
+        "locator": {
+            "id": "ReactPCContextAware.InstalledAppsModal.AppItem4215361D692F4C119ED804ACC4F8118B"
+        }
+    },
+    "copilot_app_carousel": {
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.CarouselItem5256B9B8FF48BCECD8077FC44CBF239E"
+        }
+    },
+    "copilot_app_on_install_modal":{
+        "locator": {
+            "id": "ReactPCContextAware.InstalledAppsModal.AppItem5256B9B8FF48BCECD8077FC44CBF239E"
+        }
+    },
+    "notepad_app_carousel": {
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.CarouselItemD1989FDFCFF0ADD692EE73438C07C13E"
+        }
+    },
+    "notepad_app_on_install_modal":{
+        "locator": {
+            "id": "ReactPCContextAware.InstalledAppsModal.AppItemD1989FDFCFF0ADD692EE73438C07C13E"
+        }
+    },
+    "news_app_carousel": {
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.CarouselItem24BEFB9C5FA15A0B950033DD1CCA2A86"
+        }
+    },
+    "news_app_on_install_modal":{
+        "locator": {
+            "id": "ReactPCContextAware.InstalledAppsModal.AppItem24BEFB9C5FA15A0B950033DD1CCA2A86"
+        }
+    },
+    "photos_app_carousel": {
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.CarouselItemB012F92A749E581EAB68AB244C77601F"
+        }
+    },
+    "photos_app_on_install_modal":{
+        "locator": {
+            "id": "ReactPCContextAware.InstalledAppsModal.AppItemB012F92A749E581EAB68AB244C77601F"
+        }
+    },
+    "journal_app_carousel": {
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.CarouselItemD397D80B49ED02EE1EDD9E7BB0ADD116"
+        }
+    },
+    "journal_app_on_install_modal":{
+        "locator": {
+            "id": "ReactPCContextAware.InstalledAppsModal.AppItemD397D80B49ED02EE1EDD9E7BB0ADD116"
+        }
+    },
+    "add_application_button_ltwo_page": {
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.AddButton"
+        }
+    },
+    "add_app_search_bar_ltwo_page": {
+        "locator": {
+            "id": "ReactPCContextAware.InstalledAppsModal.SearchApplication__text-box"
+        }
+    },
+    "add_app_cancel_onpopup_window_page": {
+        "locator": {
+            "xpath":"//*[@ClassName='clientos-ui-toolkit-button label clientos-ui-toolkit-button__secondary clientos-ui-toolkit-button__medium css-c73gym']"
+        }
+    },
+    "add_app_continue_onpopup_window_page": {
+        "locator": {
+            "xpath":"//*[@ClassName='clientos-ui-toolkit-button label clientos-ui-toolkit-button__primary clientos-ui-toolkit-button__medium css-c73gym']"
+        }
+    },
+    "delete_profile_button": {
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.DeleteProfileButton"
+        }
+    },
+    "do_not_show_checkbox_ltwo_page": {
+        "locator": {
+            "id": "ReactPCContextAware.DeleteProfileModal.ConfirmationCheckbox"
+        }
+    },
+    "next_button_on_application_settings":{
+        "locator": {
+            "id":"ReactPCContextAware.Carousel.NextButton" 
+        }
+    }
+}

@@ -1,0 +1,57 @@
+{
+    "hp_go_title": {
+        "locator": {
+            "name": "HP Go"
+        }
+    },
+    "hp_go_information_txt": {
+        "locator": {
+            "name": "HP Go information"
+        }
+    },
+    "connection_txt": {
+        "locator": {
+            "name": "Connection"
+        }
+    },
+    "hpgo_card": {
+        "locator": {
+            "id": "PcDeviceCards.PcDeviceActionCards.PchpgoXCoreCard"
+        }
+    },
+    "connection_hp_go": {
+        "locator": {
+            "name": "HP Go"
+        }
+    },
+    "hp_go_status_text":{
+        "locator": {
+            "name": "Active"
+        }
+    },
+    "hp_go_usage_text":{
+        "locator": {
+            "name": "Low"
+        }
+    },
+    "eid_number":{
+        "locator":{
+            "name": "89033023426300000000047516995844"
+        }
+    },
+    "eid_copy_btn":{
+        "locator":{
+            "name": "Copy"
+        }
+    },
+    "hp_go_module_image":{
+        "locator":{
+            "name": "HPX Windows App"
+        }
+    },
+    "hp_go_card_on_pcdevice_page":{
+        "locator":{
+            "id": "PcDeviceCards.PcDeviceActionCards.PchpgoXCoreCard"
+        }
+    }
+}

@@ -1,0 +1,282 @@
+{
+    "navigation_icon": {
+        "locator": {
+            "id": "TogglePaneButton"
+        }
+    },
+    "navigate_welcome_module": {
+        "locator": {
+            "id": "welcome_core_NavigationViewItem_ID"
+        }
+    },
+    "navigate_support_module": {
+        "locator": {
+            "id": "support_core_NavigationViewItem_ID"
+        }
+    },
+    "navigate_pc_audio_module": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureCard_pcaudio-core"
+        }
+    },
+    "navigate_feature_apps_module": {
+        "locator": {
+            "id": "featuredapps_NavigationViewItem_TestID"
+        }
+    },
+    "navigate_settings_module": {
+        "locator": {
+            "id": "settings_core_NavigationViewItem_ID"
+        }
+    },
+    "navigate_devices_module": {
+        "locator": {
+            "id": "pchardware_core_NavigationViewItem_ID"
+        }
+    },
+    "navigate_PCdevice_module": {
+        "locator": {
+            "id": "pcdevice_core_NavigationViewItem_ID"
+        }
+    },
+    "audio_card_home": {
+        "locator": {
+            "id": "AUID_FeatureCard_FeatureCard_pcaudio-core"
+        }
+    },
+    "pcdevice_audio_module": {
+        "locator": {
+            "name": "Audio Control Action Item"
+        }
+    },
+    "sign_in_icon": {
+        "locator": {
+            "id": "AUID_APPBAR_Profile_AvatarPressable"
+        }
+    },
+    "sign_in_text": {
+        "locator": {
+            "xpath": "//*[@AutomationId='AUID_APPBAR_Profile_AvatarPressable']//Text"
+        }
+    },
+    "sign_out_item": {
+        "locator": {
+            "id": "AUID_APPBAR_Profile_SignOut"
+        }
+    },
+    "my_account_item": {
+        "locator": {
+            "id": "AUID_APPBAR_Profile_MyAccount"
+        }
+    },
+    "go_my_account_item": {
+        "locator": {
+            "id": "AUID_APPBAR_Profile_GotoMyAccount"
+        }
+    },
+    "close_btn": {
+        "locator": {
+            "id": "Close"
+        }
+    },
+    "close_button": {
+        "locator": {
+            "id": "Close"
+        }
+    },
+    "hamburger_menu": {
+        "locator": {
+            "id": "TogglePaneButton"
+        }
+    },
+    "navigate_pc_device": {
+        "locator": {
+            "id": "pcdevice_NavigationViewItem_TestID"
+        }
+    },
+    "popup_close_button": {
+        "locator": {
+            "name": "Close"
+        }
+    },
+    "programmable_key_link": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureCard_progkey-core"
+        }
+    },
+    "smartcamV3_link": {
+        "locator": {
+            "name": "Video control"
+        }
+    },
+    "display_control_link": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureCard_pcdisplay-core"
+        }
+    },
+    "navigate_power_manager": {
+        "locator": {
+            "id": "powermanager_core_NavigationViewItem_ID"
+        }
+    },
+    "privacy_alert_link": {
+        "locator": {
+            "name": "Privacy alert"
+        }
+    },
+    "dimming_link": {
+        "locator": {
+            "name": "Auto screen dimming"
+        }
+    },
+    "fiveG_link": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureCard_pcconnect-core"
+        }
+    },
+    "rgb_keyboard_link": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureCard_rgbkeyboard-core"
+        }
+    },
+    "navigate_pencontrol_module": {
+        "locator": {
+            "id": "pencontrol_core_NavigationViewItem_ID"
+        }
+    },
+    "navigate_home":{
+        "locator":{
+            "id":"welcome_core_NavigationViewItem_ID"
+        }
+    },
+    "navigate_system_control": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureCard_pcsystemcontrol-core"
+        }
+    },
+    "navigate_screen_time": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureCard_proximity-core"
+        }
+    },
+    "navigate_screen_distance": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureCard_proximity-screendistance"
+        }
+    },
+    "external_mouse_module": {
+        "locator": {
+            "id": "pcmouse_core_NavigationViewItem_ID"
+        }
+    },
+    "external_keyboard_module": {
+        "locator": {
+            "id": "hpackeyboard_core_NavigationViewItem_ID"
+        }
+    },
+    "touchpad_module": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureCard_pctrackpad-core"
+        }
+    },
+    "hp_create": {
+        "locator": {
+            "name": "HP Create"
+        }
+    },
+    "battery_module_card": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureCard_pcbatterymanager-core-text"
+        }
+    },
+    "audio_module_itg": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureItem_pcaudio-core-text"
+        }
+    },
+    "displaycontrol_module_itg": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureItem_pcdisplay-core-text"
+        }
+    },
+    "hppk_module_itg": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureItem_progkey-core-text"
+        }
+    },
+    "fiveG_module_itg": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureItem_pcconnect-core-text"
+        }
+    },
+    "systemcontrol_module_itg": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureItem_pcsystemcontrol-core-text"
+        }
+    },
+    "screentime_module_itg": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureItem_proximity-core-text"
+        }
+    },
+    "screendistance_module_itg": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureItem_proximity-screendistance-text"
+        }
+    },
+    "touchpad_module_itg": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureItem_pctrackpad-core-text"
+        }
+    },
+    "battery_module_itg": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureItem_pcbatterymanager-core-text"
+        }
+    },
+    "battery_manager_text_settings": {
+        "locator": {
+            "id": "AUID_FeatureCard_FeatureCard_pcbatterymanager-core-description"
+        }
+    },
+    "gesture_card_on_pc_device_page": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureCard_pcgesture-core"
+        }
+    },
+    "user_initials_icon":{
+        "locator": {
+            "id": "APPBAR_Profile_UserInitials"
+        }
+    },
+    "presence_sensing_module":{
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureCard_presencesensing-core"
+        }
+    },
+    "power_battery_settings_page":{
+        "locator": {
+            "name": "Turn off my screen when I leave"
+        }
+    },
+    "close_button_on_power_battery_settings_page":{
+        "locator": {
+            "name": "Close Settings"
+        }
+    },
+    "updated_pop_window_title":{
+        "locator": {
+            "id": "AUID_termsofuse-core_termsOfUseModuleTestID_main-dialog-label"
+        }
+    },
+    "updated_pop_window_agree_button":{
+        "locator": {
+            "id": "AUID_termsofuse-core_termsOfUseModuleTestID_main-dialog_confirmButton"
+        }
+    },
+    "presence_detection": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureItem_cameraandpresencedetection-core-text"
+        }
+    }
+}

@@ -1,0 +1,243 @@
+{
+   "pie":{
+      "basic":[
+         {
+            "email":"qa.mobiauto+basic_pie_noclaim0415@gmail.com",
+            "password":"Mobileapp1",
+            "claimable":false,
+            "comment":""
+         },
+         {
+            "email":"Hpsmarttest+pie@gmail.com",
+            "password":"Apptest1",
+            "claimable":true,
+            "instant_ink":false,
+            "comment":"This account is for shortcuts test under win OS"
+         }
+      ],
+      "ucde":[
+         {
+            "email":"qa.mobiauto+ucde_pie_yesclaim@gmail.com",
+            "password":"Mobileapp1",
+            "claimable":false,
+            "instant_ink":true,
+            "smart_advance": false,
+            "pro": false,
+            "comment":"real printer in Wuhan team. This account will cover ucde and instank ink under smart dashboard related tests"
+         },
+         {
+            "email":"qa.mobiauto+ucde_pie_noclaim1130@gmail.com",
+            "password":"Mobileapp1",
+            "claimable":false,
+            "instant_ink":false,
+            "smart_advance": false,
+            "pro": false,
+            "comment":"no printer claimed to this account. Instant Ink is not enrolled on this account"
+         }
+      ],
+      "hp+":[
+         {
+            "email":"qa.mobiauto+hpplus_pie_yesclaim@gmail.com",
+            "password":"Mobileapp1",
+            "claimable":false,
+            "instant_ink":true,
+            "smart_advance": true,
+            "pro": false,
+            "shared": false,
+            "comments": "this account has novelli printer claimed (real printer) which cover smart advance feature & instant ink feature"
+         },
+         {
+            "email": "testealimbr+prost@gmail.com",
+            "password": "Teste2020",
+            "claimable": false,
+            "instant_ink":false,
+            "smart_advance": false,
+            "pro": true,
+            "shared": false,
+            "comments": "This account has pro feature for Smart App. If the test requires pro feature, please use this account, for example: OCR with PDF password feature"
+         },
+         {
+            "email": "qa.winauto.pie.2024@gmail.com",
+            "password": "Aio1test",
+            "claimable": true,
+            "instant_ink":false,
+            "smart_advance": false,
+            "pro": false,
+            "shared": false,
+            "comments": "this account has a Melbac Yeti print claimed (real printer in Wuhan Gotham Autos team) which cover remote printer testing for windows gotham automation testing"
+         },
+         {
+            "email": "qa.winauto_pie2023@yopmail.com",
+            "password": "Aio1test",
+            "claimable": false,
+            "instant_ink":false,
+            "smart_advance": false,
+            "pro": false,
+            "shared": true,
+            "comments": "this account has a shared print(qa.winauto+pie_202304@outlook.com) for windows gotham automation testing"
+         }
+      ]
+   },
+   "stage":{
+      "basic":[
+         {
+            "email":"qa.mobiauto+basic_stage_noclaim0415@gmail.com",
+            "password":"Mobileapp1",
+            "claimable":false,
+            "comment":""
+         },
+         {
+           "email":"stagegothamauto@gmail.com",
+           "password":"Aio1test",
+           "claimable":true,
+           "instant_ink":false,
+           "comment":"This account is for shortcuts test under win OS"
+        }
+      ],
+      "ucde":[
+         {
+            "email":"qa.mobiauto+ucde_stage_yesclaim1115@gmail.com",
+            "password":"Mobileapp1",
+            "claimable":false,
+            "instant_ink":true,
+            "smart_advance": false,
+            "pro": false,
+            "comment":"claimed a real printer: Novelli Base. This account will cover ucde and instank ink under smart dashboard related tests"
+         },
+         {
+            "email":"qa.mobiauto+ucde_stage_noclaim1130@gmail.com",
+            "password":"Mobileapp1",
+            "claimable":false,
+            "instant_ink":false,
+            "smart_advance": false,
+            "pro": false,
+            "comment":"no printer claimed to this account. Instant Ink is not enrolled on this account"
+         }
+      ],
+      "hp+":[
+         {
+            "email":"qa.mobiauto+hpplus_stage_yesclaim1202@gmail.com",
+            "password":"Mobileapp1",
+            "claimable":false,
+            "instant_ink":true,
+            "smart_advance": true,
+            "pro": false,
+            "shared": false,
+            "cloud_scan":false,
+            "comments": "this account has novelli printer claimed (real printer) which cover smart advance feature & instant ink feature"
+         },
+         {
+            "email": "moqa.daisy+0906zstg@gmail.com",
+            "password": "Aio1test",
+            "claimable": false,
+            "instant_ink":false,
+            "smart_advance": false,
+            "pro": true,
+            "shared": false,
+            "cloud_scan":false,
+            "comments": "This account has pro feature for Smart App. If the test requires pro feature, please use this account, for example: OCR with PDF password feature"
+         },
+         {
+            "email": "qa.winauto.stage.2024@gmail.com",
+            "password": "Aio1test",
+            "claimable": true,
+            "instant_ink":false,
+            "smart_advance": false,
+            "pro": false,
+            "shared": false,
+            "cloud_scan":false,
+            "comments": "this account has a Melbac Plus Yeti print claimed (real printer in Wuhan Gotham Autos team) which cover remote printer testing for windows gotham automation testing"
+         },
+         {
+            "email": "qa.winauto.stage.shared.2024@gmail.com",
+            "password": "Aio1test",
+            "claimable": false,
+            "instant_ink":false,
+            "smart_advance": false,
+            "pro": false,
+            "shared": true,
+            "cloud_scan":false,
+            "comments": "this account has a shared print(qa.winauto.stage.2024@gmail.com) for windows gotham automation testing"
+         },
+         {
+            "email": "hpsmart999@yopmail.com",
+            "password": "rdl@12345",
+            "claimable": false,
+            "instant_ink":false,
+            "smart_advance": false,
+            "pro": false,
+            "shared": false,
+            "cloud_scan":true,
+            "comments": "this account has a shared print(qa.winauto+pie_202304@outlook.com) for windows gotham automation testing"
+         }
+      ]
+   },
+   "production":{
+      "basic": [
+         {
+            "email": "testingprod505+base@gmail.com", 
+            "password": "123Testing",
+            "claimable": false, 
+            "comment": "Not for auto triggered jenkins runs"
+         },
+         {
+            "email":"stagegotham_base_2022@outlook.com",
+            "password":"Aio1test",
+            "claimable":true,
+            "instant_ink":false,
+            "comment":"This account is for shortcuts test under win OS"
+         }
+      ],
+      "ucde":[
+        {
+           "email":"moqa.daisy+1025prod@gmail.com",
+           "password":"Aio1test",
+           "claimable":false,
+           "instant_ink":false,
+           "smart_advance": false,
+           "pro": false
+        },
+        {
+            "email":"siv-yy+pus0222@outlook.com",
+            "password":"Aio1test",
+            "claimable":false,
+            "instant_ink":true,
+            "smart_advance": false,
+            "pro": false,
+            "comment":"real printer in Wuhan team. This account will cover ucde and instank ink under smart dashboard related tests"
+         }
+      ],
+      "hp+": [
+         {
+            "email": "reachhimani+prodtest@gmail.com",
+            "password": "Testing123",
+            "claimable": false,
+            "instant_ink":true,
+            "smart_advance": true,
+            "pro": false,
+            "shared": false,
+            "comment": "Not for auto triggered jenkins runs"
+         },
+         {
+            "email": "qa.winauto.production.2024@gmail.com",
+            "password": "Aio1test",
+            "claimable": true,
+            "instant_ink":false,
+            "smart_advance": false,
+            "pro": false,
+            "shared": false,
+            "comments": "this account has a Manhattan Premium Yeti print claimed (real printer in Wuhan Gotham Auto team) which cover remote printer testing for windows gotham automation testing"
+         },
+         {
+            "email": "qa.winauto_prod2023@yopmail.com",
+            "password": "Aio1test",
+            "claimable": false,
+            "instant_ink":false,
+            "smart_advance": false,
+            "pro": false,
+            "shared": true,
+            "comments": "this account has a shared print(qa.winauto+prod_2023@outlook.com) for windows gotham automation testing"
+         }
+      ]
+   }
+}

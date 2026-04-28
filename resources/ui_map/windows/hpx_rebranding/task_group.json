@@ -1,0 +1,142 @@
+{
+    "task_group_create_new_button":{
+        "locator": {
+            "id": "TaskGroups.CreateTaskGroups.CreateNewTaskGroup"
+        }
+    },
+    "task_group_title":{
+        "locator": {
+            "id": "TaskGroups.CreateTaskGroups.TaskGroupsHeader__title"
+        }
+    },
+    "task_group_description":{
+        "locator": {
+            "id": "TaskGroups.CreateTaskGroups.CreateNewTaskGroupDesc"
+        }
+    },
+    "task_group_video_container":{
+        "locator": {
+            "id": "TaskGroups.CreateTaskGroups.VideoContainer"
+        }
+    },
+    "privacy_pop_windows_title":{
+        "locator": {
+            "name": "Example Only: A Privacy Agreement to Let this capture your screen. *Capture outside of the app*."
+        }
+    },
+    "privacy_pop_windows_desc":{
+        "locator": {
+            "id": "TaskGroups.PrivacyAgreementModal.Description"
+        }
+    },
+    "privacy_pop_windows_decline_button":{
+        "locator": {
+            "id": "TaskGroups.PrivacyAgreementModal.DeclineButton"
+        }
+    },
+    "privacy_pop_windows_agree_button":{
+        "locator": {
+            "id": "TaskGroups.PrivacyAgreementModal.AgreeButton"
+        }
+    },
+    "edit_task_group_save_button":{
+        "locator": {
+            "id": "TaskGroups.EditTaskGroup.Save"
+        }
+    },
+    "shortkey_name_text_box":{
+        "locator": {
+            "id": "TaskGroups.EditTaskGroup.TaskGroupName__text-box"
+        }
+    },
+    "edit_task_group_cancel_button":{
+        "locator": {
+            "id": "TaskGroups.EditTaskGroup.Cancel"
+        }
+    },
+    "shortkey_dropdown":{
+        "locator": {
+            "id": "TaskGroups.EditTaskGroup.TaskGroupShortcut-select"
+        }
+    },
+    "shortkey_shift12":{
+        "locator": {
+            "id": "TaskGroups.EditTaskGroup.TaskGroupShortcut-select-option-0"
+        }
+    },
+    "shortkey_ctrl12":{
+        "locator": {
+            "id": "TaskGroups.EditTaskGroup.TaskGroupShortcut-select-option-1"
+        }
+    },
+    "shortkey_alt12":{
+        "locator": {
+            "id": "TaskGroups.EditTaskGroup.TaskGroupShortcut-select-option-2"
+        }
+    },
+    "task_explorer":{
+        "locator": {
+            "id": "TaskGroups.CreateTaskGroups.TaskGroupTitle HPX1"
+        }
+    },
+    "task_arrow_icon":{
+        "locator": {
+            "id": "TaskGroups.CreateTaskGroups.ArrowIcon HPX1"
+        }
+    },
+    "task_delete_icon":{
+        "locator": {
+            "name": "Delete icon"
+        }
+    },
+    "delete_pop_window_continue_button":{
+        "locator": {
+            "id": "TaskGroups.DeleteTaskGroupModal.ContinueButton"
+        }
+    },
+    "delete_pop_window_cancel_button":{
+        "locator": {
+            "id": "TaskGroups.DeleteTaskGroupModal.CancelButton"
+        }
+    },
+    "delete_pop_window_checkbox":{
+        "locator": {
+            "id": "TaskGroups.DeleteTaskGroupModal.DoNotShowAgainCheckbox__checkbox"
+        }
+    },
+    "ms_store_delete_icon":{
+        "locator": {
+            "id": "TaskGroups.EditTaskGroup.TrashIconAUOE4BAMicrosoft Store"
+        }
+    },
+    "task_arrow_terminal_icon":{
+        "locator": {
+            "id": "TaskGroups.CreateTaskGroups.ArrowIcon terminal1"
+        }
+    },
+    "how_it_works_link":{
+        "locator": {
+            "id": "TaskGroups.CreateTaskGroups.SeeHowItWorks"
+        }
+    },
+    "how_to_use_task_group_title":{
+        "locator": {
+            "name": "How to use task group"
+        }
+    },
+    "how_to_use_task_group_desc":{
+        "locator": {
+            "id": "TaskGroups.TaskgroupModal.Description"
+        }
+    },
+    "how_to_use_task_group_understand_button":{
+        "locator": {
+            "id": "TaskGroups.TaskgroupModal.UnderstandButton"
+        }
+    },
+    "task_group_create_new_button_with_app":{
+        "locator": {
+            "id": "TaskGroups.CreateTaskGroups.CreateNew"
+        }
+    }
+}

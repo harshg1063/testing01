@@ -1,0 +1,963 @@
+{   
+      "back_arrow_to_navigate_to_previous_page": {
+        "locator": {
+            "id":"NavBar.NavBarView.BackButton"
+        }
+    },
+    "display_control_text_ltwo_page": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.DisplayHeading__title"
+        }
+    },
+    "display_control_all_application_button_ltwo_page": {
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.AllAppsButton"
+        }
+    },
+    "display_control_add_application_button_ltwo_page": {
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.AddButton"
+        }
+    },
+    "display_control_brightness_text_ltwo_page": {
+        "locator": {
+            "xpath":"//*[@AutomationId='internaldisplay_displaylistcontainer_brightness__start-content']/Text"
+        }
+    },
+    "display_control_brightness_slider_button_ltwo_page": {
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.BrightnessSlider"
+        }
+    },
+    "display_control_display_modes_text_ltwo_page": {
+        "locator": {
+            "xpath":"//*[@AutomationId='internaldisplay_displaylistcontainer_modes__start-content']/Text"
+        }
+    },
+    "display_modes_select_box_option_neutral_ltwo_page": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.DisplayModeSelect-select-option-0"
+        }
+    },
+    "display_modes_select_box_option_warm_ltwo_page": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.DisplayModeSelect-select-option-6"
+        }
+    },
+    "display_modes_select_box_option_cool_ltwo_page": {
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.DisplayModeSelect-select-option-7"
+        }
+    },
+    "display_modes_select_box_option_gaming_ltwo_page": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.DisplayModeSelect-select-option-1"
+        }
+    },
+    "display_modes_select_box_option_lbl_ltwo_page": {
+        "locator": {
+            "id": "InternalDisplay.DisplayMode.Select-select-option-2"
+        }
+    },     
+    "display_modes_select_box_option_reading_ltwo_page": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.DisplayModeSelect-select-option-2"
+        }
+    },    
+    "display_modes_select_box_option_night_ltwo_page": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.DisplayModeSelect-select-option-3"
+        }
+    },    
+    "display_modes_select_box_option_movie_ltwo_page": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.DisplayModeSelect-select-option-4"
+        }
+    },
+    "display_modes_select_box_option_hp_enhance_ltwo_page": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.DisplayModeSelect-select-option-5"
+        }
+    },
+    "display_modes_select_box_option_native_ltwo_page": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.DisplayModeSelect-select-option-6"
+        }
+    },     
+    "display_modes_select_box_option_vivid_ltwo_page": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.DisplayModeSelect-select-option-8"
+        }
+    },
+    "display_control_display_modes_select_box_ltwo_page": {
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.DisplayModeSelect-select"
+        }
+    },
+    "display_control_advanced_settings_card_ltwo_page": {
+        "locator": {
+            "id":"internaldisplay_displaylistcontainer_advancedsettings"
+        }
+    },
+    "display_control_advanced_settings_text_ltwo_page": {
+        "locator": {
+            "xpath":"//*[@AutomationId='InternalDisplay.AdvancedSettings.DisplayHeading__title']/Text"
+        }
+    },
+    "display_control_advanced_settings_arrow_ltwo_page": {
+        "locator": {
+            "id":"internaldisplay_displaylistcontainer_advancedsettings_iconArrowRight"
+        }
+    },
+    "display_control_advanced_settings_restore_defaults_button_ltwo_page": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.RestoreDefaultsButton"
+        }
+    },
+    "display_control_restore_defaults_description_onpopup_window_page": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.RestoreDefaultWarningDescription"
+        }
+    },
+    "display_control_restore_defaults_do_not_show_again_checkbox": {
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.RestoreDefaultWarningDoNotShowAgainCheckBox__checkbox"
+        }
+    },
+    "display_control_restore_defaults_cancel_onpopup_window_ltwo_page": {
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.RestoreDefaultWarningCancelButton"
+        }
+    },
+    "display_control_restore_defaults_continue_onpopup_window_ltwo_page": {
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.RestoreDefaultWarningContinueButton"
+        }
+    },
+    "display_control_advanced_settings_all_application_button_lthree_page": {
+        "locator": {
+            "class name": "ReactPCContextAware.Carousel.AllAppsButton"
+        }
+    },
+    "display_control_advanced_settings_add_application_button_lthree_page": {
+        "locator": {
+            "class name": "ReactPCContextAware.Carousel.AddButton"
+        }
+    },
+    "display_control_advanced_settings_use_hdmi_input_text_lthree_page": {
+        "locator": {
+            "id": "InternalDisplay.HDMI.UseHDMIInputLabel"
+        }
+    },
+    "display_control_advanced_settings_use_hdmi_input_tooltip_lthree_page": {
+        "locator": {
+            "id": "internaldisplay_advancedsettings_hdmititle_tooltip_info_icon"
+        }
+    },
+    "display_control_advanced_settings_hdmi_input_osd_text_lthree_page": {
+        "locator": {
+            "id": "InternalDisplay.HDMIInput.HDMIInputOSDHelp"
+        }
+    },
+    "display_control_back_to_pc_desktop_text_hdmi_popup_page": {
+        "locator": {
+            "name": "Back to PC desktop"
+        }
+    },
+    "display_control_back_to_pc_desktop_description_hdmi_popup_page": {
+        "locator": {
+            "name": "While in HDMI input, use these keyboard keys to switch back to the PC desktop."
+        }
+    },
+    "display_control_hdmi_popup_page_do_not_show_again_text": {
+        "locator": {
+            "id": "InternalDisplay.AdvancedSettings.HDMIWarningDoNotShowAgainCheckBox__checkbox__label"
+        }
+    },
+    "display_control_hdmi_popup_page_cancel_button": {
+        "locator": {
+            "id": "InternalDisplay.AdvancedSettings.HDMIWarningCancelButton"
+        }
+    },
+    "display_control_hdmi_popup_page_continue_button": {
+        "locator": {
+            "id": "InternalDisplay.AdvancedSettings.HDMIWarningContinueButton"
+        }
+    },
+    "display_control_contrast_text_lthree_page": {
+        "locator": {
+            "id": "internaldisplay_advancedsettings_contrast_container"
+        }
+    },
+    "display_control_low_blue_light_text_lthree_page": {
+        "locator": {
+            "id": "internal_display_low_blue_light_schedular_header_container"
+        }
+    },
+    "display_control_low_blue_light_tooltip_lthree_page": {
+        "locator": {
+            "id": "internal_display_low_blue_light_schedular_tooltip_icon"
+        }
+    },
+    "display_control_low_blue_light_toggle_lthree_page": {
+        "locator": {
+            "id": "InternalDisplay.AdvancedSettings.LblSchedulerSwitch__toggle"
+        }
+    },
+    "display_control_low_blue_light_turnon_dropdown_lthree_page": {
+        "locator": {
+            "id": "InternalDisplay.AdvancedSettings.SelectTurnOnTimeDropdown-select"
+        }
+    },
+    "display_control_low_blue_light_turnoff_dropdown_lthree_page": {
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.SelectTurnOffTimeDropdown-select"
+        }
+    },
+    "display_control_low_blue_light_turnon_dropdown_hrs_eight_thirty_pm_lthree_page": {
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.SelectTurnOnTimeDropdown-select-option-41"
+        }
+    },
+    "display_control_low_blue_light_turnon_dropdown_hrs_ten_pm_lthree_page": {
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.SelectTurnOnTimeDropdown-select-option-42"
+        }
+    },
+    "display_control_low_blue_light_turnon_dropdown_hrs_nine_thirty_pm_lthree_page": {
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.SelectTurnOnTimeDropdown-select-option-43"
+        }
+    },
+    "display_control_low_blue_light_turnon_dropdown_hrs_eleven_pm_lthree_page": {
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.SelectTurnOnTimeDropdown-select-option-44"
+        }
+    },
+    "display_control_low_blue_light_turnoff_dropdown_hrs_seven_am_lthree_page": {
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.SelectTurnOffTimeDropdown-select-option-12"
+        }
+    },
+    "display_control_low_blue_light_turnoff_dropdown_hrs_six_thirty_am_lthree_page": {
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.SelectTurnOffTimeDropdown-select-option-11"
+        }
+    },
+    "display_control_low_blue_light_turnoff_dropdown_hrs_six_am_lthree_page": {
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.SelectTurnOffTimeDropdown-select-option-10"
+        }
+    },
+    "display_control_low_blue_light_turnoff_dropdown_hrs_five_thirty_am_lthree_page": {
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.SelectTurnOffTimeDropdown-select-option-9"
+        }
+    },
+    "display_control_low_blue_light_color_adjustment_tooltip_text_lthree_page": {
+        "locator": {
+            "id":"InternalDisplay.RGBSlider.RGBSliderTooltip"
+        }
+    },
+    "display_control_low_blue_light_color_adjustment_tooltip_info_lthree_page": {
+        "locator": {
+            "id":"internaldisplay_advancedsettings_red_tooltip_icon"
+        }
+    },
+    "display_control_low_blue_light_red_text_slider_lthree_page": {
+        "locator": {
+            "id":"internaldisplay_advancedsettings_red_slider"
+        }
+    },
+    "display_control_low_blue_light_red_slider_lthree_page": {
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.RedColorAdjustmentSlider"
+        }
+    },
+    "display_control_low_blue_light_green_text_slider_lthree_page": {
+        "locator": {
+            "id":"internaldisplay_advancedsettings_green_slider"
+        }
+    },
+    "display_control_low_blue_light_green_slider_lthree_page": {
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.GreenColorAdjustmentSlider"
+        }
+    },
+    "display_control_low_blue_light_blue_text_slider_lthree_page": {
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.BlueColorAdjustmentSlider"
+        }
+    },
+    "display_control_low_blue_light_blue_slider_lthree_page": {
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.BlueColorAdjustmentSlider"
+        }
+    },
+    "display_modes_list_window_ltwo_page": {
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.DisplayModeSelect-select-listbox"
+        }
+    },
+    "display_modes_list_window_default_time_ten_pm_lthree_page": {
+        "locator": {
+            "xpath":"//*[@AutomationId='InternalDisplay.AdvancedSettings.SelectTurnOnTimeDropdown']/Text"
+        }
+    },
+    "display_modes_list_window_default_turn_off_time_seven_am_lthree_page": {
+        "locator": {
+            "xpath":"//*[@AutomationId='InternalDisplay.AdvancedSettings.SelectTurnOffTimeDropdown']/Text"
+        }
+    },
+    "display_modes_select_box_option_sRGB_web_ltwo_page":{
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.DisplayModeSelect-select-option-0"
+        }
+    },
+    "display_modes_select_box_option_adobe_RGB_painting_and_imaging_ltwo_page"  :{
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.DisplayModeSelect-select-option-1"
+        }
+    },
+    "display_modes_select_box_option_photos_videos_ltwo_page":{
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.DisplayModeSelect-select-option-2"
+        }
+    },
+    "display_modes_select_box_option_willie_native_ltwo_page":{
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.DisplayModeSelect-select-option-3"
+        }
+    },
+    "display_modes_select_box_option_default_ltwo_page":{
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.DisplayModeSelect-select-option-4"
+        }
+    },
+    "display_modes_select_box_option_work_ltwo_page":{
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.DisplayModeSelect-select-option-5"
+        }
+    },
+    "display_modes_select_box_option_low_light_ltwo_page":{
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.DisplayModeSelect-select-option-6"
+        }
+    },
+    "display_modes_select_box_option_entertainment_ltwo_page":{
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.DisplayModeSelect-select-option-5"
+        }
+    },
+    "display_modes_select_box_option_low_blue_light_ltwo_page":{
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.DisplayModeSelect-select-option-8"
+        }
+    },
+    "display_control_contrast_slider_lthree_page": {
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.ContrastSlider"
+        }
+    },
+    "display_control_hdr_toggle_switch_ltwo_page": {
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.HdrSwitch__toggle"
+        }
+    },
+    "display_control_use_hdr_in_system_settings": {
+        "locator": {
+            "name":"Use HDR"
+        }
+    },
+    "turn_off_hdr_chk_box_in_system_settings": {
+        "locator": {
+            "id":"SystemSettings_Video_HDRSupportOnBattery_CheckBox"
+        }
+    },
+    "use_hdr_show_more_option_in_system_settings": {
+        "locator": {
+            "name":"Show more settings"
+        }
+    },
+    "display_modes_select_box_option_warm_ltwo_page_keelung32": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.DisplayModeSelect-select-option-1"
+        }
+    },
+    "display_modes_select_box_option_P3(D65)_ltwo_page_keelung32": {
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.DisplayModeSelect-select-option-7"
+        }
+    },
+    "display_modes_select_box_option_BT709(D65)_ltwo_page_keelung32": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.DisplayModeSelect-select-option-6"
+        }
+    },
+    "display_modes_select_box_option_sRGB(D65)_ltwo_page_keelung32": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.DisplayModeSelect-select-option-5"
+        }
+    },    
+    "display_modes_select_box_option_native_ltwo_page_keelung32": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.DisplayModeSelect-select-option-4"
+        }
+    },    
+    "display_modes_select_box_option_hp_enhance_ltwo_page_keelung32": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.DisplayModeSelect-select-option-3"
+        }
+    },
+    "display_modes_select_box_option_cool_ltwo_page_keelung32":{
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.DisplayModeSelect-select-option-2"
+        }
+    },
+    "display_control_restore_defaults_button_lthree_page": {
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.RestoreDefaultsButton"
+        }
+    },
+    "display_control_switch_btn_lfour_page": {
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.HDMIInputSwitchButton"
+        }
+    },
+    "display_control_use_hdmi_input_txt_lthree_page": {
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.UseHDMIInputLabel__title"
+        }
+    },
+    "display_control_disney_plus_app_ltwo_page": {
+        "locator": {
+            "id":"ReactPCContextAware.Carousel.CarouselItemA07DDB88965F20AE0E1C2E89F36F5B07"
+        }
+    },
+    "display_control_tencent_app_ltwo_page": {
+        "locator": {
+            "id":"ReactPCContextAware.Carousel.CarouselItem41A61336B059C3F8CEB51A343050E228"
+        }
+    },
+    "display_control_iqiyi_app_ltwo_page": {
+        "locator": {
+            "id":"ReactPCContextAware.Carousel.CarouselItem96D443B8FDA8B07AAB692A8F386CF8C0"
+        }
+    },
+    "display_control_support_popup": {
+        "locator": {
+            "id":"AUID_Support_dialog_content"
+        }
+    },
+    "display_control_ok_support_popup_button": {
+        "locator": {
+            "xpath":"//Button[starts-with(@ClassName, 'clientos-ui-toolkit-button label clientos-ui-toolkit-button__pri')]"
+        }
+    },
+    "display_control_cancel_button_ltwo_page": {
+        "locator": {
+            "xpath":"//Button[starts-with(@ClassName, 'clientos-ui-toolkit-button label clientos-ui-toolkit-button__sec')]"
+        }
+    },
+    "display_control_add_app_search_bar_ltwo_page": {
+        "locator": {
+            "id": "ReactPCContextAware.InstalledAppsModal.SearchApplication__text-box"
+        }
+    },
+    "display_control_add_app_continue_button_ltwo_page": {
+        "locator": {
+             "id":"ReactPCContextAware.InstalledAppsModal.ContinueButton"
+        }
+    },
+    "display_control_application_list_ltwo_page": {
+        "locator": {
+            "xpath":"//*[starts-with(@ClassName, 'css-s3j1vw')]"
+        }
+    },
+    "display_control_delete_profile_button": {
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.DeleteProfileButton"
+        }
+    },
+    "display_control_delete_profile_checkbox_ltwo_page": {
+        "locator": {
+            "id": "ReactPCContextAware.DeleteProfileModal.ConfirmationCheckbox__checkbox"
+        }
+    },
+    "display_control_app_settings_app_name": {
+        "locator": {
+            "xpath":"//*[starts-with(@ClassName, 'View')]"
+        }
+    },
+    "display_control_app_settings_header": {
+        "locator": {
+            "xpath":"//*[starts-with(@ClassName, 'clientos-ui-toolkit-generic-card__content__header__title title-s')]"
+        }
+    },
+    "display_control_low_blue_light_turnon_dropdown_hrs_ten_thirty_pm_lthree_page":{
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.SelectTurnOnTimeDropdown-select-option-43"
+        }
+    },
+    "display_control_low_blue_light_turnoff_dropdown_hrs_eight_am_lthree_page":{
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.SelectTurnOffTimeDropdown-select-option-14"
+        }
+    },
+    "display_control_low_blue_light_turnon_dropdown_list_lthree_page":{
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.SelectTurnOnTimeDropdown-select-listbox"
+        }
+    },
+    "display_control_low_blue_light_turnon_error_msg_lthree_page":{
+        "locator": {
+            "id":"internal_display_low_blue_light_schedular_start_time_container"
+        }
+    },
+    "display_control_low_blue_light_turnoff_error_msg_lthree_page":{
+        "locator": {
+            "id":"internal_display_low_blue_light_schedular_end_time_container"
+        }
+    },
+    "display_control_low_blue_light_turnon_dropdown_hrs_seven_am_lthree_page":{
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.SelectTurnOnTimeDropdown-select-option-12"
+        }
+    },
+     "setting_display_slider": {
+        "locator": {
+            "id": "SystemSettings_Display_Multimon_Brightness_Slider"
+        }
+     },
+     "display_control_low_blue_light_turnon_dropdown_hrs_ten_am_lthree_page":{
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.SelectTurnOnTimeDropdown-select-option-18"
+        }
+     },
+     "display_control_low_blue_light_turnoff_dropdown_list_lthree_page":{
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.SelectTurnOffTimeDropdown-select-listbox"
+        }
+     },
+     "display_control_low_blue_light_turnoff_dropdown_hrs_ten_am_lthree_page":{
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.SelectTurnOffTimeDropdown-select-option-18"
+        }
+     },
+     "display_control_low_blue_light_turnoff_dropdown_hrs_eleven_am_lthree_page":{
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.SelectTurnOffTimeDropdown-select-option-20"
+        }
+     },
+     "display_control_low_blue_light_turnon_dropdown_hrs_eleven_am_lthree_page":{
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.SelectTurnOnTimeDropdown-select-option-20"
+        }
+     },
+     "display_control_input_switch_text_lthree_page_keelung32": {
+        "locator": {
+            "id": "useUsbCtypeInputLabel__title"
+        }
+    },
+    "display_control_input_switch_tooltip_lthree_page_keelung32": {
+        "locator": {
+            "id": "internaldisplay_advancedsettings_typec_tooltip_icon"
+        }
+    },
+    "display_control_color_adjustment_text_lthree_page": {
+        "locator": {
+            "id": "internaldisplay_advancedsettings_red_container__title"
+        }
+    },
+    "display_control_low_blue_light_turnoff_dropdown_hrs_ten_pm_lthree_page":{
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.SelectTurnOffTimeDropdown-select-option-42"
+        }
+    },
+    "display_control_advanced_settings_restore_defaults_do_not_show_again_checkbox_lthree_page": {
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.RestoreDefaultWarningDoNotShowAgainCheckBox"
+        }
+    },
+    "display_control_out_of_sync_see_more_link_ltwo_page": {
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.SettingOutOfSyncLabel__clientos-ui-toolkit-link"
+        }
+    },
+    "display_control_out_of_sync_keep_changes_button_ltwo_page": {
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.OutOfSyncModalKeepChangesButton"
+        }
+    },
+    "display_control_out_of_sync_discard_changes_button_ltwo_page": {
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.OutOfSyncModalDiscardChangesButton"
+        }
+    },
+    "display_control_out_of_sync_cancel_button_ltwo_page": {
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.OutOfSyncModalCancelButton"
+        }
+    },
+    "display_control_access_app_ltwo_page": {
+        "locator": {
+            "id":"ReactPCContextAware.Carousel.CarouselItem52598671F3C527E9CC5C802D45A048C8"
+        }
+    },
+    "display_control_access_app_on_add_application_popup_lthree_page": {
+        "locator": {
+            "xpath":"//*[@ClassName='clientos-ui-toolkit-list-container__item padding-end hoverable']"
+        }
+    },
+    "display_control_advancedsettings_keep_new_changes_button_lthree_page": {
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.OutOfSyncModalKeepChangesButton"
+        }
+    },
+    "display_control_advancedsettings_discard_changes_button_lthree_page":{
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.OutOfSyncModalDiscardChangesButton"
+        }
+    },
+    "display_control_out_of_sync_cancel_button_lthree_page": {
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.OutOfSyncModalCancelButton"
+        }
+    },
+    "search_bar_on_windows": {
+        "locator": {
+            "id": "SearchButton"
+        }
+    },
+    "display_control_add_app_calculator_lthree":{
+        "locator": {
+            "xpath":"//*[@AutomationId='RootWebArea']/Group/Group[starts-with(@ClassName,'vn-modal--content css-53gyw2')]/Text[@Name='Small Image Calculator']"
+        }
+    }, 
+    "display_control_calculator_app_on_add_application_popup_lthree_page": {
+        "locator": {
+            "id":"ReactPCContextAware.InstalledAppsModal.AppItem2399C925B35566234AB600C70B12C40E"
+        }
+    },
+    "display_control_calculator_app_ltwo_page": {
+        "locator": {
+            "name":"carousel-item-Calculator"
+        }
+    },
+    "display_control_title_bar":{
+        "locator": {
+            "id": "TitleBar"
+        }
+    },
+    "display_control_delete_profile_continue_btn": {
+        "locator": {
+            "id": "ReactPCContextAware.DeleteProfileModal.ContinueButton"
+        }
+    },
+    "display_control_advancedsettings_hdmi_link_lthree_page": {
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.HDMIInputOSDHelpLink"
+        }
+    },
+    "display_control_advancedsettings_hdmi_link_skip_button": {
+        "locator": {
+            "name":"Skip"
+        }
+    },
+    "display_control_hdmi_link_title_text":{
+        "locator": {
+            "id":"clientos-ui-toolkit-tour-modal__content__header-0"
+        }
+    },
+    "display_control_hdmi_link_text_lthree_page":{
+        "locator": {
+            "id":"internaldisplay_advancedsettings_hdmicontent"
+        }
+    },
+    "display_control_hdmi_popup_description_1_text":{
+        "locator": {
+            "id":"clientos-ui-toolkit-tour-modal__content__description-0"
+        }
+    },
+    "display_control_hdmi_popup_description_2_text":{
+        "locator": {
+            "id":"clientos-ui-toolkit-tour-modal__content__description-1"
+        }
+    },
+    "display_control_next_btn_hdmi_popup_window": {
+        "locator": {
+            "name":"Next"
+        }
+    },
+    "display_control_back_to_pc_desktop_description_2_hdmi_popup_page":{
+        "locator": {
+            "name": "Example: Hold Ctrl + Shift + S + D to stop using PC as a display."
+        }
+    },
+    "display_control_hdmi_popup_description_3_text":{
+        "locator": {
+            "id":"clientos-ui-toolkit-tour-modal__content__description-2"
+        }
+    },
+    "display_control_close_btn_hdmi_popup_window":{
+        "locator":{
+            "name":"Close"
+        }
+    },
+    "display_control_restore_defaults_continue_onpopup_window_page_lthree_page":{
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.RestoreDefaultWarningContinueButton"
+        }
+    },
+    "display_control_for_all_applications_text":{
+        "locator": {
+            "id":"selectedAppLabel"
+        }
+    },
+    "display_control_for_add_applications_text_in_app_list": {
+        "locator": {
+            "name":"Add Application"
+        }
+    },
+    "access_on_application_list": {
+        "locator": {
+            "name": "carousel-item-Access"
+        }
+    },
+    "cancel_button_on_dialog": {
+        "locator": {
+            "id": "ReactPCContextAware.InstalledAppsModal.CancelButton"
+        }
+    },
+    "calculator_on_application_list": {
+        "locator": {
+            "name": "carousel-item-Calculator"
+        }
+    },
+    "arrow_next_on_application_list": {
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.NextButton"
+        }
+    },
+    "camera": {
+        "locator": {
+            "name": "carousel-item-Camera"
+        }
+    },
+    "command_prompt": {
+        "locator": {
+            "name": "carousel-item-Command Prompt"
+        }
+    },
+    "excel": {
+        "locator": {
+            "name": "carousel-item-Excel"
+        }
+    },
+    "media_player": {
+        "locator": {
+            "name": "carousel-item-Media Player"
+        }
+    },
+    "microsoft_edge": {
+        "locator": {
+            "name": "carousel-item-Microsoft Edge"
+        }
+    },
+    "narrator": {
+        "locator": {
+            "name": "carousel-item-Narrator"
+        }
+    },
+    "task_manager": {
+        "locator": {
+            "name": "carousel-item-Task Manager"
+        }
+    },
+    "clock": {
+        "locator": {
+            "name": "carousel-item-Clock"
+        }
+    },
+    "microsoft_store": {
+        "locator": {
+            "name": "carousel-item-Microsoft Store"
+        }
+    },
+    "photos": {
+        "locator": {
+            "name": "carousel-item-Photos"
+        }
+    },
+    "settings": {
+        "locator": {
+            "name": "carousel-item-Settings"
+        }
+    },
+    "word": {
+        "locator": {
+            "name": "carousel-item-Word"
+        }
+    },
+    "get_help": {
+        "locator": {
+            "name": "carousel-item-Get Help"
+        }
+    },
+    "get_started": {
+        "locator": {
+            "name": "carousel-item-Get Started"
+        }
+    },
+    "news": {
+        "locator": {
+            "name": "carousel-item-News"
+        }
+    },
+    "weather": {
+        "locator": {
+            "name": "carousel-item-Weather"
+        }
+    },
+    "copilot": {
+        "locator": {
+            "name": "carousel-item-Copilot"
+
+        }
+    },
+    "disney": {
+        "locator": {
+            "name": "carousel-item-Disney+"
+        }
+    },
+    "tencent": {
+        "locator": {
+            "name": "carousel-item-腾讯视频"
+        }
+    },
+    "iqiyi": {
+        "locator": {
+            "name": "carousel-item-爱奇艺"
+        }
+    },
+    "delete_profile_dialog_delete_profile_text": {
+        "locator": {
+            "name": "Delete profile"
+        }
+    },
+    "delete_profile_dialog_description_text": {
+        "locator": {
+            "name": "Are you sure you want to remove this app configuration? This application will be removed from all modules."
+        }
+    },
+    "delete_profile_dialog_cancel_button": {
+        "locator": {
+            "id": "ReactPCContextAware.DeleteProfileModal.CancelButton"
+        }
+    },
+    "delete_profile_dialog_continue_button": {
+        "locator": {
+            "id": "ReactPCContextAware.DeleteProfileModal.ContinueButton"
+        }
+    },
+    "magnify": {
+        "locator": {
+            "name": "carousel-item-Magnify"
+        }
+    },
+    "paint": {
+        "locator": {
+            "name": "carousel-item-Paint"
+        }
+    },
+    "display_control_hdmi_popup_page_do_not_show_again_checkbox": {
+        "locator": {
+            "id": "InternalDisplay.AdvancedSettings.HDMIWarningDoNotShowAgainCheckBox__checkbox"
+        }
+    },
+    "display_control_previous_btn_hdmi_popup_window":{
+        "locator":{
+            "id":"clientos-ui-toolkit-tour-modal__secondary-button"
+        }
+    },
+    "display_control_advanced_display_settings_title_lthree_page":{
+        "locator":{
+            "id":"InternalDisplay.AdvancedSettings.DisplayHeading__title"
+        }
+    },
+    "display_control_card_lone_page": {
+        "locator": {
+            "id": "PcDeviceCards.PcDeviceActionCards.PcdisplayXControlCard"
+        }
+    },
+    "display_control_contrast_toggle": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.ContrastSwitch__toggle"
+        }
+    },
+    "display_control_contrast_slider_ltwo_page": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.ContrastSlider"
+        }
+    },
+    "display_control_card_module_image": {
+        "locator": {
+            "name": "HPX Windows App"
+        }
+    },
+    "camera_app_on_install_modal":{
+        "locator": {
+            "id": "ReactPCContextAware.InstalledAppsModal.AppItem4215361D692F4C119ED804ACC4F8118B"
+        }
+    },
+    "camera_app_carousel": {
+        "locator": {
+            "id": "ReactPCContextAware.Carousel.CarouselItem4215361D692F4C119ED804ACC4F8118B"
+        }
+    },
+    "use_hdmi_input_tooltip":{
+        "locator": {
+            "id": "internaldisplay_advancedsettings_hdmititle_tooltip_info_icon"
+        }
+    },
+    "display_modes_select_box_option_neutral_ltwo_page_keelung32": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.DisplayModeSelect-select-option-0"
+        }
+    },
+    "display_modes_select_box_option_neutral_ltwo_page_keelung27": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.DisplayModeSelect-select-option-0"
+        }
+    },
+    "display_modes_select_box_option_warm_ltwo_page_keelung27": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.DisplayModeSelect-select-option-1"
+        }
+    },
+    "display_modes_select_box_option_cool_ltwo_page_keelung27":{
+        "locator": {
+            "id":"InternalDisplay.BasicSettings.DisplayModeSelect-select-option-2"
+        }
+    },    
+    "display_modes_select_box_option_hp_enhance_ltwo_page_keelung27": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.DisplayModeSelect-select-option-3"
+        }
+    },
+    "display_modes_select_box_option_native_ltwo_page_keelung27": {
+        "locator": {
+            "id": "InternalDisplay.BasicSettings.DisplayModeSelect-select-option-4"
+        }
+    },
+    "display_control_out_of_sync_see_more_link_lthree_page": {
+        "locator": {
+            "id":"InternalDisplay.AdvancedSettings.SettingOutOfSyncLabel__clientos-ui-toolkit-link"
+        }
+    },
+    "display_control_adjust_contrast_tooltip_ltwo_page": {
+        "locator": {
+            "id":"internaldisplay_displaylistcontainer_contrast_toogle__tooltip"
+        }
+    }
+}

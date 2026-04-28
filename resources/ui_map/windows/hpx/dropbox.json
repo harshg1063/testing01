@@ -1,0 +1,115 @@
+{
+    "dropbox_sub_title":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_DropboxView_Lbl_SignInHeader"
+        }
+    },
+    "sign_in_email":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_DropboxView_Txt_EmailInput"
+        }
+    },
+    "sign_in_password":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_DropboxView_Txt_PasswordInput"
+        }
+    },
+    "create_one_link":{
+        "locator": {
+            "name": "Don't have a Dropbox account? Create one here. "
+        }
+    },
+    "sign_in_button":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_DropboxView_Btn_SignIn"
+        }
+    },
+    "skip_button":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_DropboxView_SkipToNext"
+        }
+    },
+    "sign_up_firstname":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_DropboxView_Txt_FirstName"
+        }
+    },
+    "sign_up_lastname":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_DropboxView_Txt_LastName"
+        }
+    },
+    "sign_up_email":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_DropboxView_Txt_EmailInput"
+        }
+    },
+    "sign_up_password":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_DropboxView_Txt_PasswordInput"
+        }
+    },
+    "sign_up_checkbox":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_DropboxView_chkbox_AgreementTerms"
+        }
+    },
+    "terms_link":{
+        "locator": {
+            "name": "Dropbox terms"
+        }
+    },
+    "hp_offer_link":{
+        "locator": {
+            "name": "HP offer terms"
+        }
+    }
+    ,
+    "sign_up_loginButton":{
+        "locator": {
+            "name": "Log in here."
+        }
+    }
+    ,
+    "sign_up_button":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_DropboxView_Btn_SignUp"
+        }
+    },
+    "signin_email_errorMessage":{
+        "locator": {
+            "name": "A valid email is required."
+        }
+    },
+    "signup_email_errorMessage":{
+        "locator": {
+            "name": "A valid email is required."
+        }
+    },
+    "signup_firstName_errorMessage":{
+        "locator": {
+            "name": "A valid first name is required."
+        }
+    },
+
+    "signup_lastName_errorMessage":{
+        "locator": {
+            "name": "A valid last name is required."
+        }
+    },
+    "signup_header":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_DropboxView_Lbl_SignUpHeader" 
+        }
+    },
+    "signin_error_message":{
+        "locator": {
+            "name": "The provided user information isn’t valid." 
+        }
+    },
+    "signup_error_message":{
+        "locator": {
+            "name": "This e-mail is already taken." 
+        }
+    }
+}    

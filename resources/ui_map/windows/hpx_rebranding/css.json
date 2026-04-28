@@ -1,0 +1,139 @@
+{
+    "settings_button": {
+        "locator": {
+            "name": "Settings Arrow Right"
+        }
+    },
+    "feedback_button": {
+        "locator": {
+            "name": "Send feedback"
+        }
+    },
+    "account_button": {
+        "locator": {
+            "id": "SideFlyout.SideFlyoutView.AccountMenuItem"
+        }
+    },
+    "close_button": {
+        "locator": {
+            "id": ["SideFlyout.Main.CloseButton","SideFlyout.SideFlyoutView.CloseButton"]
+        }
+    },
+    "settings_title": {
+        "locator": {
+            "name": "Settings"
+        }
+    },
+    "manage_privacy_settings_button": {
+        "locator": {
+            "id": "Settings.Settings.ManagePreferencesArrowIcon"
+        }
+    },
+    "view_privacy_resources_button": {
+        "locator": {
+            "id": "Settings.Settings.PrivacyResourcesLink"
+        }
+    },
+    "about_card_on_settings": {
+        "locator": {
+            "id": "Settings.Settings.AboutCard"
+        }
+    },
+    "back_to_menu_button": {
+        "locator": {
+            "id": ["SideFlyout.Support.NavigationBackArrowLeftIcon", "SideFlyout.SideFlyoutView.NavigationBackArrowLeftIcon"]
+        }
+    },
+    "feedback_title": {
+        "locator": {
+            "name": "We'd love your feedback!"
+        }
+    },
+    "star_on_feedback": {
+        "locator": {
+            "id": "Feedback.OverallFeedback.StarRating"
+        }
+    },
+    "send_feedback_button": {
+        "locator": {
+            "id": "Feedback.OverallFeedback.SubmitButton"
+        }
+    },
+    "sign_in_button": {
+        "locator": {
+            "id": "NavBar.NavBarView.SignInButton"
+        }
+    },
+    "app_version_txt": {
+        "locator": {
+            "id": "appVerText"
+        }
+    },
+    "bell_icon": {
+        "locator": {
+            "id": "BellNotifications.NavBarView.BellNotificationIcon-bite-button-icon"
+        }
+    },
+    "notification_title": {
+        "locator": {
+            "name": "Notifications"
+        }
+    },
+    "profile_txt": {
+        "locator": {
+            "id": "clientos-ui-toolkit-link"
+        }
+    },
+    "profile_icon": {
+        "locator": {
+            "id": "SideFlyout.SideFlyoutView.ProfileIcon"
+        }
+    },
+    "support_option":{
+        "locator":{
+            "xpath":"//*[@AutomationId = 'SideFlyout.SideFlyoutView.SupportMenuItem']"
+        }
+    },
+    "support_title": {
+        "locator": {
+            "xpath": "//*[@Name = 'Support']"
+        }
+    },
+    "support_link":{
+        "locator": {
+            "xpath": "//*[@Name = 'Go to support.hp.com']"
+        }
+    },
+    "sign_in_btn_welcome_page": {
+        "locator": {
+            "id": ["SignInButton", "WelcomeScreen.WelcomeScreenView.SignInButton"],
+            "xpath" : "//Button[@Name='Sign in']"
+        }
+    },
+    "myhp_title_bar": {
+        "locator": {
+            "xpath": "//Window[@Name = 'HP']"
+        }
+    },
+    "open_myhp_alert":{
+        "locator": {
+            "xpath": ["//Custom[@Name='Open HP?']", "//Text[contains(@Name, 'wants to open this application.')]"]
+        }
+    },
+    "always_allow_checkbox": {
+        "locator": {
+            "xpath": "//CheckBox[@Name='Always allow hpsmartstage.com to open links of this type in the associated app']"
+        }
+    },
+    "open_myhp_alert_btn": {
+        "locator": {
+            "xpath": "//Button[@Name='Open HP']"
+        }
+    },
+    "maximize_hp": {
+        "locator": {
+            "id": "Maximize",
+            "xpath": ["//Button[@Name='Maximize HP']", "//Button[@Name='Maximize myHP']"]
+        }
+    }
+}

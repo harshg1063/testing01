@@ -1,0 +1,14 @@
+{
+    "_shared_hpx_title_text":{
+        "_comment": "myHP app title",
+        "locator": {
+            "id": "TitleBar"
+        }
+    },
+    "_shared_app_version_text":{
+        "_comment": "App version text on myHP app title",
+        "locator": {
+            "id": "appVerText"
+        }
+    }
+}

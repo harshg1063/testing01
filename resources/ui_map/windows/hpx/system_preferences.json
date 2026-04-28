@@ -1,0 +1,238 @@
+{
+    "notification": {
+        "locator": {
+            "name": "Notifications"
+        }
+    },
+    "toggle_notification": {
+        "locator": {
+            "id": "SystemSettings_Notifications_ShowAppNotifications_ToggleSwitch"
+        }
+    },
+    "device_and_account_btn": {
+        "locator": {
+            "id": "DeviceAndAccount"
+        }
+    },
+    "tips_and_tutorials_btn": {
+        "locator": {
+            "id": "TipsAndTutorials"
+        }
+    },
+    "news_and_offers_btn": {
+        "locator": {
+            "id": "NewsAndOffers"
+        }
+    },
+    "share_your_feedback_btn": {
+        "locator": {
+            "id": "ShareYourFeedback"
+        }
+    },
+    "external_link_to_navigate_back_to_system_notification_settings": {
+        "locator": {
+            "name": "External Link"
+        }
+    },
+    "system_notification_close": {
+        "locator": {
+            "name": "Close Settings"
+        }
+    },
+    "title_bar_yes_button": {
+        "locator": {
+            "id": "Button1"
+        }
+    },
+    "close_app_button": {
+        "locator": {
+            "name": "Close myHP"
+        }
+    },
+    "start_btn": {
+        "locator": {
+            "id": "StartButton"
+        }
+    },
+    "search_text_box": {
+        "locator": {
+            "id": "StartMenuSearchBox"
+        }
+    },
+    "close_On_Setting": {
+        "locator": {
+            "id": "Close"
+        }
+    },
+    "open_btn_on_HP": {
+        "locator": {
+            "id": "pp_S_Open"
+        }
+    },
+    "myHP_app_On_Start": {
+        "locator": {
+            "name": "myHP, App, Press right to switch preview"
+        }
+    },
+    "aplicationsearch": {
+        "locator": {
+            "id": "AUID_HPPK_Input_SearchApplication"
+        }
+    },
+    "website_input": {
+        "locator": {
+            "id": "AUID_HPPK_Assign_Input"
+        }
+    },
+    "app_setting_on_myHP": {
+        "locator": {
+            "id": "pp_Settings"
+        }
+    },
+    "myHP_app_name_in_app_setting": {
+        "locator": {
+            "xpath": "//Group[@AutomationId='PermanentNavigationViewBreadcrumbBar']/Button[@ClassName='Microsoft.UI.Xaml.Controls.BreadcrumbBarItem'][@Name='myHP']"
+        }
+    },
+    "app_version_in_app_setting": {
+        "locator": {
+            "xpath": "//Pane[@AutomationId='ItemsControlScrollViewer']/Group[@ClassName='NamedContainerAutomationPeer'][@Name='Specifications']/Text[@ClassName='TextBlock'][5]"
+        }
+    },
+    "app_size_in_app_setting": {
+        "locator": {
+            "xpath": "//Pane[@AutomationId='ItemsControlScrollViewer']/Group[@ClassName='NamedContainerAutomationPeer'][@Name='Specifications']/Text[@ClassName='TextBlock'][7]"
+        }
+    },
+    "reset_on_app_setting": {
+        "locator": {
+            "id": "SystemSettings_StorageSense_AppSizesAdvanced_AppReset_Button"
+        }
+    },
+    "uninstall_btn_on_app_setting": {
+        "locator": {
+            "id": "SystemSettings_StorageSense_AppSizesList_UninstallButton_UninstallButton"
+        }
+    },
+    "hpx_folder_under_misx_bundle": {
+        "locator": {
+            "xpath": "//Pane[@Name='Shell Folder View'][@AutomationId='listview']/List[@ClassName='UIItemsView'][@Name='Items View']/ListItem[@ClassName='UIItem']/Edit[@Name='Name'][@AutomationId='System.ItemNameDisplay'][1]"
+        }
+    },
+    "hpx_msix_bundle": {
+        "locator": {
+            "id": "5"
+        }
+    },
+    "app_name_on_installer_window": {
+        "locator": {
+            "id": "appName"
+        }
+    },
+    "app_version": {
+        "locator": {
+            "id": "appVersion"
+        }
+    },
+    "more_btn": {
+        "locator": {
+            "id": "moreButton"
+        }
+    },
+    "app_capabilities": {
+        "locator": {
+            "xpath": "//Window[@ClassName='Windows.UI.Core.CoreWindow'][@Name='App Installer']/Window[@ClassName='Popup'][@Name='Popup']/Pane[@ClassName='ScrollViewer']/Text[starts-with(@Name,'• Uses all system resources')][@AutomationId='RichTextBlockCapabilities']"
+        }
+    },
+    "launch_btn": {
+        "locator": {
+            "id": "secondaryButton"
+        }
+    },
+    "start_menu_search_box": {
+        "locator": {
+            "id": "SearchTextBox"
+        }
+    },
+    "open_tab_from_Start_menu": {
+        "locator": {
+            "id": "pp_S_Open"
+        }
+    },
+    "accessibility_tool_on_taskbar": {
+        "locator": {
+            "name": "Accessibility Insights for Windows - 1 running window"
+        }
+    },
+    "inspect_on_accessibility_tool": {
+        "locator": {
+            "id": "btnInspect"
+        }
+    },
+    "what_to_select_dd": {
+        "locator": {
+            "id": "cbSelectionScope"
+        }
+    },
+    "entire_app_opt_in_dd": {
+        "locator": {
+            "id": "cbiEntireApp"
+        }
+    },
+    "congratulations_msg_on_accessibility_tool_visible": {
+        "locator": {
+            "name": "Congratulations"
+        }
+    },
+    "get_started_btn_on_accessibility_tool": {
+        "locator": {
+            "id": "StartUpModeExitButton"
+        }
+    },
+    "win_uninstall_btn": {
+        "locator":{
+            "id": "pp_Tile.Uninstall",
+            "xpath": "//ListItem[contains(@AutomationId, 'pp_')][5]"
+        }
+    },
+    "win_uninstall_info_btn": {
+        "locator": {
+            "id": "dialog_b0"
+        }
+    },
+    "win_my_hp_item":{
+        "locator": {
+            "xpath": "//ListItem[contains(@Name, 'myHP')]"
+        }
+    },
+    "windows_brightness": {
+        "locator": {
+            "name": "Brightness"
+        }
+    },
+    "windows_battery_icon": {
+        "locator": {
+            "class name": "SystemTray.OmniButtonRight"
+        }
+    },
+    "minimize_windows_settings": {
+        "locator": {
+            "name": "Minimize Settings"
+        }
+    },
+    "windows_hdr_button": {
+        "locator": {
+            "id": "SystemSettings_Display_AdvancedColorSupport_ToggleSwitch"
+        }
+    },
+    "windows_hdr_title": {
+        "locator": {
+            "name": "Use HDR"
+        }
+    },
+    "close_accessibility_tool":{
+        "locator":{
+            "name": "Cancel"
+        }
+    }
+}

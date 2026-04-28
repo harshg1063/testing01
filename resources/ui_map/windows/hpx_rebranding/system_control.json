@@ -1,0 +1,228 @@
+{
+    "system_control_title":{
+        "locator": {
+            "id": "SystemControl.SystemControl.Title"
+        }
+    },
+    "system_control_performance_control_title":{
+        "locator": {
+            "id": "SystemControl.SystemControl.PerformanceControlTitle"
+        }
+    },
+    "system_control_performance_control_description":{
+        "locator": {
+            "id": "SystemControl.SystemControl.PerformanceControlDescription"
+        }
+    },
+    "system_control_balanced_title":{
+        "locator": {
+            "id": "SystemControl.SystemControl.Balanced"
+        }
+    },
+    "system_control_cool_title":{
+        "locator": {
+            "id": "SystemControl.SystemControl.Cool"
+        }
+    },
+    "system_control_quiet_title":{
+        "locator": {
+            "id": "SystemControl.SystemControl.Quiet"
+        }
+    },
+    "system_control_powersaver_title":{
+        "locator": {
+            "id": "SystemControl.SystemControl.PowerSaver"
+        }
+    },
+    "system_control_performance_title":{
+        "locator": {
+            "id": "SystemControl.SystemControl.Performance"
+        }
+    },
+    "system_control_balanced_toggle":{
+        "locator": {
+            "id": "SystemControl.SystemControl.BalancedRadioButton__radio-button"
+        }
+    },
+    "system_control_cool_toggle":{
+        "locator": {
+            "id": "SystemControl.SystemControl.CoolRadioButton__radio-button"
+        }
+    },
+    "system_control_quiet_toggle":{
+        "locator": {
+            "id": "SystemControl.SystemControl.QuietRadioButton__radio-button"
+        }
+    },
+    "system_control_powersaver_toggle":{
+        "locator": {
+            "id": "SystemControl.SystemControl.PowerSaverRadioButton__radio-button"
+        }
+    },
+    "system_control_performance_toggle":{
+        "locator": {
+            "id": "SystemControl.SystemControl.PerformanceRadioButton__radio-button"                  
+        }
+    },
+    "dim_background_toggle":{
+        "locator": {
+            "id": "SystemControl.SystemControl.FocusModeToggle__toggle"
+        }
+    },
+    "foucus_mode_title":{
+        "locator": {
+            "name":"Focus mode"
+        }
+    },
+    "dim_background_title":{
+        "locator": {
+            "xpath":"//*[@ClassName='styles__SubTitle-pc-hw-enablers-react-pc-systemcontrol-mfe__sc-1i18mvv-2 cYJOvE']"
+        }
+    },
+    "smart_sense_radio_button":{
+       "locator": {
+           "xpath": "//*[@ClassName='vn-radio-button__icon']/RadioButton[@Name='Smart sense'][@AutomationId='SystemControl.SystemControl.AutoRadioButton__radio-button']"
+        } 
+    },
+    "smart_sense_radio_button_commercial":{
+       "locator": {
+            "id": "SystemControl.SystemControl.SmartSenseRadioButton__radio-button"
+        } 
+    },
+    "smart_sense_title_consumer":{
+       "locator": {
+            "id": "SystemControl.SystemControl.Auto"
+        } 
+    },
+    "power_saving_mode_title":{
+       "locator": {
+            "id": "SystemControl.SystemControl.PowerSavingModeTitle"
+        } 
+    },
+    "optimize_oled_toggle":{
+       "locator": {
+            "id": "SystemControl.SystemControl.PowerSavingModeToggle__toggle"
+        } 
+    },
+    "optimize_oled_title":{
+       "locator": {
+            "id": "SystemControl.SystemControl.OLEDPowerConsumptionTitle"
+        } 
+    },
+    "smart_sense_tooltip":{
+       "locator": {
+            "id": "SystemControl.SystemControl.SmartSenseTooltip"
+        } 
+    },
+    "cool_tooltip":{
+       "locator": {
+            "id": "SystemControl.SystemControl.CoolTooltip"
+        } 
+    },
+    "quiet_tooltip":{
+       "locator": {
+            "id": "SystemControl.SystemControl.QuietTooltip"
+        } 
+    },
+    "performance_tooltip":{
+       "locator": {
+            "id": "SystemControl.SystemControl.PerformanceTooltip"
+        } 
+    },
+    "optimize_oled_tooltip":{
+       "locator": {
+            "id": "oledPowerSavingTooltip"
+        } 
+    },
+    "high_performance_text":{
+       "locator": {
+            "name": "High performance"
+        } 
+    },
+    "smart_sense_tips_icon":{
+       "locator": {
+            "id": "SystemControl.SystemControl.AutoTooltip"
+        } 
+    },
+    "system_control_balanced_tips_icon":{
+       "locator": {
+            "id": "SystemControl.SystemControl.BalancedTooltip"
+        } 
+    },
+    "system_control_cool_tips_icon":{
+       "locator": {
+            "id": "SystemControl.SystemControl.CoolTooltip"
+        } 
+    },
+    "system_control_powersaver_tips_icon":{
+       "locator": {
+            "id": "SystemControl.SystemControl.PowerSaverTooltip"
+        } 
+    },
+    "system_control_quiet_tips_icon":{
+       "locator": {
+            "id": "SystemControl.SystemControl.QuietTooltip"
+
+        } 
+    },
+    "system_control_performance_tips_icon":{
+       "locator": {
+            "id": "SystemControl.SystemControl.PerformanceTooltip"
+        } 
+    },
+    "dim_background_window_tips_icon":{
+       "locator": {
+            "id": "focusModeTooltip"
+        } 
+    },
+    "smart_sense_title_commercial":{
+        "locator": {
+             "id": "SystemControl.SystemControl.SmartSense"
+         } 
+     },
+    "return_button_on_top_left_corner":{
+        "locator": {
+            "id": "NavBar.NavBarView.BackButton"
+        }
+    },
+    "windows_energy_save_open_button":{
+        "locator": {
+            "id": "SystemSettings_PowerAndBattery_EnergySaver_ValueTextBlock"
+        }
+    },
+    "windows_energy_save_button":{
+        "locator": {
+            "id": "SystemSettings_PowerAndBattery_EnergySaverAlwaysOn_ToggleSwitch"
+        }
+    },
+    "energy_saver_enable_text":{
+        "locator": {
+            "id": "SystemControl.BatterySaverWarning.WarningIcon__title"
+        }
+    },
+    "energy_saver_enabled_banner":{
+        "locator": {
+            "id": "SystemControl.BatterySaverWarning.WarningIcon__content--variant"
+        }
+    },
+    "energy_saver_enabled_banner_description_text":{
+        "locator": {
+            "name": "To continue using Performance control, please plug in your PC or turn off Energy saver."
+        }
+    },
+    "power_mode_text_state_in_system_settings":{
+        "locator": {
+            "id": "SystemSettings_PowerAndBattery_PowerModes2_ValueTextBlock"
+        }
+    },
+    "smart_resource_optimizer_toggle":{
+        "locator": {
+            "id": "SystemControl.SystemControl.SmartResourceOptimizerToggle__toggle"
+        }
+    },
+    "smart_resource_optimizer_description":{
+        "locator": {
+            "id": "SystemControl.SystemControl.SmartResourceOptimizerDescription"
+        }
+    }
+}

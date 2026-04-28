@@ -1,0 +1,21 @@
+# CODEOWNERS file for TITAN Framework (asqe-qama)
+# 
+# This file defines code review requirements for pull requests
+# More specific rules override more general rules (bottom-up precedence)
+#
+# Syntax: <file-pattern> <owner1> <owner2> ...
+# - Use @username for individual users
+# - Use @org/team-name for teams
+# - Use relative paths from repository root
+
+# DevOps directory - requires approval from pipeline/infrastructure leads
+# alex-dunlap_hpi and tarrayna-smith_hpi are required reviewers for devops changes
+/devops/ @alex-dunlap_hpi @tarrayna-smith_hpi
+
+# Libs directory - requires approval from framework/library developers
+# raunak-patel_hpi and anu-jose1_hpi are required reviewers for libs changes
+/libs/ @raunak-patel_hpi @anu-jose1_hpi
+
+# Default owners for all other files (defined last to not override specific rules above)
+# titan-leads team will be requested as reviewers on every PR for non-devops/libs files
+* @hpi-sandbox/titan-leads

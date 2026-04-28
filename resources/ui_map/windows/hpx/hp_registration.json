@@ -1,0 +1,146 @@
+{
+    "register_subtitle":{
+        "locator": {
+            "name": "Register your PC for faster warranty support"
+        }
+    },
+    "first_name":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_RegistrationView_Txt_FirstName"
+        }
+    },
+    "last_name":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_RegistrationView_Txt_LastName"
+        }
+    },
+    "email_address":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_RegistrationView_Txt_EmailInput"
+        }
+    },
+    "hp_privacy_link":{
+        "locator": {
+            "name": "Register your PC for faster warranty support"
+        }
+    },
+    "register_button":{
+        "locator": {
+            "class name": "NamedContainerAutomationPeer"
+        }
+    },
+    "skip_button":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_RegistrationView_SkipToNext"
+        }
+    },
+    "hpone_signin_button":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_AuthenticationView_Btn_AuthenticationButton"
+        }
+    },
+    "hpone_skip_button":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_AuthenticationView_SkipToNext"
+        }
+    },
+    "dropbox_title":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_DropboxView_Lbl_SignInHeader"
+        }
+    },
+    "privacy_link":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_RegistrationView_Link_FooterText"
+        }
+    },
+    
+    "privacy_in_browser":{
+        "locator": {
+            "name": "Address and search bar"
+        }
+    },
+    
+    "firstName_invalid_data":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_RegistrationView_Txt_FirstName_error_message"
+        }
+    },
+
+    "lastName_invalid_data":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_RegistrationView_Txt_LastName_error_message"
+        }
+    },
+
+    "email_invalid_data":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_RegistrationView_Txt_EmailInput_error_message"
+        }
+    },
+    "success_message":{
+        "locator": {
+            "name": "Thank you!"
+        }
+    },
+    "registration_header":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_RegistrationView_Txt_subHeader"
+        }
+    },
+    "register_button_text":{
+        "locator": {
+            "name": "Register"
+        }
+    },
+    "localization_register_subtitle":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_RegistrationView_Txt_Header"
+        }
+    },
+    "localization_register_buttontitle":{
+        "locator": {
+            "class name": "NamedContainerAutomationPeer"
+        }
+    },
+    "localization_skip_buttontitle":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_RegistrationView_SkipToNext"
+        }
+    },
+    "country_dropdown_list":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_RegistrationView_Dropdown_Country"
+        }
+    },
+    "country_uganda":{
+        "locator": {
+            "name": "Uganda"
+        }
+    },
+    "country_ukraine":{
+        "locator": {
+            "name": "Ukraine"
+        }
+    },
+    "country_kingdom":{
+        "locator": {
+            "name": "United Kingdom"
+        }
+    },
+    "hpone_page_title":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_AuthenticationView_Heading_header1"
+        }
+    },
+    "hpone_page_btn":{
+        "locator": {
+            "id": "AUID_FIRSTUSE_AuthenticationView_SkipToNext"
+        }
+    },
+    "continue_btn":{
+        "locator": {
+            "id": "AUID_StrictlyNecessaryNotice_SNNView_ContinueBtnTest"
+        }
+    }
+}

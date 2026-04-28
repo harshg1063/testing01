@@ -1,0 +1,297 @@
+{
+    "gesture_card_title":{
+        "locator": {
+            "id": "GestureCardHeader__title"
+        }
+    },
+    "gesture_body_container":{
+        "locator": {
+            "id": "AnimationImg"
+        }
+    },
+    "pause_resume_img":{
+        "locator": {
+            "id": "PauseResume_img"
+        }
+    },
+    "pause_resume_description_container":{
+        "locator": {
+            "name": "Compatible with all playback media"
+        }
+    },
+    "pause_resume_try_out_button":{
+        "locator": {
+            "id": "Gestures.Gestures.PauseResumeTryOutButton"
+        }
+    },
+    "pause_resume_toggle":{
+        "locator": {
+            "id": "Gestures.Gestures.PauseResumeToggle__toggle"
+        }
+    },
+    "volume_adjust_img":{
+        "locator": {
+            "id": "VolumeAdjust_img"
+        }
+    },
+    "volume_adjust_description_container":{
+        "locator": {
+            "name": "Compatible with system volume control"
+        }
+    },
+    "volume_adjust_try_out_button":{
+        "locator": {
+            "id": "Gestures.Gestures.VolumeAdjustTryOutButton"
+        }
+    },
+    "volume_adjust_toggle":{
+        "locator": {
+            "id": "Gestures.Gestures.VolumeAdjustToggle__toggle"
+        }
+    },
+    "page_scroll_img":{
+        "locator": {
+            "id": "PageScroll_img"
+        }
+    },
+    "page_scroll_description_container":{
+        "locator": {
+            "name": "Compatible with apps with scrollable area"
+        }
+    },
+    "page_scroll_try_out_button":{
+        "locator": {
+            "id": "Gestures.Gestures.PageScrollTryOutButton"
+        }
+    },
+    "page_scroll_toggle":{
+        "locator": {
+            "id": "Gestures.Gestures.PageScrollToggle__toggle"
+        }
+    },
+    "photo_scroll_img":{
+        "locator": {
+            "id": "PhotoScroll_img"
+        }
+    },
+    "photo_scroll_description_container":{
+        "locator": {
+            "name": "Compatible with Windows Photos"
+        }
+    },
+    "photo_scroll_try_out_button":{
+        "locator": {
+            "id": "Gestures.Gestures.PhotoScrollTryOutButton"
+        }
+    },
+    "photo_scroll_toggle":{
+        "locator": {
+            "id": "Gestures.Gestures.PhotoScrollToggle__toggle"
+        }
+    },
+    "feedback_message":{
+        "locator": {
+            "name": "Feedback message"
+        }
+    },
+    "feedback_message_tips_icon":{
+        "locator": {
+            "id": "FeedbackMessage_Icon"
+        }
+    },
+    "feedback_message_toggle":{
+        "locator": {
+            "id": "Gestures.Gestures.FeedbackToggle__toggle"
+        }
+    },
+    "feedback_message_description":{
+        "locator": {
+            "name": "Receive a small message when you successfully use a gesture."
+        }
+    },
+    "gesture_restore_default_button":{
+        "locator": {
+            "id": "Gestures.Gestures.RestoreDefaultButton"
+        }
+    },
+    "image_overlay_wrapper":{
+        "locator": {
+            "id": "overlay-image"
+        }
+    },
+    "play_pause_text":{
+        "locator": {
+            "name": "Play / Pause"
+        }
+    },
+    "gesture_modal_description":{
+        "locator": {
+            "name": "Hold your palm up. We’ll let you know when you’ve done the gesture successfully. You can use either hand."
+        }
+    },
+    "play_pause_first_cancel_button":{
+        "locator": {
+            "id":"Gestures.Gestures.PlayPause01Cancel"           
+        }
+    },
+    "play_pause_first_start_button":{
+        "locator": {
+            "id": "Gestures.Gestures.PlayPause01Start"
+        }
+    },
+    "play_pause_second_cancel_button":{
+        "locator": {
+            "id":"Gestures.Gestures.PlayPause02Cancel"
+        }
+    },
+    "play_pause_second_done_button":{
+        "locator": {
+            "id": "Gestures.Gestures.PlayPause02Done"
+        }
+    },
+    "volume_adjust_up_first_cancel_button":{
+        "locator": {
+            "id": "Gestures.Gestures.VolumeAdjustUp01Cancel"
+        }
+    },
+    "volume_adjust_up_first_start_button":{
+        "locator": {
+            "id": "Gestures.Gestures.VolumeAdjustUp01Start"
+        }
+    },
+    "volume_adjust_up_second_cancel_button":{
+        "locator": {
+            "id": "Gestures.Gestures.VolumeAdjustUp02Cancel"
+        }
+    }, 
+    "volume_adjust_up_second_next_button":{
+        "locator": {
+            "id": "Gestures.Gestures.VolumeAdjustUp02Next"
+        }
+    },
+    "volume_adjust_down_first_cancel_button":{
+        "locator": {
+            "id": "Gestures.Gestures.VolumeAdjustDown01Cancel"
+        }
+    },
+    "volume_adjust_down_first_start_button":{
+        "locator": {
+            "id": "Gestures.Gestures.VolumeAdjustDown01Start"
+        }
+    },
+    "volume_adjust_down_second_cancel_button":{
+        "locator": {
+            "id": "Gestures.Gestures.VolumeAdjustDown02Cancel"
+        }
+    },
+    "volume_adjust_down_second_done_button":{
+        "locator": {
+            "id": "Gestures.Gestures.VolumeAdjustDown02Done"
+        }
+    },
+    "page_scroll_up_first_cancel_button":{
+        "locator": {
+            "id": "Gestures.Gestures.PageScrollUp01Cancel"
+        }
+    },
+    "page_scroll_up_first_start_button":{
+        "locator": {
+            "id": "Gestures.Gestures.PageScrollUp01Start"
+        }
+    },
+    "page_scroll_up_second_cancel_button":{
+        "locator": {
+            "id": "Gestures.Gestures.PageScrollUp02Cancel"
+        }
+    },
+    "page_scroll_up_second_next_button":{
+        "locator": {
+            "id": "Gestures.Gestures.PageScrollUp02Next"
+        }
+    },
+    "page_scroll_down_first_cancel_button":{
+        "locator": {
+            "id": "Gestures.Gestures.PageScrollDown01Cancel"
+        }
+    },
+    "page_scroll_down_first_start_button":{
+        "locator": {
+            "id": "Gestures.Gestures.PageScrollDown01Start"
+        }
+    },
+    "page_scroll_down_second_cancel_button":{
+        "locator": {
+            "id": "Gestures.Gestures.PageScrollDown02Cancel"
+        }
+    },
+    "page_scroll_down_second_done_button":{
+        "locator": {
+            "id": "Gestures.Gestures.PageScrollDown02Done"
+        }
+    },
+    "photo_scroll_previous_first_cancel_button":{
+        "locator": {
+            "id": "Gestures.Gestures.PhotoScrollPrevious01Cancel"
+        }
+    },
+    "photo_scroll_previous_first_start_button":{
+        "locator": {
+            "id": "Gestures.Gestures.PhotoScrollPrevious01Start"
+        }
+    },
+    "photo_scroll_previous_second_cancel_button":{
+        "locator": {
+            "id": "Gestures.Gestures.PhotoScrollPrevious02Cancel"
+        }
+    },
+    "photo_scroll_previous_second_next_button":{
+        "locator": {
+            "id": "Gestures.Gestures.PhotoScrollPrevious02Next"
+        }
+    },
+    "photo_scroll_next_first_cancel_button":{
+        "locator": {
+            "id": "Gestures.Gestures.PhotoScrollNext01Cancel"
+        }
+    },
+    "photo_scroll_next_first_start_button":{
+        "locator": {
+            "id": "Gestures.Gestures.PhotoScrollNext01Start"
+        }
+    },
+    "photo_scroll_next_second_cancel_button":{
+        "locator": {
+            "id": "Gestures.Gestures.PhotoScrollNext02Cancel"
+        }
+    },
+    "photo_scroll_next_second_done_button":{
+        "locator": {
+            "id": "Gestures.Gestures.PhotoScrollNext02Done"
+        }
+    },
+    "gestures_unavailable_notification":{
+        "locator": {
+            "id": "inline-notification-wrapper"
+        }
+    },
+    "pause_resume_text":{
+        "locator": {
+            "name": "Pause / Resume"
+        }
+    },
+    "volume_adjust_text":{
+        "locator": {
+            "name": "Volume adjust"
+        }
+    },
+    "page_scroll_text":{
+        "locator": {
+            "name": "Page scroll"
+        }
+    },
+    "photo_scroll_text":{
+        "locator": {
+            "name": "Photo scroll"
+        }
+    }
+}

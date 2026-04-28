@@ -1,0 +1,49 @@
+{
+    "must": [
+        {
+            "match_phrase": {
+                "fields.xray.bodyString": "\"version\":\"\""
+            }
+        },
+        {
+            "match_phrase": {
+                "fields.xray.bodyString": "\"viewHierarchy\":\"\""
+            }
+        },
+        {
+            "match_phrase": {
+                "fields.xray.bodyString": "\"viewName\":\"\""
+            }
+        },
+        {
+            "match_phrase": {
+                "fields.xray.bodyString": "\"viewMode\":\"\""
+            }
+        },
+        {
+            "match_phrase": {
+                "fields.xray.bodyString": "\"viewModule\":\"Progkey\""
+            }
+        },
+        {
+            "match_phrase": {
+                "fields.xray.bodyString": "\"action\":\"\""
+            }
+        },
+        {
+            "match_phrase": {
+                "fields.xray.bodyString": "\"controlName\":\"\""
+            }
+        },
+        {
+            "match_phrase": {
+                "fields.xray.bodyString": "\"controlLabel\":\"\""
+            }
+        },
+        {
+            "match_phrase": {
+                "fields.xray.bodyString":"Serial Number"
+            }
+        }
+    ]
+}

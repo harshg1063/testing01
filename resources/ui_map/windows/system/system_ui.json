@@ -1,0 +1,810 @@
+{
+    "window_visual_state_maximized": {
+        "locator": {
+            "xpath": [
+                "//Window[@WindowVisualState='Maximized']",
+                "//Window[@WindowVisualState='1']"
+            ]
+        }
+    },
+    "close_pop_up_window_btn": {
+        "locator": {
+            "xpath": "//Window[@AutomationId='{}']/descendant::Button[@Name='Close']"
+        }
+    },
+    "_system_close_btn": {
+        "locator": {
+            "id": "Close"
+        }
+    },
+    "_system_min_btn": {
+        "locator": {
+            "id": "Minimize"
+        }
+    },
+    "_system_max_btn": {
+        "locator": {
+            "id": "Maximize"
+        }
+    },
+    "search_bar_on_windows": {
+        "locator": {
+            "id": "SearchButton"
+        }
+    },
+    "ms_store_app_open": {
+        "locator": {
+            "id": "pp_S_Open"
+        }
+    },
+    "ms_store_search_box": {
+        "locator": {
+            "xpath": "//*[@AutomationId='TextBox']"
+        } 
+    },
+    "install_button_to_install_app_from_ms_store": {
+        "locator": {
+            "id": "RootButton"
+        }
+    },
+    "get_button_to_install_app_from_ms_store": {
+        "locator": {
+            "id": "RootButton"
+        }
+    },
+    "uninstall_app_button": {
+        "locator": {
+            "id": "pp_Tile.Uninstall"
+        }
+    },
+    "uninstall_app_pop_up": {
+        "locator": {
+            "id": "dialog_b0"
+        }
+    },
+    "back_to_home_from_search_menu": {
+        "locator": {
+            "name": "Back to home"
+        }
+    },
+    "disney_plus_app_ms_store": {
+        "locator": {
+            "id": "9NXQXXLFST89"
+        }
+    },
+    "tencent_video_app_ms_store": {
+        "locator": {
+            "id": "9WZDNCRFJ2J5"
+        }
+    },
+    "iqiyi_video_app_ms_store": {
+        "locator": {
+            "id": "9NBLGGH5WXNW"
+        }
+    },
+    "my_hp_system_app_settings": {
+        "locator": {
+            "id": "pp_Settings"
+        }
+    },
+    "app_reset_button": {
+        "locator": {
+            "id": "SystemSettings_StorageSense_AppSizesAdvanced_AppReset_Button"
+        }
+    },
+    "app_reset_confirm_button": {
+        "locator": {
+            "id": "SystemSettings_StorageSense_AppSizesAdvanced_AppReset_ConfirmButton"
+        }
+    },
+    "scroll_window":{
+        "locator": {
+            "class name": "ApplicationFrameWindow"
+        }
+    },
+    "maximize_settings_window":{
+        "locator": {
+            "id": "Maximize"
+        }
+    },
+    "search_box_on_windows": {
+        "locator": {
+            "id": ["SearchTextBox", "SearchBoxTextBlock"],
+            "xpath": ["//Button[@Name='Search']", "//Text[@Name='Search']", "//TextBox[@Name='Search']"]
+        }
+    },
+    "set_time_toggle": {
+        "locator": {
+            "id": "SystemSettings_DateTime_IsTimeSetAutomaticallyEnabled_ToggleSwitch"
+        }
+    },
+    "run_text_box":{
+        "locator": {
+            "id": "1001"
+        }
+    },
+    "run_ok_button":{
+        "locator": {
+            "name": "OK"
+        }
+    },
+    "app_open": {
+        "locator": {
+            "name": "Open"
+        }
+    },
+    "profile_icon_on_msstore": {
+        "locator": {
+            "id": "ProfileButton"
+        }
+    },
+    "sign_in_to_msstore": {
+        "locator": {
+            "id": "MsaSignInItem"
+        }
+    },
+    "microsoft_account_button": {
+        "locator": {
+            "id": "Provider_0"
+        }
+    },
+    "continue_button_to_msaccount_button": {
+        "locator": {
+            "id": "ContinueButton"
+        }
+    },
+    "email_text_box": {
+        "locator": {
+            "id": "i0116"
+
+        }
+    },
+    "next_button_to_signin_page": {
+        "locator": {
+            "id": "idSIButton9"
+        }
+    },
+    "password_text_box": {
+        "locator": {
+            "id": "i0118"
+        }
+    },
+    "signin_button_to_signin": {
+        "locator": {
+            "xpath": "//Button[starts-with(@Name,'Sign in')][starts-with(@AutomationId,'idSIButton9')]"
+        }
+    },
+    "signout_button": {
+        "locator": {
+            "xpath": "//Button[starts-with(@Name,'Sign out')][starts-with(@AutomationId,'SignoutLink')]"
+        }
+    },
+    "library_button_on_msstore": {
+        "locator": {
+            "id": "MyLibraryButton"
+        }
+    },
+    "library_sort_and_filter_on_msstore": {
+        "locator": {
+            "id": "SortAndFilterDropDownBtn"
+        }
+    },
+    "library_sort_by_date_on_msstore": {
+        "locator": {
+            "name": "Sort by date"
+        }
+    },
+    "library_myhp_app_option_button": {
+        "locator": {
+            "name": "myHP"
+        }
+    },
+    "myhp_app_update_option_button": {
+        "locator": {
+            "id": "UpdateButton"
+        }
+    },
+    "myhp_app_update_option_retry_button": {
+        "locator": {
+            "name": "Retry"
+        }
+    },
+    "myhp_app_open_option_button_after_update": {
+        "locator": {
+            "id": "RootButton"
+        }
+    },
+    "get_button_to_installapp_from_msstore": {
+        "locator": {
+            "id": "AppIdentityOpenButton"
+        }
+    },
+    "install_signed_build_2": {
+            "locator": {
+                "xpath": "//*[@ClassName='Windows.UI.Core.CoreWindow'][@Name='App Installer']/Button[@AutomationId='primaryButton']"
+            }
+    },
+    "next_button_first_time_signin": {
+        "locator": {
+            "xpath": "//Button[starts-with(@AutomationId,'idSIButton9')][starts-with(@Name,'Next')]"
+        }
+    },
+    "get_update_button": {
+        "locator": {
+            "id": "CheckForUpdatesButton"
+        }
+     },
+    "back_arrow_button_on_msstore": {
+            "locator": {
+                "id": "BackButton"
+        }
+    },
+    "download_and_updates": {
+            "locator": {
+                "id": "DownloadsAndUpdatesButton"
+        }
+    },
+    "installedapps_searchbar": {
+            "locator": {
+                "id": "SystemSettings_StorageSense_AppSizesListFilter_DisplayStringValue"
+        }
+    },
+    "threedots_option": {
+            "locator": {
+                "id": "AppOptionsButton"
+        }
+    },
+    "advanced_option": {
+            "locator": {
+                "name": "Advanced options"
+        }
+    },
+    "app_folder": {
+            "locator": {
+                "xpath": "//*[@ClassName='#32769']/Window[@ClassName='CabinetWClass']/Pane[@ClassName='ShellTabWindowClass']/Pane[@ClassName='DUIViewWndClassName']/Pane[@AutomationId='listview']/List[@ClassName='UIItemsView']/ListItem[@ClassName='UIItem'][1]"
+        }
+    },
+    "appx_bundle": {
+            "locator": {
+                "xpath": "//*[@ClassName='#32769']/Window[@ClassName='CabinetWClass']/Pane[@ClassName='ShellTabWindowClass']/Pane[@ClassName='DUIViewWndClassName']/Pane[@AutomationId='listview']/List[@ClassName='UIItemsView']/ListItem[7]"
+        }
+    },
+    "color_profile_in_display_setting":{
+        "locator": {
+            "xpath": "//*[@ClassName='Windows.UI.Core.CoreWindow']/Custom[@AutomationId='PermanentNavigationView']/Group[@ClassName='LandmarkTarget'][2]/Pane[@AutomationId='ItemsControlScrollViewer']/Group[@ClassName='NamedContainerAutomationPeer'][@Name='Brightness & color']/Group[@Name='Color profile'][@AutomationId='SystemSettings_Display_ColorProfileSetting_EntityItem']"
+        }
+    },
+    "mode_in_display_setting":{
+        "locator": {
+            "id": "SystemSettings_Display_ColorProfileSetting_ComboBox"
+        }
+    },
+    "select_low_blue_light_in_setting":{
+        "locator": {
+            "name": "Low Blue Light"
+        }
+    },
+    "default_color_profile_in_setting":{
+        "locator": {
+            "name": "Default"
+        }
+    },
+    "entertainment_color_profile_in_setting":{
+        "locator": {
+            "name": "Entertainment"
+        }
+    },
+    "low_blue_light_color_profile_in_setting":{
+        "locator": {
+            "name": "Low Blue Light"
+        }
+    },
+    "low_light_color_profile_in_setting":{
+        "locator": {
+            "name": "Low Light"
+        }
+    },
+    "native_color_profile_in_setting":{
+        "locator": {
+            "name": "Native"
+        }
+    },
+    "photos_and_videos_color_profile_in_setting":{
+        "locator": {
+            "name": "Photos and Videos (P3-D65)"
+        }
+    },
+    "printing_and_imaging_color_profile_in_setting":{
+        "locator": {
+            "name": "Printing and Imaging (Adobe RGB)"
+        }
+    },
+    "web_rgb_color_profile_in_setting":{
+        "locator": {
+            "name": "Web(sRGB)"
+        }
+    },
+    "work_color_profile_in_setting":{
+        "locator": {
+            "name": "Work"
+        }
+    },
+    "install_signed_build_1": {
+        "locator": {
+            "xpath": "//*[@ClassName='Windows.UI.Core.CoreWindow']/Button[@Name='Install myHP? Install'][@AutomationId='actionButton']"
+        }
+    },
+    "printer_scannerers_text": {
+        "locator": {"xpath": "/Pane/Window[1]/window[1]/Group[1]/Text[1]"}
+    },
+    "add_a_printer_or_scanner_btn": {
+        "locator": {"xpath": ["//Button[@AutomationId='SystemSettings_Printer_Add_Button']", "//Button[@Name='Add a printer or scanner']"]}
+    },
+    "printer_add_progress_bar": {
+        "locator": {"xpath": ["//*[@AutomationId='SystemSettings_Printer_Add_ProgressBar']", "//*[@AutomationId='SystemSettings_Printer_Add_ProgressRing']"]}
+    },
+    "dynamic_add_printer_item": {
+        "locator": {"xpath": "//List[@AutomationId='SystemSettings_Printer_Add_ListView']/ListItem[{}]"}
+    },
+    "add_printer_item_by_name": {
+        "locator": {"xpath": ["//List[@AutomationId='SystemSettings_Printer_Add_ListView']/ListItem[contains(@Name, '{}')]", "//List[@AutomationId='SystemSettings_Device_PrinterList_ListView']/Group[contains(@Name, '{}')]"]}
+    },
+    "add_device_btn": {
+        "locator": {"xpath": ["//ListItem[contains(@Name, '{}')]/Button[@Name='Add device']", "//Group[contains(@Name, '{}')]/Button[@Name='Add device']"]}
+    },
+    "bluetooth_and_devices_text": {
+        "locator": {"xpath": "//ListItem[@Name='Bluetooth & devices']"}
+    },
+    "win_settings_search_box": {
+        "locator": {"id": "SearchButton"}
+    },
+    "win_settints_printers_and_scanners": {
+        "locator": {
+            "id": "SettingsGroupPrinterAddRemove_GroupTitleTextBlock",
+            "xpath": "//*[@Name='Printers & scanners']"
+        }
+    },
+    "target_printer": {
+        "locator": {"xpath": "//List[@AutomationId='SystemSettings_Device_PrinterList_ListView']/ListItem[contains(@Name, '{}')]"}
+    },
+    "system_tray_icon": {
+        "locator": {
+            "xpath":"//*[@ClassName='Windows.UI.Input.InputSite.WindowClass']/Button[@AutomationId='SystemTrayIcon'][4]"
+        }
+    },
+    "system_tray_brightness_slider_value":{
+        "locator": {
+            "xpath": "//*[@ClassName='Windows.UI.Input.InputSite.WindowClass']/Group[@AutomationId='ControlCenterRegion']/Slider[@Name='Brightness']"
+        }
+    },
+    "display_control_hdr_toggle_window_setting": {
+        "locator": {
+            "id":"SystemSettings_Display_AdvancedColorSupport_ToggleSwitch"
+        }
+    },
+    "system_setting_brightness_slider":{
+        "locator": {
+            "id": "SystemSettings_Display_Multimon_Brightness_Slider"
+        }
+    },
+    "setting_on_taskbar": {
+        "locator": {
+            "id": "Appid: windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel"
+        }
+    },
+    "smart_experience_use_video_hdr_in_system_setting_menu_button": {
+        "locator": {
+            "id": "\\\\?\\USB#VID_0408&PID_5473&MI_00#6&e5afc2a&1&0000#{e5323777-f976-4f5b-9b55-b94699c46e44}\\GLOBAL_ButtonEntityItem"
+        }
+    },
+    "smart_experience_use_system_settings_video_hdr_toggle_switch": {
+        "locator": {
+            "id": "SystemSettings_Camera_VideoHDR_ToggleSwitch"
+        }
+    },
+    "iqiyi_app":{
+        "locator": {
+            "id": "Appid: 0C72C7CD.BETA_atj5cpqqdhzyp!IQIYI"
+        }
+    },
+    "tencent_app":{
+        "locator": {
+            "id": "Appid: 903DB504.56054E940A214_a99ra4d2cbcxa!QQLive"
+        }
+    },
+    "disney_plus_app":{
+        "locator": {
+            "id": "Appid: Disney.37853FC22B2CE_6rarf9sa4v8jt!App"
+        }
+    },
+    "install_hp_presence_msstore":{
+        "locator": {
+            "id": "InstallOwnedProduct"
+        }
+    },
+    "install_poly_camera_msstore":{
+        "locator": {
+            "id": "AcquireNewProduct"
+        }
+    },
+    "uninstall_option_on_windows_settings": {
+        "locator": {
+            "id":"SystemSettings_StorageSense_AppSizesList_UninstallButton_UninstallButton"
+        }
+    },
+    "uninstall_confirmation_on_windows_settings": {
+        "locator": {
+            "id": "SystemSettings_StorageSense_AppSizesList_UninstallButton_ConfirmButton"
+        }
+    },
+    "windows_power_mode_dropdown":{
+       "locator": {
+            "name": "Power Mode"
+       }
+    },
+    "plugged_in_dropbox_selection":{
+       "locator": {
+            "id": "SystemSettings_PowerAndBattery_PowerModes2_ValueTextBlock"
+       }
+    },
+    "windows_setting_myhp_notification_toggle": {
+        "locator": {
+            "name": "myHP"
+        }
+    },
+    "windows_setting_myhp_notification_toggle_on_off_status": {
+        "locator": {
+            "id": "AD2F1837.myHP_v10z8vjag6ke60_ToggleSwitch"
+        }
+    },
+    "pen_and_windows_ink_in_blutooth_and_device_settings": {
+        "locator": {
+            "name": "Pen & Windows Ink"
+        }
+    },
+    "more_settings_from_your_device_manufacturer_pen_and_windows_ink":{
+        "locator": {
+            "id": "SystemSettings_Devices_Pen_SpecificSettingsLink_ButtonEntityItem"
+        }
+    },
+    "get_an_app_open_this_hpx_link_popup": {
+        "locator": {
+            "name": "Get an app to open this 'hpx' link"
+        }
+    },
+    "install_button_to_install_owned_app_from_ms_store": {
+        "locator": {
+            "id": "InstallOwnedProduct"
+        }
+    },
+    "install_button_to_install_new_app_from_ms_store": {
+        "locator": {
+            "id": "AcquireNewProduct"
+        }
+    },
+    "windows_setting_myhp_page_notification_toggle_on_off_status": {
+        "locator": {
+            "id": "SystemSettings_Notifications_AppNotifications_ToggleSwitch"
+        }
+    },
+    "poly_camera_pro_on_msstore_open": {
+        "locator": {
+            "id": "OpenInstalledProduct"
+        }
+    },
+    "battery_option_in_setting_under_hdr_option_in_setting":{
+        "locator": {
+            "xpath": "//Window[@ClassName='Windows.UI.Core.CoreWindow'][@Name='Settings']/Custom[@AutomationId='PermanentNavigationView']/Group[@AutomationId='pageContent']/Pane[@AutomationId='ItemsControlScrollViewer']/Group[@ClassName='NamedContainerAutomationPeer'][@Name='Use HDR']/Button[@Name='Show more settings']"
+        }
+    },
+    "search_box_in_windows_setting": {
+        "locator": {
+            "name":"Search box, Find a setting"
+        }
+    },
+    "hdr_option_in_settings": {
+        "locator": {
+            "name": "HDR settings"
+        }
+    },
+    "start_menu_window_btn":{
+        "locator": {
+            "id": "StartButton"
+            }
+        },
+    "open_app_btn_from_start_menu": {
+        "locator": {
+            "id":"pp_S_Open"
+        }
+    },
+    "apps_button": {
+        "locator": {
+            "xpath":"//ListItem[@ClassName='Microsoft.UI.Xaml.Controls.NavigationViewItem' and @Name='Apps']"
+        }
+    },
+    "installed_apps_button": {
+        "locator": {
+            "xpath":"//ListItem[@ClassName='ListViewItem' and @Name='Installed apps']"
+        }
+    },
+    "HP_apps_icon": {
+        "locator": {
+            "xpath":"//Text[@ClassName='TextBlock' and @Name='HP']"
+        }
+    },
+    "search_bar_for_apps": {
+        "locator": {
+            "id":"SystemSettings_StorageSense_AppSizesListFilter_DisplayStringValue"
+        }
+    },
+    "pin_to_start_menu": {
+        "locator": {
+            "id":"pp_StartPin"
+        }
+    },
+    "unpin_from_start_menu": {
+        "locator": {
+            "id":"pp_StartUnpin"
+        }
+    },
+    "pin_to_taskbar_from_start_menu": {
+        "locator": {
+            "id":"pp_TaskbarPin"
+        }
+    },
+    "unpin_from_taskbar_start_menu": {
+        "locator": {
+            "id":"pp_TaskbarUnpin"
+        }
+    },
+    "color_profile_dd_mode_select_box": {
+        "locator": {
+            "xpath": "//*[@AutomationId='SystemSettings_Display_ColorProfileSetting_ComboBox']/ListItem[@ClassName='ComboBoxItem']/Text[@ClassName='TextBlock']"
+        }
+    },
+    "myhp_app_icon_on_taskbar": {
+        "locator": {
+            "xpath":"//*[@AutomationId='Appid: AD2F1837.myHP_v10z8vjag6ke6!App' or @AutomationId='Appid: AD2F1837.MYHP_V10Z8VJAG6KE6!APP']"
+        }
+    },
+    "desktop":{
+        "locator":{
+            "id":"ListViewItem-8"
+        }
+    },
+    "display_settings_on_right_click_on_desktop": {
+        "locator": {
+            "name":"Display settings"
+        }
+    },
+    "ms_store_use_my_password": {
+        "locator": {
+            "name": "Use my password"
+        }
+    },
+    "edge_on_taskbar": {
+        "locator": {
+            "id": "Appid: MSEdge"
+        }
+    },
+    "system_tray_hp_go_tile":{
+        "locator":{
+            "name":"HP Go (LTE)"
+        }
+    },
+    "root_web_area": {
+       "locator": {
+          "class name": "ApplicationFrameWindow"
+       }
+    },
+    "color_filter_toggle_switch": {
+        "locator": {
+            "id": "SystemSettings_Accessibility_ColorFiltering_IsEnabled_ToggleSwitch"
+        }
+    },
+    "gray_scale_inverted_radio_btn_settings": {
+        "locator": {
+            "xpath": "//*[@AutomationId='SystemSettings_Accessibility_ColorFiltering_FilterType_RadioButton'][5]"
+        }
+    },
+    "red_green_green_weak_color_filter_radio_btn_settings": {
+        "locator": {
+            "xpath": "//*[@AutomationId='SystemSettings_Accessibility_ColorFiltering_FilterType_RadioButton'][1]"
+        }
+    },
+    "contrast_theme_dd":{
+        "locator":{
+            "xpath":"//*[@AutomationId='ItemsControlScrollViewer']/ComboBox[@ClassName='ComboBox'][@Name='Contrast themes']"
+        }
+    },
+    "night_sky_contrast_theme":{
+        "locator":{
+            "name":"Night sky"
+        }
+    },
+    "apply_btn_contrast_theme":{
+        "locator":{
+            "id":"HighContrastThemeApplyButton"
+        }
+    },
+    "none_contrast_theme":{
+        "locator":{
+            "name":"None"
+        }
+    },
+    "hp_presence_app_installed":{
+        "locator":{
+            "id":"InstalledActionDisabled"
+        }
+    },
+    "text_size_slider": {
+        "locator": {
+            "id": "SystemSettings_EaseOfAccess_Experience_TextScalingDesktop_Slider"
+         }
+    },
+    "text_size_slider_apply_change_button":{
+        "locator": {
+            "id": "SystemSettings_EaseOfAccess_Experience_TextScalingDesktop_ButtonRemove"
+        }
+    },
+    "close_settings_window": {
+        "locator": {
+            "name": "Close Settings"
+        }
+    },
+    "system_settings_color_mode_combo_box": {
+        "locator": {
+            "id": "SystemSettings_Personalize_Color_ColorMode_ComboBox"
+        }
+    },
+    "light_mode": {
+        "locator": {
+            "name": "Light"
+        }
+    },
+    "dark_mode": {
+        "locator": {
+            "name": "Dark"
+        }
+    },
+    "custom_mode": {
+        "locator": {
+            "name": "Custom"
+        }
+    },
+    "system_settings_app_mode_combo_box": {
+        "locator": {
+            "id": "SystemSettings_Personalize_Color_AppsTheme_ComboBox"
+        }
+    },
+    "system_settings_windows_mode_combo_box": {
+        "locator": {
+            "id": "SystemSettings_Personalize_Color_SystemTheme_ComboBox"
+        }
+    },
+    "scale_100_percent":{
+        "locator": {
+            "xpath": "//*[starts-with(@Name,'100%')]"
+        }
+    },
+    "scale_125_percent":{
+        "locator": {
+            "xpath": "//*[starts-with(@Name,'125%')]"
+        }
+    },
+    "scale_150_percent":{
+        "locator": {
+            "xpath": "//*[starts-with(@Name,'150%')]"
+        }
+    },
+    "scale_175_percent":{
+        "locator": {
+            "xpath": "//*[starts-with(@Name,'175%')]"
+        }
+    },
+    "scale_200_percent":{
+        "locator": {
+            "xpath": "//*[starts-with(@Name,'200%')]"
+        }
+    },
+    "scale_225_percent":{
+        "locator": {
+            "xpath": "//*[starts-with(@Name,'225%')]"
+        }
+    },
+    "scale_250_percent":{
+        "locator": {
+            "xpath": "//*[starts-with(@Name,'250%')]"
+        }
+    },
+    "scale_300_percent":{
+        "locator": {
+            "xpath": "//*[starts-with(@Name,'300%')]"
+        }
+    },
+    "scale_350_percent":{
+        "locator": {
+            "xpath": "//*[starts-with(@Name,'350%')]"
+        }
+    },
+    "scale_combobox":{
+        "locator": {
+            "id": "SystemSettings_Display_Scaling_ItemSizeOverride_ComboBox"
+        }
+    },
+    "system_volume_slider":{
+        "locator": {
+            "name": "Sound output"
+        }
+    },
+    "aquatic_contrast_theme":{
+        "locator":{
+            "name":"Aquatic"
+        }
+    },
+    "desert_contrast_theme":{
+        "locator":{
+            "name":"Desert"
+        }
+    },
+    "dusk_contrast_theme":{
+        "locator":{
+            "name":"Dusk"
+        }
+    },
+    "windows_explorer_on_taskbar":{
+        "locator":{
+            "id":"Appid: Microsoft.Windows.Explorer"
+        }
+    },
+    "windows_msstore_on_taskbar":{
+        "locator":{
+            "id":"Appid: Microsoft.WindowsStore_8wekyb3d8bbwe!App"
+        }
+    },
+    "hp_app_window_title": {
+        "locator": {
+            "xpath": ["//Window[@ClassName='ApplicationFrameTitleBarWindow']", "//Window[@Name='HP']"]
+        }
+    },
+    "external_monitor_setting_option":{
+        "locator": {
+            "id": "SystemSettings_Display_Duplicate_ComboBox"
+        }
+    },
+    "Extend_these_displays_option_in_external_monitor_setting":{
+        "locator": {
+            "name": "Extend these displays"
+        }
+    },
+    "keep_changes_on_popup":{
+        "locator": {
+            "name": "Keep changes"
+        }
+    },
+    "windows_explorer_minimize_button":{
+        "locator":{
+            "name":"Minimize"
+        }
+    },
+    "display_combo_box_in_system_setting":{
+        "locator": {
+            "id": "SystemSettings_Display_Duplicate_ComboBox"
+        }
+    },
+    "duplicate_display_option":{
+        "locator": {
+            "name": "Duplicate these displays"
+        }
+    },
+    "extended_display_option":{
+        "locator": {
+            "name": "Extend these displays"
+        }
+    },
+    "keep_changes_button":{
+        "locator": {
+            "name": "Keep changes"
+        }
+    }
+}

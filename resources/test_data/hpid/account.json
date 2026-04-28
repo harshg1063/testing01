@@ -1,0 +1,44 @@
+{
+  "hpid": {
+    "account_01": {
+      "account_type": "hpid",
+      "username": "qa.mobiauto@gmail.com",
+      "family_name": "Auto",
+      "given_name": "QA",
+      "password": "mobileapp",
+      "user_id": "7meb9ysuj53hu3aqc71s5q41p63pkcso",
+      "_comments": "pie is HP+ account, stage is normal account", 
+      "stack": ["stage","pie"]
+    },
+    "account_02": {
+      "account_type": "base hpid account without claimming printers",
+      "username": "qa.mobiautotest@gmail.com",
+      "password": "Mobileapp1",
+      "stack": ["stage","pie"]
+    },
+    "account_03": {
+      "account_type": "hpid",
+      "username": "test2.bencao@outlook.com",
+      "password": "Aio1test"
+    },
+    "account_04": {
+      "account_type": "hpid",
+      "username": "jarvisqaauto@gmail.com",
+      "family_name": "Auto",
+      "given_name": "Jarvis",
+      "password": "MobileApp7",
+      "user_id": "b7fujhnrgznegajdr6kma7zuchmhx6ei"
+    },
+    "account_05": {
+      "account_type": "hpid",
+      "username": "jarvisqaauto1@gmail.com",
+      "password": "MobileApp7"
+    },
+    "account_06": {
+      "account_type": "hp+ account",
+      "username": "stage.yeti1+manhattan@gmail.com",
+      "password": "123Testing",
+      "stack": "stage"
+    }
+  }
+}

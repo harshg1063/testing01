@@ -1,0 +1,17 @@
+{
+    "turn_off_my_screen_btn":{
+        "locator": {
+            "id": "SystemSettings_PowerAndSleep_HumanPresence_LockOnSwitch_ToggleSwitch"
+        }
+    },
+    "wake_my_device_btn":{
+        "locator": {
+            "id": "SystemSettings_PowerAndSleep_HumanPresence_LockOnSwitch_ToggleSwitch"
+        }
+    },
+    "dim_my_screen_btn":{
+        "locator": {
+            "id": "SystemSettings_PowerAndSleep_HumanPresence_DimSwitch_ToggleSwitch"
+        }
+    }
+}

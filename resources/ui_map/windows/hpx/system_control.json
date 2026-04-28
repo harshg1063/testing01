@@ -1,0 +1,267 @@
+{
+    "system_control_header": {
+        "locator": {
+            "id": "AUID_pcsystemcontrol-core_NavBreadcrumb_Pcsystemcontrol-core"
+        }
+    },
+    "system_control_card": {
+        "locator": {
+            "id": "AUID_PCDevicePage_FeatureCard_pcsystemcontrol-core"
+        }
+    },
+    "system_control_title": {
+        "locator": {
+            "id": "AUID_PCSystemControl_title_consumer"
+        }
+    },
+    "system_control_subtitle": {
+        "locator": {
+            "id": "AUID_PCSystemControl_subTitle_consumer"
+        }
+    },
+    "balanced": {
+        "locator": {
+            "id": "AUID_PCSystemControl_thermalOption_consumer_1"
+        }
+    },
+    "cool": {
+        "locator": {
+            "id": "AUID_PCSystemControl_thermalOption_consumer_2"
+        }
+    },
+    "quiet": {
+        "locator": {
+            "id": "AUID_PCSystemControl_thermalOption_consumer_3"
+        }
+    },
+    "performance": {
+        "locator": {
+            "id": "AUID_PCSystemControl_thermalOption_consumer_0"
+        }
+    },
+    "power_saver": {
+        "locator": {
+            "id": "AUID_PCSystemControl_thermalOption_consumer_4"
+        }
+    },
+    "thermal_setting_title": {
+        "locator": {
+            "id": "AUID_PCSystemControl_title_commercial"
+        }
+    },
+    "thermal_setting_tool_tip": {
+        "locator": {
+            "id": "AUID_PCSystemControl_titleTooltip_commercial"
+        }
+    },
+    "thermal_setting_sub_title": {
+        "locator": {
+            "id": "AUID_PCSystemControl_subTitle_commercial"
+        }
+    },
+    "smart_sense_tool_tip": {
+        "locator": {
+            "id": "AUID_PCSystemControl_tooltip_commercial_5"
+        }
+    },
+    "cool_tool_tip": {
+        "locator": {
+            "id": "AUID_PCSystemControl_thermalTooltip_commercial_2"
+        }
+    },
+    "quiet_tool_tip": {
+        "locator": {
+            "id": "AUID_PCSystemControl_thermalTooltip_commercial_3"
+        }
+    },
+    "performance_tool_tip": {
+        "locator": {
+            "id": "AUID_PCSystemControl_thermalTooltip_commercial_0"
+        }
+    },
+    "smart_sense": {
+        "locator": {
+            "id": "AUID_PCSystemControl_thermalOption_commercial_5"
+        }
+    },
+    "cool_commercial": {
+        "locator": {
+            "id": "AUID_PCSystemControl_thermalOption_commercial_2"
+        }
+    },
+    "quiet_commercial": {
+        "locator": {
+            "id": "AUID_PCSystemControl_thermalOption_commercial_3"
+        }
+    },
+    "performance_commercial": {
+        "locator": {
+            "id": "AUID_PCSystemControl_thermalOption_commercial_0"
+        }
+    },
+    "performance_control_title": {
+        "locator": {
+            "id": "AUID_PCSystemControl_title_commercial"
+        }
+    },
+    "performance_control_tool_tip": {
+        "locator": {
+            "xpath": "//*[starts-with(@Name,'Performance ControlWhile System Control manages your PC performa')]"
+        }
+    },
+    "performance_control_subtitle": {
+        "locator": {
+            "xpath": "//*[starts-with(@Name,'Optimize your PC performance, fan noise and cooling preferences.')][@AutomationId='AUID_PCSystemControl_subTitle_commercial']"
+        }
+    },
+    "smart_sense_tooltip": {
+        "locator": {
+            "xpath": "//Button[@ClassName='DynamicAutomationPeer'][starts-with(@Name,'Smart SenseAutomatically adapt the system to your demand with op')]"
+        }
+    },
+    "cool_tooltip_commercial": {
+        "locator": {
+            "id": "AUID_PCSystemControl_tooltip_commercial_2"
+        }
+    },
+    "quiet_tooltip_commercial": {
+        "locator": {
+            "xpath": "//Button[@ClassName='DynamicAutomationPeer'][starts-with(@Name,'Ideal for quiet environments. When enabled, the fan will not tur')]/Button[@ClassName='DynamicAutomationPeer'][starts-with(@Name,'QuietIdeal for quiet environments. When enabled, the fan will no')]"
+        }
+    },
+    "performance_tooltip_commercial": {
+        "locator": {
+            "xpath": "//Button[@ClassName='DynamicAutomationPeer'][starts-with(@Name,'Ideal for software that requires heavy use of the CPU. When enab')]/Button[@ClassName='DynamicAutomationPeer'][starts-with(@Name,'PerformanceIdeal for software that requires heavy use of the CPU')]"
+        }
+    },
+    "smart_sense_consumer": {
+        "locator": {
+            "id": "AUID_PCSystemControl_thermalOption_consumer_5"
+        }
+    },
+    "system_control_title_tooltip": {
+        "locator": {
+            "id": "AUID_PCSystemControl_tooltip_consumer"
+        }
+    },
+    "smart_sense_tooltip_consumer": {
+        "locator": {
+            "id": "AUID_PCSystemControl_tooltip_consumer_5"
+        }
+    },
+    "balanced_tooltip_consumer": {
+        "locator": {
+            "id": "AUID_PCSystemControl_tooltip_consumer_1"
+        }
+    },
+    "cool_tooltip_consumer": {
+        "locator": {
+            "id": "AUID_PCSystemControl_tooltip_consumer_2"
+        }
+    },
+    "quiet_tooltip_consumer": {
+        "locator": {
+            "id": "AUID_PCSystemControl_tooltip_consumer_3"
+        }
+    },
+    "performance_tooltip_consumer": {
+        "locator": {
+            "id": "AUID_PCSystemControl_tooltip_consumer_0"
+        }
+    },
+    "power_saver_tooltip_consumer": {
+        "locator": {
+            "id": "AUID_PCSystemControl_tooltip_consumer_4"
+        }
+    },
+    "quiet_commercial_tooltip": {
+        "locator": {
+            "id": "AUID_PCSystemControl_tooltip_commercial_3"
+        }
+    },
+    "performance_commercial_tooltip": {
+        "locator": {
+            "id": "AUID_PCSystemControl_tooltip_commercial_0"
+        }
+    },
+    "performance_control_title_consumer": {
+        "locator": {
+            "id": "AUID_PCSystemControl_title_consumer"
+        }
+    },
+    "system_control_title_tooltip_commercial": {
+        "locator": {
+            "id": "AUID_PCSystemControl_tooltip_commercial"
+        }
+    },
+    "focus_mode_toggle_off_consumer": {
+        "locator": {
+            "id": "AUID_PCSystemControl_FocusModeView_toggleSwitch_Off"
+        }
+    },
+    "focus_mode_toggle_on_consumer": {
+        "locator": {
+            "id": "AUID_PCSystemControl_FocusModeView_toggleSwitch_On"
+        }
+    },
+    "balance_name": {
+        "locator": {
+            "xpath": "//*[contains(@Name, 'Balanced')]"
+        }
+    },
+    "best_power_efficiency": {
+        "locator": {
+            "xpath": "//*[contains(@Name, 'Best Power Efficiency')]"
+        }
+    },
+    "best_performance": {
+        "locator": {
+            "xpath": "//*[contains(@Name, 'Best Performance')]"
+        }
+    },
+    "power_mode": {
+        "locator": {
+            "xpath": "//*[@ClassName='Windows.UI.Core.CoreWindow']/Custom[@AutomationId='PermanentNavigationView']/Group[@ClassName='LandmarkTarget']/Pane[@AutomationId='ItemsControlScrollViewer']/Group[@ClassName='NamedContainerAutomationPeer']"
+        }
+    },
+    "focus_mode_text_on_consumer": {
+        "locator": {
+            "id": "AUID_PCSystemControl_FocusModeView_title"
+        }
+    },
+    "dim_background_windows_text_on_consumer": {
+        "locator": {
+            "id": "AUID_PCSystemControl_FocusModeView_description"
+        }
+    },
+    "dim_background_windows_tips_icon_on_consumer": {
+        "locator": {
+            "id": "AUID_PCSystemControl_FocusModeView_tooltip"
+        }
+    },
+    "power_mode_dd_in_settings": {
+        "locator": {
+            "xpath": "//*[@ClassName='Windows.UI.Core.CoreWindow']/Custom[@AutomationId='PermanentNavigationView']/Group[@ClassName='LandmarkTarget']/Pane[@AutomationId='ItemsControlScrollViewer']/Group[@ClassName='NamedContainerAutomationPeer']/*[@ClassName='ExpanderToggleButton']"
+        }
+    },
+    "plug_in_combo_box": {
+        "locator": {
+            "id": "SystemSettings_PowerAndBattery_PowerModes_AC_ComboBox"
+        }
+    },
+    "oled_toggle_off": {
+        "locator": {
+            "id": "AUID_PCSYSTEMCONTROL_PowerSaverSwitch_SwitchOn"
+        }
+    },
+    "oled_toggle_on": {
+        "locator": {
+            "id": "AUID_PCSYSTEMCONTROL_PowerSaverSwitch_SwitchOff"
+        }
+    },
+    "oled_toggle_text": {
+        "locator": {
+            "xpath": "//*[contains(@Name, 'Optimize OLED power consumption')]"
+        }
+    }
+}

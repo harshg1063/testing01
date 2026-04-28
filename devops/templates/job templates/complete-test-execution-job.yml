@@ -1,0 +1,162 @@
+# Complete Test Execution Job Template
+#   testFiles: Array of test files to run (optional - if empty, uses testPattern)
+#   testPattern: File pattern for discovery (default: 'test_*.py')
+#   pytestArgs: Additional pytest arguments (default: empty - CI/CD manages app deployment)
+#   mobileDevice: Mobile device identifier (default: 'localhost')
+#   workingDirectory: Base directory for tests (default: standard path)
+#   
+#   # Job Control Parameters
+#   condition: Job condition (optional) Job Template
+# Handles myHP app installation followed by test suite execution
+# This template combines install-myhp-job and dynamic-test-suite-job into a complete workflow
+#
+# Parameters:
+#   suitePath: Path to the test suite (e.g., 'regression', 'smoke', 'robotics')
+#   
+#   # App Installation Parameters
+#   pipelineId: Pipeline ID for HPX builds (required - use values from Build Environments variable group)
+#   buildId: Specific build ID to install (optional - if not provided, uses latest successful)
+#   buildVersionToDownload: How to select build (latest, latestFromBranch, specific)
+#   
+#   # Test Execution Parameters  
+#   testFiles: Array of test files to run (optional - if empty, uses auto-discovery)
+#   autoDiscover: Enable automatic test discovery (default: true if testFiles empty)
+#   discoveryPath: Directory path to discover tests from (optional - uses workingDirectory if not set)
+#   testPattern: File pattern for discovery (default: 'test_*.py')
+#   testTypes: Types of tests to include ('robotics', 'localization', 'general')
+#   pytestArgs: Additional pytest arguments (default: empty - CI/CD manages app deployment)
+#   mobileDevice: Mobile device identifier (default: 'localhost')
+#   workingDirectory: Base directory for tests (default: standard path)
+#   
+#   # Job Control Parameters
+#   jobName: Name for the combined job (default: based on suitePath)
+#   condition: Job condition (optional)
+
+parameters:
+- name: suitePath
+  type: string
+- name: pipelineId
+  type: string
+- name: buildId
+  type: string
+  default: ''
+- name: buildVersionToDownload
+  type: string
+  default: 'latest'
+- name: testFiles
+  type: object
+  default: []
+- name: testPattern
+  type: string
+  default: 'test_*.py'
+- name: pytestArgs
+  type: string
+  default: ''
+- name: mobileDevice
+  type: string
+  default: 'localhost'
+- name: workingDirectory
+  type: string
+  default: '$(Build.Repository.LocalPath)/tests/hp_app'
+- name: condition
+  type: string
+  default: ''
+- name: jobName
+  type: string
+  default: ''  # Will be auto-generated if empty
+- name: agentDemands
+  type: object
+  default: []
+
+jobs:
+- job: ${{ coalesce(parameters.jobName, format('InstallAndTest_{0}', replace(parameters.suitePath, '/', '_'))) }}
+  displayName: 'Install myHP App and Execute Tests: ${{ parameters.suitePath }}'
+  ${{ if gt(length(parameters.agentDemands), 0) }}:
+    pool:
+      name: ASQE-QAMA-General
+      demands: ${{ parameters.agentDemands }}
+  ${{ if eq(length(parameters.agentDemands), 0) }}:
+    pool:
+      name: ASQE-QAMA-General
+  steps:
+  # Step 1: Check and Start Appium Server
+  - powershell: |
+      Write-Host "Checking if Appium server is running on port 4444..."
+      
+      # Check if port 4444 is in use by Appium process
+      $portInUse = Get-NetTCPConnection -LocalPort 4444 -State Listen -ErrorAction SilentlyContinue
+      $appiumProcess = Get-Process -Name "node" -ErrorAction SilentlyContinue
+      
+      if ($portInUse -and $appiumProcess) {
+          Write-Host "Appium server is running (PID: $($appiumProcess.Id)) on port 4444"
+      } elseif ($portInUse) {
+          Write-Host "Port 4444 is in use but not by Appium process"
+      } else {
+          Write-Host "Appium server is not running. Starting Appium on port 4444..."
+          
+          # Start Appium server in a new persistent PowerShell window
+          $appiumCommand = "appium --address 0.0.0.0 --port 4444 --allow-cors"
+          Start-Process -FilePath "powershell.exe" -ArgumentList "-NoExit", "-Command", $appiumCommand -WindowStyle Normal
+          
+          # Wait for server to start
+          Write-Host "Waiting for Appium server to start..."
+          Start-Sleep -Seconds 10
+          
+          # Verify it started
+          $newPortCheck = Get-NetTCPConnection -LocalPort 4444 -State Listen -ErrorAction SilentlyContinue
+          $newProcess = Get-Process -Name "node" -ErrorAction SilentlyContinue
+          
+          if ($newPortCheck -and $newProcess) {
+              Write-Host "Appium server started successfully (PID: $($newProcess.Id)) on port 4444"
+          } else {
+              Write-Host "Failed to start Appium server on port 4444"
+              exit 1
+          }
+      }
+      
+      # Test server connectivity on port 4444
+      try {
+          $response = Invoke-WebRequest -Uri "http://localhost:4444/status" -Method GET -TimeoutSec 10
+          Write-Host "Appium server is responding on port 4444"
+      } catch {
+          Write-Host "Appium server is not responding on port 4444: $($_.Exception.Message)"
+          exit 1
+      }
+    displayName: 'Check and Start Appium Server on Port 4444'
+
+  # Step 2: Install myHP Application
+  - template: install-myhp-steps.yml
+    parameters:
+      pipelineId: ${{ parameters.pipelineId }}
+      buildId: ${{ parameters.buildId }}
+      buildVersionToDownload: ${{ parameters.buildVersionToDownload }}
+
+  # Step 3: Determine Test Pattern
+  - powershell: |
+      $testFiles = @('${{ join(''', ''', parameters.testFiles) }}')
+      $testPattern = "${{ parameters.testPattern }}"
+      
+      Write-Host "Test files array: $($testFiles -join ', ')"
+      Write-Host "Test pattern: $testPattern"
+      
+      if ($testFiles.Count -gt 0 -and $testFiles[0] -ne '') {
+          # Use specific test files
+          $finalPattern = ($testFiles -join ' ')
+          Write-Host "Using specific test files: $finalPattern"
+      } else {
+          # Use pattern
+          $finalPattern = $testPattern
+          Write-Host "Using test pattern: $finalPattern"
+      }
+      
+      Write-Host "##vso[task.setvariable variable=TEST_PATTERN]$finalPattern"
+    displayName: 'Determine Test Pattern'
+
+  # Step 4: Execute Tests
+  - template: ../step templates/run-pytest-suite.yml
+    parameters:
+      suitePath: ${{ parameters.suitePath }}
+      testPattern: '$(TEST_PATTERN)'
+      pytestArgs: ${{ parameters.pytestArgs }}
+      testTarget: ${{ parameters.mobileDevice }}
+      workingDirectory: ${{ parameters.workingDirectory }}

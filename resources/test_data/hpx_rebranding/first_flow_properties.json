@@ -1,0 +1,15 @@
+{
+    "@hp-af/cep-manager/consents_consentsAccepted": "true",
+    "@hp-af/feature-switch/overrides": {
+    "startup-x-onboarding": false,
+    "startup-x-featurediscovery": false,
+    "startup-x-core": false,
+    "account-x-startup": false,
+    "privacy-x-firstuse": false,
+    "devices-x-adddevice": true,
+    "devices-x-add-printer": true,
+    "devices-x-add-networkprinter": true,
+    "devices-x-add-setupprinter": true,
+    "devices-x-add-devicesupport": true
+  }
+}

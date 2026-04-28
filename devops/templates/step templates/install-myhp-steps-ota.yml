@@ -1,0 +1,297 @@
+# Install myHP Application - Over-The-Air (OTA) Update Step Template
+# 
+# Purpose: Tests application upgrade scenarios by installing an old version first, then upgrading to new version
+# This template simulates real-world OTA (Over-The-Air) update experiences where users upgrade from previous versions
+#
+# OTA Installation Workflow:
+# 1. Downloads baseline/previous version from Universal Package artifact
+# 2. Installs signing certificate for baseline package
+# 3. Installs baseline version as starting point
+# 4. Determines target build version from Azure DevOps pipeline (new version)
+# 5. Checks if currently installed version matches target (skips upgrade if already at target)
+# 6. Downloads new HPX package artifact only if upgrade is needed
+# 7. Installs signing certificate for new package
+# 8. Upgrades from baseline to new version (in-place update, preserves user data)
+#
+# Difference from Standard Installation:
+# - Standard (install-myhp-steps.yml): Clean install of target version
+# - OTA (this template): Install baseline → Upgrade to target (tests update path)
+#
+# Use Cases:
+# - Regression testing: Verify upgrade doesn't break existing functionality
+# - Migration testing: Ensure user data/settings persist through upgrade
+# - Compatibility testing: Test upgrade path from older versions
+# - Saturday regression runs: Weekly validation of upgrade scenarios
+#
+# Parameters:
+#   baselinePackageVersion: Version of the baseline/old application to install first
+#                          Default: '49.52537.7800' (should be updated to desired baseline)
+#   
+#   projectId: Azure DevOps project ID containing the build pipeline
+#              Default: $(Project ID) from variable group
+#   
+#   pipelineId: Build pipeline ID for myHP/HPX builds (REQUIRED)
+#               Example values from Build Environments variable group:
+#               - $(Pipeline ID Development) for dev builds
+#               - $(Pipeline ID Main) for main branch builds
+#   
+#   buildId: Specific build ID to install (optional)
+#            Leave empty to use latest successful build from pipeline
+#   
+#   buildVersionToDownload: Build selection strategy
+#            - 'latest': Latest successful build (default)
+#            - 'latestFromBranch': Latest from specific branch
+#            - 'specific': Specific build ID (requires buildId parameter)
+#
+# Required Variable Groups:
+# - Test Configuration Variables: Contains all script path variables
+# - HP App Build Pipeline Variables: Contains Project ID and pipeline IDs
+#
+# Script Variables Used (from Test Configuration Variables group):
+# - $(getBuildVersionScriptPath): Queries Azure DevOps API for target build version
+# - $(checkInstallationNeededScriptPath): Compares installed vs target version
+# - $(checkPackageDownloadedScriptPath): Checks if artifact already downloaded
+# - $(installCertificateScriptPath): Installs package signing certificate
+# - $(removeOldMyHPScriptPath): Uninstalls current myHP version
+# - $(installMyHPPackageScriptPath): Installs myHP package from artifact
+
+parameters:
+- name: baselinePackageVersion
+  type: string
+  default: '49.52537.7800'
+  displayName: 'Baseline Package Version (Old Version to Install First)'
+- name: projectId
+  type: string
+  default: '$(Project ID)'  # From HP App Build Pipeline Variables group
+- name: pipelineId
+  type: string  # Required - no default, must be provided by caller
+- name: buildId
+  type: string
+  default: ''  # Empty = use latest successful build
+- name: buildVersionToDownload
+  type: string
+  default: 'latestFromBranch'  # Options: latest, latestFromBranch, specific
+- name: branchName
+  type: string
+  default: 'refs/heads/main'  # Branch name for latestFromBranch option
+steps:
+
+  # ============================================================================
+  # PHASE 1: INSTALL BASELINE VERSION (OLD APP)
+  # ============================================================================
+
+  # ============================================================================
+  # Step 1: Download Baseline Package from Universal Package Feed
+  # ============================================================================
+  # Purpose: Downloads the baseline/old version of myHP application from artifact feed
+  # This represents the "current" version that would be installed on user devices
+  # Package Type: Universal Package (upack) containing MSIX bundle
+  # Feed: HP application package feed with baseline versions
+  # Version: Configurable via baselinePackageVersion parameter
+  # Target: $(System.ArtifactsDirectory)/BaselinePackage/ directory
+  - task: DownloadPackage@1
+    displayName: 'Download Baseline Package (Old Version)'
+    inputs:
+      packageType: 'upack'
+      feed: '3e948eaf-d784-4d9f-8540-6ada3ee7f424/1750b79e-8814-4f9a-97eb-ca659889f5f8'
+      view: '5b7e23ba-bdec-45bc-99cd-ccade302fdd4'
+      definition: '9b034cd1-e9a8-42e9-8830-6ed8f144e790'
+      version: '${{ parameters.baselinePackageVersion }}'
+      downloadPath: '$(System.ArtifactsDirectory)/BaselinePackage'
+
+  # ============================================================================
+  # Step 2: Extract Baseline Package
+  # ============================================================================
+  # Purpose: Unzips the downloaded baseline package to access installation files
+  # Source: $(System.ArtifactsDirectory)/BaselinePackage/*.zip
+  # Destination: $(System.ArtifactsDirectory)/BaselinePackage/Extracted/
+  # Behavior: Cleans destination folder before extraction to ensure clean state
+  - task: ExtractFiles@1
+    displayName: 'Extract Baseline Package'
+    inputs:
+      archiveFilePatterns: '$(System.ArtifactsDirectory)/BaselinePackage/*.zip'
+      destinationFolder: '$(System.ArtifactsDirectory)/BaselinePackage/Extracted'
+      cleanDestinationFolder: true
+
+  # ============================================================================
+  # Step 3: Install Signing Certificate for Baseline Package
+  # ============================================================================
+  # Purpose: Installs the code signing certificate required for baseline package installation
+  # Script: $(installCertificateScriptPath) - install-signing-certificate.ps1
+  # Location: Certificate file is within the downloaded baseline package
+  # Required: Windows requires valid code signing cert to install MSIX packages
+  # Note: Certificate may be the same for baseline and new version
+  - task: PowerShell@2
+    displayName: 'Install Signing Certificate (Baseline)'
+    continueOnError: true  # Certificate installation is nice-to-have
+    inputs:
+      targetType: 'filePath'
+      filePath: $(installCertificateScriptPath)
+      arguments: '-artifactsDirectory "$(System.ArtifactsDirectory)/BaselinePackage/Extracted"'
+
+  # ============================================================================
+  # Step 3: Remove Any Existing myHP Installation
+  # ============================================================================
+  # Purpose: Ensures clean baseline installation by removing any existing myHP version
+  # Script: $(removeOldMyHPScriptPath) - remove-old-myhp.ps1
+  # Method: Uses Windows Package Manager to remove existing myHP package
+  # Ensures: Baseline version installs on clean system state
+  - task: PowerShell@2
+    displayName: 'Remove Existing myHP Installation (Pre-Baseline)'
+    continueOnError: true  # May not exist, continue if removal fails
+    inputs:
+      targetType: 'filePath'
+      filePath: $(removeOldMyHPScriptPath)
+
+  # ============================================================================
+  # Step 4: Install Baseline Package
+  # ============================================================================
+  # Purpose: Installs the baseline/old version of myHP application
+  # Source: Downloaded baseline package from $(System.ArtifactsDirectory)/BaselinePackage/Extracted/
+  # Method: Uses Windows PowerShell Add-AppxPackage cmdlet for MSIX installation
+  # Result: System now has old version installed, ready for upgrade testing
+  # Timeout: 5 minutes to allow for package registration and installation completion
+  - task: PowerShell@2
+    displayName: 'Install Baseline Package (Old Version)'
+    inputs:
+      targetType: 'inline'
+      script: |
+        $ErrorActionPreference = "Stop"
+        
+        # Find the msixbundle in the baseline extracted directory
+        $bundlePath = Get-ChildItem -Path "$(System.ArtifactsDirectory)/BaselinePackage/Extracted" -Recurse -Filter "*.msixbundle" | Select-Object -First 1 -ExpandProperty FullName
+        
+        if (-not $bundlePath) {
+            throw "MSIX bundle not found in baseline package"
+        }
+        
+        Write-Host "Installing baseline bundle: $bundlePath"
+        
+        Add-AppxPackage -Path $bundlePath -ForceApplicationShutdown -ForceUpdateFromAnyVersion
+        
+        Write-Host "Baseline installation complete!"
+    timeoutInMinutes: 5
+
+  # ============================================================================
+  # PHASE 2: UPGRADE TO NEW VERSION (TARGET APP)
+  # ============================================================================
+
+  # ============================================================================
+  # Step 5: Determine Target Build Version
+  # ============================================================================
+  # Purpose: Queries Azure DevOps API to identify which build version to upgrade to
+  # Script: $(getBuildVersionScriptPath) - get-target-build-version.ps1
+  # Output Variables:
+  # - GetTargetVersion.TargetVersion: Version string of target build (e.g., "1.2.3.4")
+  # - GetTargetVersion.ActualBuildId: Build ID to download (resolved from latest/specific selection)
+  # Uses: System.AccessToken for Azure DevOps API authentication
+  - task: PowerShell@2
+    displayName: 'Get Target Build and Version (New Version)'
+    name: GetTargetVersion
+    inputs:
+      targetType: 'filePath'
+      filePath: $(getBuildVersionScriptPath)
+      arguments: >-
+        -organization "$(System.TeamFoundationCollectionUri)"
+        -project "${{ parameters.projectId }}"
+        -pipelineId "${{ parameters.pipelineId }}"
+        -providedBuildId "${{ parameters.buildId }}"
+        -buildVersionToDownload "${{ parameters.buildVersionToDownload }}"
+        -branchName "${{ parameters.branchName }}"
+        -accessToken "$(System.AccessToken)"
+
+  # ============================================================================
+  # Step 7: Check If Target Package Already Downloaded
+  # ============================================================================
+  # Purpose: Verifies if new HPX package artifact already exists in artifacts directory
+  # Script: $(checkPackageDownloadedScriptPath) - check-package-downloaded.ps1
+  # Condition: Only runs if upgrade is needed (CheckVersion.NeedsInstall='true')
+  # Output Variable:
+  # - CheckDownload.NeedsDownload: 'true' if package missing, 'false' if already present
+  # Optimization: Skips download task if package already exists from previous run
+  - task: PowerShell@2
+    displayName: 'Check if Target Package Already Downloaded'
+    name: CheckDownload
+    inputs:
+      targetType: 'filePath'
+      filePath: $(checkPackageDownloadedScriptPath)
+      arguments: '-artifactsDirectory "$(System.ArtifactsDirectory)"'
+
+  # ============================================================================
+  # Step 8: Download New HPX Package Artifact
+  # ============================================================================
+  # Purpose: Downloads new myHP application package (HPX format) from Azure DevOps build artifacts
+  # Condition: Runs only if upgrade needed AND package not already downloaded
+  # Artifact Pattern: Downloads *_REBRAND_*.zip excluding ARM and x64 variants
+  # Target: $(System.ArtifactsDirectory)/HPX/ directory (separate from BaselinePackage)
+  # Uses: Build ID from GetTargetVersion.ActualBuildId variable
+  - task: DownloadBuildArtifacts@1
+    displayName: 'Download New HPX Package'
+    condition: eq(variables['CheckDownload.NeedsDownload'], 'true')
+    inputs:
+      buildType: 'specific'
+      project: '${{ parameters.projectId }}'
+      pipeline: '${{ parameters.pipelineId }}'
+      buildVersionToDownload: '${{ parameters.buildVersionToDownload }}'
+      branchName: '${{ parameters.branchName }}'
+      buildId: '$(GetTargetVersion.ActualBuildId)'
+      downloadType: 'single'
+      artifactName: 'HPX'
+      downloadPath: '$(System.ArtifactsDirectory)'
+      itemPattern: |
+        **/*_REBRAND_*.zip
+        !**/*_ARM_REBRAND_*.zip
+        !**/*_x64_REBRAND_*.zip
+
+  # ============================================================================
+  # Step 9: Extract New HPX Package
+  # ============================================================================
+  # Purpose: Unzips the downloaded new HPX package to access installation files
+  # Condition: Runs only if upgrade needed AND download occurred
+  # Source: $(System.ArtifactsDirectory)/HPX/*_REBRAND_*.zip
+  # Destination: $(System.ArtifactsDirectory)/HPX/Extracted/
+  # Behavior: Cleans destination folder before extraction to ensure clean state
+  - task: ExtractFiles@1
+    displayName: 'Extract New HPX Package'
+    condition: eq(variables['CheckDownload.NeedsDownload'], 'true')
+    inputs:
+      archiveFilePatterns: '$(System.ArtifactsDirectory)/HPX/*_REBRAND_*.zip'
+      destinationFolder: '$(System.ArtifactsDirectory)/HPX/Extracted'
+      cleanDestinationFolder: true
+
+  # ============================================================================
+  # Step 10: Install Signing Certificate for New Package
+  # ============================================================================
+  # Purpose: Installs the code signing certificate required for new package installation
+  # Script: $(installCertificateScriptPath) - install-signing-certificate.ps1
+  # Condition: Runs if upgrade is needed (regardless of download - certificate may differ)
+  # Location: Certificate file is extracted from new HPX package artifact
+  # Note: May be redundant if baseline and new version use same certificate
+  # Required: Windows requires valid code signing cert to install/upgrade MSIX packages
+  - task: PowerShell@2
+    displayName: 'Install Signing Certificate (New Version)'
+    continueOnError: true  # Certificate installation is nice-to-have
+    inputs:
+      targetType: 'filePath'
+      filePath: $(installCertificateScriptPath)
+      arguments: '-artifactsDirectory "$(System.ArtifactsDirectory)"'
+
+  # ============================================================================
+  # Step 11: Upgrade myHP Package (OTA Update)
+  # ============================================================================
+  # Purpose: Performs in-place upgrade from baseline to new version (simulates OTA update)
+  # Script: $(installMyHPPackageScriptPath) - install-myhp-package.ps1
+  # Condition: Runs if upgrade is needed
+  # Source: Extracted new HPX package from $(System.ArtifactsDirectory)/HPX/Extracted/
+  # Method: Uses Windows PowerShell Add-AppxPackage cmdlet with -Update flag for MSIX upgrade
+  # Behavior: Preserves app data, settings, and user preferences during upgrade
+  # Result: Application updated from baseline version to target version
+  # Timeout: 5 minutes to allow for package upgrade and installation completion
+  # Note: This is the key step that tests the OTA upgrade path
+  - task: PowerShell@2
+    displayName: 'Upgrade myHP Package (OTA Update)'
+    inputs:
+      targetType: 'filePath'
+      filePath: $(installMyHPPackageScriptPath)
+      arguments: '-artifactsDirectory "$(System.ArtifactsDirectory)"'
+    timeoutInMinutes: 5

@@ -1,0 +1,52 @@
+{
+    "start_menu_window": {
+        "locator": {
+            "id":"StartButton"
+        }
+    },
+    "open_app_btn": {
+        "locator": {
+            "id":"pp_S_Open"
+        }
+    },
+    "search_box_on_windows": {
+        "locator": {
+            "id":"SearchTextBox"
+        }
+    },
+    "myhp_app_icon": {
+        "locator": {
+            "id":"Appid: AD2F1837.myHP_v10z8vjag6ke6!App"
+        }
+    },
+    "hp_app_btn": {
+        "locator": {
+            "id":"PPHP"
+        }
+    },
+    "maximize_button": {
+        "locator": {
+            "id": "Maximize"
+        }
+    },
+    "myhp_app_icon_on_taskbar": {
+        "locator": {
+            "id":"Appid: AD2F1837.myHP_v10z8vjag6ke6!App"
+        }
+    },
+    "myhp_app_icon_on_start_menu": {
+        "locator": {
+            "id":["tile-P~AD2F1837.myHP_v10z8vjag6ke6!App","Appid: AD2F1837.myHP_v10z8vjag6ke6!App"]
+        }
+    },
+    "unpin_hp_from_start_menu": {
+        "locator": {
+            "id":"pp_StartUnpin"
+        }
+    },
+    "scroll_bar": {
+        "locator": {
+            "id":"ScrollBar"
+        }
+    }
+}

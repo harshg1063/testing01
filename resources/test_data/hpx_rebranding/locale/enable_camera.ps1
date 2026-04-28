@@ -1,0 +1,1 @@
+Get-PnpDevice | Where-Object {$_.FriendlyName -like '*HP 5MP Camera*'} | Enable-PnpDevice -Confirm:$false;

@@ -1,0 +1,183 @@
+{
+    "feedback_slide_title": {
+        "locator": {
+            "xpath":"//Text[@ClassName='title-small--medium']"
+        }
+    },
+    "menu_btn_from_feedback": {
+        "locator": {
+            "id": "SideFlyout.SideFlyoutView.NavigationBackArrowLeftIcon",
+            "xpath":"//Button[@Name='Menu']"
+        }
+    },
+    "rating_star_field": {
+        "locator": {
+            "class name":"css-e6kgum"
+        }
+    },
+    "rating_star": {
+        "locator": {
+            "class name": "clientos-ui-toolkit-rating__icon clientos-ui-toolkit-rating__icon--active"
+        }
+    },
+    "1_star": {
+        "locator":{
+            "name": "1 star",
+            "id": ["clientos-ui-toolkit-rating-group-26mbk3y__rating-1", "clientos-ui-toolkit-rating-group-26mbk3y__rating-1__icon"]
+        }
+    },
+    "2_star": {
+        "locator":{
+            "name": "2 stars",
+            "id": ["clientos-ui-toolkit-rating-group-26mbk3y__rating-2", "clientos-ui-toolkit-rating-group-26mbk3y__rating-2__icon"]
+        }
+    },
+    "3_star": {
+        "locator":{
+            "name": "3 stars",
+            "id": ["clientos-ui-toolkit-rating-group-26mbk3y__rating-3", "clientos-ui-toolkit-rating-group-26mbk3y__rating-3__icon"]
+        }
+    },
+    "4_star": {
+        "locator":{
+            "name": "4 stars",
+            "id": ["clientos-ui-toolkit-rating-group-26mbk3y__rating-4", "clientos-ui-toolkit-rating-group-26mbk3y__rating-4__icon"]
+        }
+    },
+    "5_star": {
+        "locator":{
+            "name": "5 stars",
+            "id": ["clientos-ui-toolkit-rating-group-26mbk3y__rating-5", "clientos-ui-toolkit-rating-group-26mbk3y__rating-5__icon"]
+        }
+    },
+    "why_did_you_open_app_today_title": {
+        "locator": {
+            "xpath":"//Text[@Name='Why did you open the app today?']"
+        }
+    },
+    "why_did_you_open_today_options": {
+        "locator": {
+            "id": ["Feedback.OverallFeedback.ReasonSelect-select", "Feedback.OverallFeedback.ReasonSelect-select-listbox", 
+                    "Feedback.OverallFeedback.ReasonSelect", "Feedback.OverallFeedback.ReasonSelect-listbox"]
+        }
+    },
+    "get_tech_support": {
+        "locator": {
+            "id": ["Feedback.OverallFeedback.ReasonSelect-select-option-0", "Feedback.OverallFeedback.ReasonSelect-option-0"]
+        }
+    },
+    "configure_my_devices": {
+        "locator": {
+            "id": ["Feedback.OverallFeedback.ReasonSelect-select-option-1", "Feedback.OverallFeedback.ReasonSelect-option-1"]
+        }
+    },
+    "set_up_my_printer": {
+        "locator": {
+            "id": ["Feedback.OverallFeedback.ReasonSelect-select-option-2", "Feedback.OverallFeedback.ReasonSelect-option-2"]
+        }
+    },
+    "print_or_scan": {
+        "locator": {
+            "id": ["Feedback.OverallFeedback.ReasonSelect-select-option-3", "Feedback.OverallFeedback.ReasonSelect-option-3"]
+        }
+    },
+    "manage_my_account_feedback": {
+        "locator": {
+            "id": ["Feedback.OverallFeedback.ReasonSelect-select-option-4", "Feedback.OverallFeedback.ReasonSelect-option-4"]
+        }
+    },
+    "manage_my_subscriptions": {
+        "locator": {
+            "id": ["Feedback.OverallFeedback.ReasonSelect-select-option-5", "Feedback.OverallFeedback.ReasonSelect-option-5"]
+        }
+    },
+    "other_1st_dropdown": {
+        "locator": {
+            "id": ["Feedback.OverallFeedback.ReasonSelect-select-option-6", "Feedback.OverallFeedback.ReasonSelect-option-6"]
+        }
+    },
+    "whats_your_feedback_related_to_title": {
+        "locator": {
+            "xpath":"//Text[@Name=\"What's your feedback related to?\"]"
+        }
+    },
+    "whats_your_feedback_related_to_options": {
+        "locator": {
+            "id": ["Feedback.OverallFeedback.CategorySelect-select", "Feedback.OverallFeedback.CategorySelect-select-listbox",
+                    "Feedback.OverallFeedback.CategorySelect", "Feedback.OverallFeedback.CategorySelect-listbox"]
+        }
+    },
+    "load_time": {
+        "locator": {
+            "id": ["Feedback.OverallFeedback.CategorySelect-select-option-0", "Feedback.OverallFeedback.CategorySelect-option-0"]
+        }
+    },
+    "ease_of_use": {
+        "locator": {
+            "id": ["Feedback.OverallFeedback.CategorySelect-select-option-1", "Feedback.OverallFeedback.CategorySelect-option-1"]
+        }
+    },
+    "bug_or_issue": {
+        "locator": {
+            "id": ["Feedback.OverallFeedback.CategorySelect-select-option-2", "Feedback.OverallFeedback.CategorySelect-option-2"]
+        }
+    },
+    "app_feature_request": {
+        "locator": {
+            "id": ["Feedback.OverallFeedback.CategorySelect-select-option-3", "Feedback.OverallFeedback.CategorySelect-option-3"]
+        }
+    },
+    "other_2nd_dropdown": {
+        "locator": {
+            "id": ["Feedback.OverallFeedback.CategorySelect-select-option-4", "Feedback.OverallFeedback.CategorySelect-option-4"]
+        }
+    },
+    "tell_your_experience_title": {
+        "locator": {
+            "xpath":"//Text[@Name='How was your overall HP app experience today?']"
+        }
+    },
+    "edit_feedback": {
+        "locator": {
+            "id": ["Feedback.OverallFeedback.CommentsTextarea__textarea", "Feedback.OverallFeedback.CommentsTextarea"]
+        }
+    },
+    "contacting_email": {
+        "locator": {
+            "id": "Feedback.OverallFeedback.EmailTextField__text-box"
+        }
+    },
+    "send_feedback_submit_btn": {
+        "locator": {
+            "class name": "clientos-ui-toolkit-button label clientos-ui-toolkit-button__primary clientos-ui-toolkit-button__large clientos-ui-toolkit-button__disabled css-yxnowq",
+            "id": "Feedback.OverallFeedback.SubmitButton"
+        }
+    },
+    "feedback_submission_success_message": {
+        "locator": {
+            "class name": "styles__ThankfullMessage-hpx-core-experiences-react-feedback-mfe__sc-1e5s3dr-8 bdDWdX"
+        }
+    },
+    "hp_privacy_statement_link": {
+        "locator": {
+            "id": "Feedback.OverallFeedback.PrivacyAgreementLink"
+        }
+    },
+    "scroll_bar_feedback": {
+        "locator": {
+            "xpath":"//ScrollBar[@ClassName='ScrollBar']"
+        }
+    },
+    "feature_feedback_popup": {
+        "locator": {
+            "id": "onetrust-accept-btn-handler",
+            "xpath": "//Button[@Name='Accept']"
+        }
+    },
+     "hpx_feedback_page_title": {
+        "locator": {
+            "xpath": "//Text[contains(@Name,'love your feedback')]",
+            "class name": "title-small--medium"
+        }
+    }
+}

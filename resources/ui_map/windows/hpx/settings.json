@@ -1,0 +1,452 @@
+{
+    "click_privacy_btn": {
+        "locator": {
+            "id": "AUID_SETTINGS_Privacy_clicked"
+        }
+    },
+    "settings_header": {
+        "locator": {
+            "id": "AUID_SETTINGS_Header_SettingComponent"
+        }
+    },
+    "settings_module": {
+        "locator": {
+            "id": "settings_core_NavigationViewItem_ID"
+        }
+    },
+    "done_button": {
+        "locator": {
+            "id": "DoneButton"
+        }
+    },
+    "header_settings": {
+        "locator": {
+            "id": "AUID_SETTINGS_Header_SettingComponent"
+        }
+    },
+    "privacy_title": {
+        "locator": {
+            "id": "AUID_Settings_Privacy_Title"
+        }
+    },
+    "privacy_statement": {
+        "locator": {
+            "id": "AUID_Settings_Privacy_Statement"
+        }
+    },
+    "learn_more_statement": {
+        "locator": {
+            "id": "AUID_Settings_Privacy_Learn_More"
+        }
+    },
+    "learn_more_link": {
+        "locator": {
+            "name": "hppstelemetry.com"
+        }
+    },
+    "privacy_consent_title": {
+        "locator": {
+            "id": "AUID_SETTINGS_Privacy_reviewPrivacy"
+        }
+    },
+    "privacy_link_statement": {
+        "locator": {
+            "id": "AUID_Settings_Privacy_Link"
+        }
+    },
+    "about_title": {
+        "locator": {
+           "id": "AUID_Settings_About_Title",
+            "xpath":"//Text[@ Name='About']"
+        }
+    },
+    "version": {
+        "locator": {
+            "id": "AUID_Settings_About_Version",
+            "xpath":"//Button[contains(@Name, 'Version ')]"
+        }
+    },
+    "privacy_consent_yes_to_all": {
+        "locator": {
+            "id": "YesToAllButton"
+        }
+    },
+    "warranty_consent_yes_button": {
+        "locator": {
+            "id": "support_Yes_rdoBtn"
+        }
+    },
+    "warranty_consent_no_button": {
+        "locator": {
+            "id": "support_No_rdoBtn"
+        }
+    },
+    "sysinfo_consent_yes_button": {
+        "locator": {
+            "id": "product_Yes_rdoBtn"
+        }
+    },
+    "sysinfo_consent_no_button": {
+        "locator": {
+            "id": "product_No_rdoBtn"
+        }
+    },
+    "marketing_consent_yes_button": {
+        "locator": {
+            "id": "marketing_Yes_rdoBtn"
+        }
+    },
+    "marketing_consent_no_button": {
+        "locator": {
+            "id": "marketing_No_rdoBtn"
+        }
+    },
+    "marketing_consent": {
+        "locator": {
+            "id": "SystemInformationConsent"
+        }
+    },
+    "notification_module": {
+        "locator": {
+            "id": "AUID_SETTINGS_Notification_Tab"
+        }
+    },
+    "device_and_account_btn": {
+        "locator": {
+            "id": "AUID_SETTINGS_DeviceAndAccount"
+        }
+    },
+    "tips_and_tutorials_btn": {
+        "locator": {
+            "id": "AUID_SETTINGS_TipsAndTutorials"
+        }
+    },
+    "news_and_offers_btn": {
+        "locator": {
+            "id": "AUID_SETTINGS_NewsAndOffers"
+        }
+    },
+    "share_your_feedback_btn": {
+        "locator": {
+            "id": "AUID_SETTINGS_ShareYourFeedback"
+        }
+    },
+    "about_module": {
+        "locator": {
+            "id": "AUID_SETTINGS_About_Tab"
+        }
+    },
+    "settings_version": {
+        "locator": {
+            "name": "About"
+        }
+    },
+    "hp_system_link": {
+        "locator": {
+            "id": "AUID_SETTINGS_Privacy_systemDataCollection_text"
+        }
+    },
+    "hp_privacy_settings": {
+        "locator": {
+            "id": "AUID_SETTINGS_Privacy_clicked"
+        }
+    },
+    "click_hp_system_information_data_collection_link": {
+        "locator": {
+            "id": "AUID_SETTINGS_Privacy_systemDataCollection_text"
+        }
+    },
+    "about_myHPtext": {
+        "locator": {
+            "id": "AUID_SETTINGS_About_myHP"
+        }
+    },
+    "about_privacyPolicy": {
+        "locator": {
+            "id": "AUID_SETTINGS_About_privacyPolicy_text"
+        }
+    },
+    "about_userLicenceAgreement": {
+        "locator": {
+            "id": "AUID_SETTINGS_About_userLicenceAgreement_text",
+            "xpath":"//Button[@Name='HP End User License Agreement Link']"
+        }
+    },
+    "privacy_tab": {
+        "locator": {
+            "id": "AUID_SETTINGS_Privacy_Tab",
+            "xpath": "//Text[@Name='Privacy']"
+        }
+    },
+    "notification_tab": {
+        "locator": {
+            "id": "AUID_SETTINGS_Notification_Tab"
+        }
+    },
+    "about_tab": {
+        "locator": {
+            "id": "AUID_SETTINGS_About_Tab"
+        }
+    },
+    "privacy_long_text": {
+        "locator": {
+            "id": "AUID_SETTINGS_Privacy_privacyContent"
+        }
+    },
+    "to_learn_text": {
+        "locator": {
+            "id": "AUID_SETTINGS_Privacy_learnMore"
+        }
+    },
+    "to_review_text": {
+        "locator": {
+            "id": "AUID_SETTINGS_Privacy_reviewPrivacySettings"
+        }
+    },
+    "privacy_review_policy": {
+        "locator": {
+            "id": "AUID_SETTINGS_Privacy_reviewPrivacy"
+        }
+    },
+    "privacy_consent_no_to_all": {
+        "locator": {
+            "id": "NoToAllButton"
+        }
+    },
+    "error_ok_button": {
+        "locator": {
+            "name": "OK"
+        }
+    },
+    "privacy_detail_text":{
+        "locator":{
+            "id":"AUID_SETTINGS_Privacy_privacyContent"
+        }
+    },
+    "to_learn_more_text":{
+        "locator":{
+            "id":"AUID_SETTINGS_Privacy_learnMore"
+        }
+    },
+    "to_review_txt":{
+        "locator":{
+            "id":"AUID_SETTINGS_Privacy_reviewPrivacySettings"
+        }
+    },
+    "manage_notifications":{
+        "locator":{
+            "id":"AUID_SETTINGS_Notifications_manageNotifications"
+        }
+    },
+    "modify_notification":{
+        "locator":{
+            "id":"AUID_SETTINGS_Notifications_notificationsPreferences"
+        }
+    },
+    "desktop_notification":{
+        "locator":{
+            "id":"AUID_SETTINGS_Notifications_desktopNotifications"
+        }
+    },
+    "device_account_toggle":{
+        "locator":{
+            "id":"AUID_SETTINGS_DeviceAndAccount"
+        }
+    },
+    "update_support":{
+        "locator":{
+            "id":"AUID_SETTINGS_Notifications_listItemDescription_0"
+        }
+    },
+    "tips_tutorial":{
+        "locator":{
+            "id":"AUID_SETTINGS_Notifications_listItemTitle_1"
+        }
+    },
+    "copr_right_txt_about":{
+        "locator":{
+            "id":"AUID_SETTINGS_About_Copyright"
+        }
+    },
+    "version_about":{
+        "locator":{
+            "id":"AUID_SETTINGS_About_Version",
+            "xpath":"//Button[contains(@Name, 'Version ')]"
+        }
+    },
+    "privacy_setting":{
+        "locator":{
+            "id":"AUID_SETTINGS_Privacy_reviewPrivacySettings"
+        }
+    },
+    "hp_privacy_statement_text":{
+        "locator":{
+            "id":"AUID_SETTINGS_Privacy_privacyStatementText"
+        }
+    },
+    "device_account_title":{
+        "locator":{
+            "id":"AUID_SETTINGS_Notifications_listItemTitle_0"
+        }
+    },
+    "tips_tutorial_description":{
+        "locator":{
+            "id":"AUID_SETTINGS_Notifications_listItemDescription_1"
+        }
+    },
+    "news_and_offers_title":{
+        "locator":{
+            "id":"AUID_SETTINGS_Notifications_listItemTitle_2"
+        }
+    },
+    "news_and_offers_description":{
+        "locator":{
+            "id":"AUID_SETTINGS_Notifications_listItemDescription_2"
+        }
+    },
+    "share_your_feedback_title":{
+        "locator":{
+            "id":"AUID_SETTINGS_Notifications_listItemTitle_3"
+        }
+    },
+    "share_your_feedback_description":{
+        "locator":{
+            "id":"AUID_SETTINGS_Notifications_listItemDescription_3"
+        }
+    },
+    "feedback_tab": {
+        "locator": {
+            "id": "AUID_SETTINGS_Feedback_Tab"
+        }
+    },
+    "feedback_title": {
+        "locator": {
+            "id": "AUID_SETTINGS_Feedback_Feedback_title"
+        }
+    },
+    "feedback_description": {
+        "locator": {
+            "id": "AUID_SETTINGS_Feedback_Feedback_description"
+        }
+    },
+    "rating_experience": {
+        "locator": {
+            "id": "AUID_SETTINGS_Feedback_Feedback_ratingExperience"
+        }
+    },
+    "rating_star_1": {
+        "locator": {
+            "id": "AUID_SETTINGS_Feedback_Feedback_star_1"
+        }
+    },
+    "rating_star_2": {
+        "locator": {
+            "id": "AUID_SETTINGS_Feedback_Feedback_star_2"
+        }
+    },
+    "rating_star_3": {
+        "locator": {
+            "id": "AUID_SETTINGS_Feedback_Feedback_star_3"
+        }
+    },
+    "rating_star_4": {
+        "locator": {
+            "id": "AUID_SETTINGS_Feedback_Feedback_star_4"
+        }
+    },
+    "rating_star_5": {
+        "locator": {
+            "id": "AUID_SETTINGS_Feedback_Feedback_star_5"
+        }
+    },
+    "rating_disclaimer": {
+        "locator": {
+            "id": "AUID_SETTINGS_Feedback_Feedback_ratingDisclaimer"
+        }
+    },
+    "additional_feedback": {
+        "locator": {
+            "id": "AUID_SETTINGS_Feedback_Feedback_additionalFeedbackBox"  
+        }
+    },
+    "character_limit": {
+        "locator": {
+            "id": "AUID_SETTINGS_Feedback_Additional_feedback_count"  
+        }
+    },
+    "feedback_disclaimer": {
+        "locator": {
+            "id": "AUID_SETTINGS_Feedback_Feedback_feedbackDisclaimer"
+        }
+    },
+    "submit_feedback": {
+        "locator": {
+            "id": "AUID_SETTINGS_Submit_feedback"
+        }
+    },
+    "required_field_error": {
+        "locator": {
+            "id": "AUID_SETTINGS_Feedback_requiredFieldError"
+        }
+    },
+    "character_limit_error": {
+        "locator": {
+            "id": "AUID_SETTINGS_Feedback_Feedback_characterLimitError"
+        }
+    },
+    "feedback_thankyou": {
+        "locator": {
+            "id": "AUID_SETTINGS_Feedback_Feedback_thankYou"
+        }
+    },
+    "feedback_thankyou_disclaimer": {
+        "locator": {
+            "id": "AUID_SETTINGS_Feedback_Feedback_thankYou_disclaimer"
+        }
+    },
+    "feedback_thankyou_close": {
+        "locator": {
+            "id": "AUID_SETTINGS_Feedback_ThankYou_feedback_close"
+        }
+    }, 
+    "privacy_clicked_btn": {
+        "locator":{
+            "id": "AUID_SETTINGS_Privacy_clicked"
+        }
+    },
+    "click_here_link":{
+        "locator":{
+            "name": "click here."
+        }
+    },
+    "settings_page": {
+        "locator": {
+            "id": "AUID_SETTINGS_SettingsPage"
+        }
+    },
+    "menu_back_btn_from_settings": {
+        "locator": {
+            "xpath":"//Button[@Name='Menu']"
+        }
+    },
+    "settings_title": {
+        "locator": {
+            "xpath": "//Text[@Name='Settings']"
+        }
+    },
+    "manage_privacy_preferences": {
+        "locator": {
+            "xpath": "//Button[@Name='Manage privacy preferences Arrow Right']"
+        }
+    },
+    "privacy_statement_link": {
+        "locator": {
+            "xpath": "//Button[@Name='HP Privacy Statement Link']"
+        }
+    },
+    "terms_of_use_link": {
+        "locator": {
+            "xpath": "//Button[@Name='Terms of Use Link']"
+        }
+    }
+}

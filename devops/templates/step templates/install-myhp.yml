@@ -1,0 +1,660 @@
+# Install myHP Application Step Template
+# Handles the complete myHP application installation process
+# Parameters:
+#   projectId: Azure DevOps project ID (default: '14cc2b54-d419-4fb9-bc1c-6bc8d9f4c8a1')
+#   pipelineId: Pipeline ID for HPX builds (required - use values from Build Environments variable group)
+#   buildId: Specific numeric build ID to install (optional)
+#   buildVersion: Specific version string to install (optional, e.g., "53.42601.121.0")
+#   buildVersionToDownload: How to select build (latest, latestFromBranch, specific)
+
+parameters:
+- name: projectId
+  type: string
+  default: '14cc2b54-d419-4fb9-bc1c-6bc8d9f4c8a1'
+- name: pipelineId
+  type: string
+- name: buildId
+  type: string
+  default: ''  # Numeric build ID
+- name: buildVersion
+  type: string
+  default: ''  # Version string like "53.42601.121.0"
+
+- name: buildVersionToDownload
+  type: string
+  default: 'latestFromBranch'  # latest, latestFromBranch, or specific
+
+- name: branchName
+  type: string
+  default: 'refs/heads/main'  # Branch name for latestFromBranch option
+
+steps:
+# Step 1: Resolve Build ID (always runs)
+- task: PowerShell@2
+  displayName: 'Resolve Build ID'
+  name: FindBuildId
+  inputs:
+    targetType: 'inline'
+    script: |
+      $ErrorActionPreference = "Stop"
+      $organization = "$(System.TeamFoundationCollectionUri)"
+      $project = "${{ parameters.projectId }}"
+      $pipelineId = "${{ parameters.pipelineId }}"
+      $buildIdParam = "${{ parameters.buildId }}"
+      $buildVersion = "${{ parameters.buildVersion }}"
+      $buildVersionToDownload = "${{ parameters.buildVersionToDownload }}"
+      $headers = @{ Authorization = "Bearer $(System.AccessToken)" }
+
+      if ([string]::IsNullOrWhiteSpace($project)) {
+        throw "Install-myHP config error: projectId is empty."
+      }
+      if ([string]::IsNullOrWhiteSpace($pipelineId) -or $pipelineId -eq 'auto') {
+        throw "Install-myHP config error: pipelineId is empty (or 'auto'). For MAT ITG/STG/PROD runs, set env-specific pipeline id in variable group (e.g., MYHP_PIPELINE_ID_ITG / STG / PROD) or pass pipelineId override parameter."
+      }
+      Write-Host "Using projectId=$project, pipelineId=$pipelineId, mode=$buildVersionToDownload"
+
+      if ($buildIdParam -ne "" -and $buildVersionToDownload -eq "specific") {
+        $resolvedBuildId = $buildIdParam
+        Write-Host "Using provided Build ID: $resolvedBuildId"
+      } elseif ($buildVersion -ne "" -and $buildVersionToDownload -eq "specific") {
+        Write-Host "Searching for build with build number: $buildVersion"
+        $found = $false
+        $prefixMatch = $null
+        $scannedBuildCount = 0
+        $recentBuildNumbers = New-Object System.Collections.Generic.List[string]
+        $candidateBuildsForArtifactSearch = @()
+        $candidateBuildsSecondary = @()
+        $maxPrimaryArtifactCandidates = 600
+        $maxSecondaryArtifactCandidates = 400
+
+        function Find-BuildByArtifactVersion {
+          param(
+            [Parameter(Mandatory=$true)][object[]]$candidateBuilds,
+            [Parameter(Mandatory=$true)][string]$versionToken
+          )
+
+          foreach ($candidate in $candidateBuilds) {
+            $candidateId = $candidate.id
+            $candidateNumber = $candidate.buildNumber
+            $artifactsUrl = "${organization}${project}/_apis/build/builds/${candidateId}/artifacts?api-version=7.0"
+
+            try {
+              $artifactsResponse = Invoke-RestMethod -Uri $artifactsUrl -Headers $headers -Method Get
+            } catch {
+              continue
+            }
+
+            $hpx = @($artifactsResponse.value | Where-Object { $_.name -eq 'HPX' }) | Select-Object -First 1
+            if (-not $hpx) { continue }
+
+            $resourceData = $hpx.resource.data
+            if ([string]::IsNullOrWhiteSpace($resourceData)) { continue }
+
+            $m = [regex]::Match($resourceData, '^#/(?<containerId>\d+)(?:/(?<itemPath>.*))?$')
+            if (-not $m.Success) { continue }
+
+            $containerId = $m.Groups['containerId'].Value
+            $itemPath = $m.Groups['itemPath'].Value
+            if ([string]::IsNullOrWhiteSpace($itemPath)) {
+              $itemPath = $hpx.name
+            }
+
+            $pathCandidates = @("/$itemPath", "$itemPath", "/") | Select-Object -Unique
+            foreach ($p in $pathCandidates) {
+              $encodedPath = [uri]::EscapeDataString($p)
+              $containerUrl = "${organization}_apis/resources/Containers/${containerId}?itemPath=${encodedPath}&isShallow=false&api-version=7.1-preview.4"
+
+              try {
+                $containerItems = Invoke-RestMethod -Uri $containerUrl -Headers $headers -Method Get
+              } catch {
+                continue
+              }
+
+              $allPaths = @()
+              if ($containerItems) {
+                if ($containerItems.value) {
+                  $allPaths = @($containerItems.value | ForEach-Object { $_.path })
+                } else {
+                  $allPaths = @($containerItems | ForEach-Object { $_.path })
+                }
+              }
+
+              if (-not $allPaths -or $allPaths.Count -eq 0) { continue }
+
+              $escapedVersion = [regex]::Escape($versionToken)
+              $matchedFile = @(
+                $allPaths | Where-Object {
+                  ($_ -match $escapedVersion) -and
+                  ($_ -match '(?i)_REBRAND_.*\.zip$') -and
+                  ($_ -notmatch '(?i)_x64_') -and
+                  ($_ -notmatch '(?i)ARM') -and
+                  ($_ -notmatch '(?i)_MFE_composition')
+                }
+              ) | Select-Object -First 1
+
+              if ($matchedFile) {
+                return @{
+                  id = $candidateId
+                  buildNumber = $candidateNumber
+                  matchedPath = $matchedFile
+                }
+              }
+            }
+          }
+
+          return $null
+        }
+
+        # Fast path: ask ADO to filter by buildNumber directly.
+        $encodedBuildVersion = [uri]::EscapeDataString($buildVersion)
+        $exactBuildUrl = "${organization}${project}/_apis/build/builds?definitions=${pipelineId}&buildNumber=${encodedBuildVersion}&queryOrder=queueTimeDescending&`$top=1&api-version=7.0"
+        $exactBuildResponse = Invoke-RestMethod -Uri $exactBuildUrl -Headers $headers -Method Get
+        if ($exactBuildResponse -and $exactBuildResponse.value -and $exactBuildResponse.value.Count -gt 0) {
+          $exactBuild = $exactBuildResponse.value | Select-Object -First 1
+          $resolvedBuildId = $exactBuild.id
+          $found = $true
+          Write-Host "Found build ID: $resolvedBuildId for exact build number: $($exactBuild.buildNumber)"
+        }
+
+        $continuationToken = $null
+        do {
+          if ($found) { break }
+          $buildsUrl = "${organization}${project}/_apis/build/builds?definitions=${pipelineId}&`$top=200&queryOrder=queueTimeDescending&api-version=7.0"
+          if ($continuationToken) {
+            $encodedToken = [uri]::EscapeDataString($continuationToken)
+            $buildsUrl += "&continuationToken=$encodedToken"
+          }
+          $buildsHttpResponse = Invoke-WebRequest -Uri $buildsUrl -Headers $headers -Method Get
+          $buildsResponse = $buildsHttpResponse.Content | ConvertFrom-Json
+          $pageBuilds = @($buildsResponse.value)
+          $scannedBuildCount += $pageBuilds.Count
+
+          foreach ($b in $pageBuilds) {
+            if ($recentBuildNumbers.Count -ge 20) { break }
+            if (-not [string]::IsNullOrWhiteSpace($b.buildNumber)) {
+              $recentBuildNumbers.Add([string]$b.buildNumber)
+            }
+          }
+
+          foreach ($b in $pageBuilds) {
+            $buildNumberText = [string]$b.buildNumber
+            $isNumericBuildNumber = $buildNumberText -match '^\d+\.\d+\.\d+\.\d+$'
+
+            # Primary candidate set: likely wrapper/automation builds where artifact version in filenames may differ from buildNumber.
+            if ($candidateBuildsForArtifactSearch.Count -lt $maxPrimaryArtifactCandidates -and -not $isNumericBuildNumber) {
+              $candidateBuildsForArtifactSearch += ,$b
+            }
+
+            # Secondary candidate set: broader window for fallback when primary set misses old version.
+            if ($candidateBuildsSecondary.Count -lt $maxSecondaryArtifactCandidates) {
+              $candidateBuildsSecondary += ,$b
+            }
+
+            if ($candidateBuildsForArtifactSearch.Count -ge $maxPrimaryArtifactCandidates -and $candidateBuildsSecondary.Count -ge $maxSecondaryArtifactCandidates) {
+              break
+            }
+          }
+
+          $buildInfo = @($pageBuilds | Where-Object { $_.buildNumber -eq $buildVersion }) | Select-Object -First 1
+          if ($buildInfo) {
+            $found = $true
+            $resolvedBuildId = $buildInfo.id
+            Write-Host "Found build ID: $resolvedBuildId for build number: $($buildInfo.buildNumber)"
+            break
+          }
+
+          if (-not $prefixMatch) {
+            $prefixMatch = @($pageBuilds | Where-Object { $_.buildNumber -like "$buildVersion*" }) | Select-Object -First 1
+          }
+
+          $continuationHeader = $null
+          if ($buildsHttpResponse.Headers) {
+            foreach ($key in $buildsHttpResponse.Headers.Keys) {
+              if ($key -imatch 'continuationtoken') {
+                $continuationHeader = $buildsHttpResponse.Headers[$key]
+                break
+              }
+            }
+          }
+          if ($continuationHeader -is [System.Array]) {
+            $continuationHeader = ($continuationHeader | Select-Object -First 1)
+          }
+          if ([string]::IsNullOrWhiteSpace([string]$continuationHeader)) {
+            $continuationToken = $null
+          } else {
+            $continuationToken = [string]$continuationHeader
+          }
+        } while ($continuationToken)
+        if (-not $found) {
+          if ($prefixMatch) {
+            $resolvedBuildId = $prefixMatch.id
+            $found = $true
+            Write-Host "##[warning]Exact build version '$buildVersion' not found in pipeline $pipelineId. Using prefix match '$($prefixMatch.buildNumber)' (buildId=$resolvedBuildId)."
+          } else {
+            $artifactSearchCandidates = $candidateBuildsForArtifactSearch
+            Write-Host "Exact/prefix buildNumber match failed; trying artifact filename fallback in $($artifactSearchCandidates.Count) prioritized builds..."
+            $artifactMatch = Find-BuildByArtifactVersion -candidateBuilds $artifactSearchCandidates -versionToken $buildVersion
+            if (-not $artifactMatch) {
+              $artifactSearchCandidates2 = $candidateBuildsSecondary
+              Write-Host "Primary artifact fallback missed; trying secondary fallback in $($artifactSearchCandidates2.Count) broader builds..."
+              $artifactMatch = Find-BuildByArtifactVersion -candidateBuilds $artifactSearchCandidates2 -versionToken $buildVersion
+            }
+            if ($artifactMatch) {
+              $resolvedBuildId = $artifactMatch.id
+              $found = $true
+              Write-Host "##[warning]Resolved build by HPX artifact filename match for version '$buildVersion': buildId=$resolvedBuildId (buildNumber=$($artifactMatch.buildNumber), file=$($artifactMatch.matchedPath))"
+            }
+          }
+
+          if (-not $found) {
+            $sampleText = ($recentBuildNumbers | Select-Object -Unique) -join ", "
+            Write-Host "Scanned $scannedBuildCount builds in pipeline $pipelineId."
+            if (-not [string]::IsNullOrWhiteSpace($sampleText)) {
+              Write-Host "Recent build numbers seen: $sampleText"
+            }
+            Write-Host "##[error]Build with version '$buildVersion' not found in pipeline $pipelineId (searched all pages)"
+            throw "Build with version '$buildVersion' not found"
+          }
+        }
+      } else {
+        Write-Host "Searching latest main-branch build with HPX artifact from pipeline $pipelineId (including in-progress builds if artifact already exists)..."
+
+        function Test-HpxHasInstallablePayload {
+          param(
+            [Parameter(Mandatory=$true)]$hpxArtifact
+          )
+
+          # Build artifact resource.data format usually: "#/containerId/artifactName"
+          $resourceData = $hpxArtifact.resource.data
+          if ([string]::IsNullOrWhiteSpace($resourceData)) {
+            return $null
+          }
+
+          $m = [regex]::Match($resourceData, '^#/(?<containerId>\d+)(?:/(?<itemPath>.*))?$')
+          if (-not $m.Success) {
+            Write-Host "Cannot parse HPX container resource data: $resourceData"
+            return $null
+          }
+
+          $containerId = $m.Groups['containerId'].Value
+          $itemPath = $m.Groups['itemPath'].Value
+          if ([string]::IsNullOrWhiteSpace($itemPath)) {
+            $itemPath = $hpxArtifact.name
+          }
+
+          # NOTE: Containers API is organization-scoped (no project segment in URL).
+          # Try a few path variants because artifact roots differ across pipelines.
+          $pathCandidates = @()
+          if (-not [string]::IsNullOrWhiteSpace($itemPath)) {
+            $pathCandidates += "/$itemPath"
+            $pathCandidates += "$itemPath"
+          }
+          $pathCandidates += "/"
+
+          $containerItems = $null
+          $queried = $false
+          foreach ($p in ($pathCandidates | Select-Object -Unique)) {
+            $encodedPath = [uri]::EscapeDataString($p)
+            $containerUrl = "${organization}_apis/resources/Containers/${containerId}?itemPath=${encodedPath}&isShallow=false&api-version=7.1-preview.4"
+            try {
+              $containerItems = Invoke-RestMethod -Uri $containerUrl -Headers $headers -Method Get
+              $queried = $true
+              break
+            } catch {
+              Write-Host "Container query miss for containerId=$containerId, itemPath=$p : $($_.Exception.Message)"
+            }
+          }
+
+          if (-not $queried -or -not $containerItems) {
+            Write-Host "Failed to query HPX container items for containerId=$containerId, itemPath=$itemPath"
+            return $null
+          }
+
+          $allPaths = @()
+          if ($containerItems) {
+            if ($containerItems.value) {
+              $allPaths = @($containerItems.value | ForEach-Object { $_.path })
+            } else {
+              $allPaths = @($containerItems | ForEach-Object { $_.path })
+            }
+          }
+
+          if (-not $allPaths -or $allPaths.Count -eq 0) {
+            return $false
+          }
+
+          $candidateFiles = @(
+            $allPaths | Where-Object {
+              ($_ -match '(?i)_REBRAND_.*\.zip$') -and
+              ($_ -notmatch '(?i)_x64_') -and
+              ($_ -notmatch '(?i)ARM') -and
+              ($_ -notmatch '(?i)_MFE_composition')
+            }
+          )
+
+          return ($candidateFiles.Count -gt 0)
+        }
+
+        # Pull a larger recent window and choose the first successfully completed build with HPX artifact payload.
+        $buildsUrl = "${organization}${project}/_apis/build/builds?definitions=${pipelineId}&branchName=${{ parameters.branchName }}&queryOrder=queueTimeDescending&`$top=200&api-version=7.0"
+        $buildsResponse = Invoke-RestMethod -Uri $buildsUrl -Headers $headers -Method Get
+
+        if (-not $buildsResponse.value -or $buildsResponse.value.Count -eq 0) {
+          throw "No builds found for pipeline $pipelineId from branch ${{ parameters.branchName }}"
+        }
+
+        $found = $false
+        foreach ($candidate in $buildsResponse.value) {
+          $candidateId = $candidate.id
+          $candidateNumber = $candidate.buildNumber
+          $candidateResult = $candidate.result
+          $candidateStatus = $candidate.status
+
+          # Skip builds that are not yet completed
+          if ($candidateStatus -ne 'completed') {
+            Write-Host "Skipping build $candidateId ($candidateNumber) - not completed (status=$candidateStatus)"
+            continue
+          }
+
+          # Skip builds that completed unsuccessfully
+          if ($candidateResult -ne 'succeeded') {
+            Write-Host "Skipping build $candidateId ($candidateNumber) - completed with result=$candidateResult"
+            continue
+          }
+
+          $artifactsUrl = "${organization}${project}/_apis/build/builds/${candidateId}/artifacts?api-version=7.0"
+          try {
+            $artifactsResponse = Invoke-RestMethod -Uri $artifactsUrl -Headers $headers -Method Get
+          } catch {
+            Write-Host "Skipping build $candidateId ($candidateNumber) - failed to read artifacts: $($_.Exception.Message)"
+            continue
+          }
+
+          $hasHpxArtifact = $false
+          $payloadCheck = $false
+          if ($artifactsResponse -and $artifactsResponse.value) {
+            $hpx = @($artifactsResponse.value | Where-Object { $_.name -eq 'HPX' })
+            $hasHpxArtifact = $hpx.Count -gt 0
+            if ($hasHpxArtifact) {
+              $payloadCheck = Test-HpxHasInstallablePayload -hpxArtifact $hpx[0]
+            }
+          }
+
+          if ($hasHpxArtifact -and $payloadCheck -eq $true) {
+            $resolvedBuildId = $candidateId
+            $found = $true
+            Write-Host "Selected build ID: $resolvedBuildId (buildNumber=$candidateNumber, status=$candidateStatus, result=$candidateResult)"
+            break
+          } elseif ($hasHpxArtifact -and $null -eq $payloadCheck) {
+            # If payload cannot be verified due container API limitations, prefer latest HPX build instead of skipping.
+            $resolvedBuildId = $candidateId
+            $found = $true
+            Write-Host "Selected build ID: $resolvedBuildId (buildNumber=$candidateNumber, status=$candidateStatus, result=$candidateResult)"
+            Write-Host "##[warning]HPX payload could not be verified via container API; selecting latest build with HPX artifact and letting DownloadBuildArtifacts validate file patterns."
+            break
+          } elseif ($hasHpxArtifact -and $payloadCheck -eq $false) {
+            Write-Host "Skipping build $candidateId ($candidateNumber) - HPX artifact exists but no installable package payload matched expected patterns"
+          }
+
+          if ($found) {
+            break
+          }
+        }
+
+        if (-not $found) {
+          throw "No recent builds with installable HPX payload found in pipeline $pipelineId from branch ${{ parameters.branchName }} (scanned latest 200 builds)."
+        }
+      }
+      Write-Host "##vso[task.setvariable variable=ResolvedBuildId;isOutput=true]$resolvedBuildId"
+      Write-Host "##vso[task.setvariable variable=ResolvedPipelineId;isOutput=true]$pipelineId"
+
+# Step 2: Get Target Build Details (always runs)
+- task: PowerShell@2
+  displayName: 'Get Target Build Details'
+  name: GetTargetVersion
+  env:
+    RESOLVED_BUILD_ID: $(FindBuildId.ResolvedBuildId)
+  inputs:
+    targetType: 'inline'
+    script: |
+      $ErrorActionPreference = "Stop"
+      $organization = "$(System.TeamFoundationCollectionUri)"
+      $project = "${{ parameters.projectId }}"
+      $pipelineId = "${{ parameters.pipelineId }}"
+      $buildId = "$env:RESOLVED_BUILD_ID"
+      $headers = @{ Authorization = "Bearer $(System.AccessToken)" }
+      if ([string]::IsNullOrWhiteSpace($buildId)) {
+        throw "Install-myHP config error: resolved build id is empty. Resolve Build ID step did not produce a valid build."
+      }
+      # Get full build details
+      $buildUrl = "${organization}${project}/_apis/build/builds/${buildId}?api-version=7.0"
+      $buildInfo = Invoke-RestMethod -Uri $buildUrl -Headers $headers -Method Get
+      $targetVersion = $buildInfo.buildNumber
+      Write-Host "Build Number (Target Version): $targetVersion"
+      Write-Host "Build Status: $($buildInfo.status)"
+      Write-Host "Build Result: $($buildInfo.result)"
+      # Set output variables
+      Write-Host "##vso[task.setvariable variable=TargetVersion;isOutput=true]$targetVersion"
+      Write-Host "##vso[task.setvariable variable=ActualBuildId;isOutput=true]$buildId"
+
+- task: PowerShell@2
+  displayName: 'Check if Installation Needed'
+  name: CheckVersion
+  inputs:
+    targetType: 'inline'
+    script: |
+      $targetVersion = "$(GetTargetVersion.TargetVersion)"
+      
+      Write-Host "Target Version: $targetVersion"
+      Write-Host "Current User: $env:USERNAME"
+      
+      # Check if app exists for current user only
+      $package = Get-AppxPackage -Name "*myHP*" -ErrorAction SilentlyContinue
+      
+      if ($package) {
+        Write-Host "myHP found in registry:"
+        Write-Host "  Name: $($package.Name)"
+        Write-Host "  PackageFullName: $($package.PackageFullName)"
+        Write-Host "  Installed Version: $($package.Version)"
+        Write-Host "  Install Location: $($package.InstallLocation)"
+        
+        # Check if the app files actually exist
+        $manifestPath = Join-Path $package.InstallLocation "AppxManifest.xml"
+        $filesExist = Test-Path $manifestPath
+        
+        Write-Host "  Files exist: $filesExist"
+        
+        if ($package.Version -eq $targetVersion -and $filesExist) {
+          Write-Host "✓ Correct version ($targetVersion) installed and accessible - skipping installation"
+          Write-Host "##vso[task.setvariable variable=NeedsInstall;isOutput=true]false"
+        } else {
+          if (-not $filesExist) {
+            Write-Host "✗ App registered but files missing - installation needed"
+          } else {
+            Write-Host "✗ Version mismatch (Installed: $($package.Version), Target: $targetVersion) - installation needed"
+          }
+          Write-Host "##vso[task.setvariable variable=NeedsInstall;isOutput=true]true"
+        }
+      } else {
+        Write-Host "myHP is not installed for current user - installation needed"
+        Write-Host "##vso[task.setvariable variable=NeedsInstall;isOutput=true]true"
+      }
+
+- task: PowerShell@2
+  displayName: 'Check if Package Already Downloaded'
+  name: CheckDownload
+  condition: eq(variables['CheckVersion.NeedsInstall'], 'true')
+  inputs:
+    targetType: 'inline'
+    script: |
+      $artifactPath = "$(System.ArtifactsDirectory)/HPX"
+      $extractedPath = "$artifactPath/Extracted"
+      
+      # Check if extracted bundle exists
+      $existingBundle = Get-ChildItem -Path $extractedPath -Recurse -Filter "*_x64.msixbundle" -ErrorAction SilentlyContinue | Select-Object -First 1
+      
+      if ($existingBundle) {
+        Write-Host "✓ Package already downloaded and extracted at: $($existingBundle.FullName)"
+        Write-Host "##vso[task.setvariable variable=NeedsDownload;isOutput=true]false"
+      } else {
+        Write-Host "Package not found locally - download needed"
+        Write-Host "##vso[task.setvariable variable=NeedsDownload;isOutput=true]true"
+      }
+
+- task: PowerShell@2
+  displayName: 'Download HPX Package (REST)'
+  condition: and(eq(variables['CheckVersion.NeedsInstall'], 'true'), eq(variables['CheckDownload.NeedsDownload'], 'true'))
+  env:
+    SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+  inputs:
+    targetType: 'filePath'
+    filePath: '$(Build.SourcesDirectory)/devops/utils/app-installation/download-hpx-artifact-rest.ps1'
+    arguments: '-Organization "$(System.TeamFoundationCollectionUri)" -ProjectId "${{ parameters.projectId }}" -BuildId "$(GetTargetVersion.ActualBuildId)" -ArtifactName "HPX" -OutputRoot "$(System.ArtifactsDirectory)"'
+
+- task: PowerShell@2
+  displayName: 'Verify HPX Package Download'
+  condition: and(eq(variables['CheckVersion.NeedsInstall'], 'true'), eq(variables['CheckDownload.NeedsDownload'], 'true'))
+  inputs:
+    targetType: 'inline'
+    script: |
+      $ErrorActionPreference = "Stop"
+      $hpxDir = "$(System.ArtifactsDirectory)/HPX"
+      if (-not (Test-Path $hpxDir)) {
+        throw "HPX artifact directory not found: $hpxDir. REST artifact download likely found no matching files."
+      }
+      $zips = Get-ChildItem -Path $hpxDir -File -Filter "*_REBRAND_*.zip" -ErrorAction SilentlyContinue | Where-Object {
+        $_.Name -notmatch '(?i)_x64_' -and $_.Name -notmatch '(?i)ARM' -and $_.Name -notmatch '(?i)_MFE_composition'
+      }
+      if (-not $zips -or $zips.Count -eq 0) {
+        Write-Host "Contents of ${hpxDir}:"
+        Get-ChildItem -Path $hpxDir -Recurse -ErrorAction SilentlyContinue | Select-Object FullName, Length | Format-Table -AutoSize | Out-String | Write-Host
+        throw "No base '*_REBRAND_*.zip' (excluding x64/ARM/MFE composition) found under $hpxDir after download. Check artifact naming/patterns."
+      }
+      Write-Host "Found HPX zip(s):"
+      $zips | Select-Object FullName, Length | Format-Table -AutoSize | Out-String | Write-Host
+
+- task: PowerShell@2
+  displayName: 'Select HPX Package Zip'
+  condition: and(eq(variables['CheckVersion.NeedsInstall'], 'true'), eq(variables['CheckDownload.NeedsDownload'], 'true'))
+  inputs:
+    targetType: 'inline'
+    script: |
+      $ErrorActionPreference = "Stop"
+      $hpxDir = "$(System.ArtifactsDirectory)/HPX"
+      $zips = Get-ChildItem -Path $hpxDir -File -Filter "*_REBRAND_*.zip" -ErrorAction SilentlyContinue | Where-Object {
+        $_.Name -notmatch '(?i)_x64_' -and $_.Name -notmatch '(?i)ARM' -and $_.Name -notmatch '(?i)_MFE_composition'
+      }
+
+      if (-not $zips -or $zips.Count -eq 0) {
+        throw "No candidate HPX zip found under $hpxDir"
+      }
+
+      # Prefer x64 package; then newest by LastWriteTime.
+      $selected = $zips |
+        Sort-Object @{Expression={ $_.Name -match '(?i)_x64_REBRAND_' }; Descending=$true}, @{Expression='LastWriteTime'; Descending=$true} |
+        Select-Object -First 1
+
+      Write-Host "Selected HPX zip: $($selected.FullName)"
+      Write-Host "##vso[task.setvariable variable=SelectedHpxZip]$($selected.FullName)"
+
+- task: ExtractFiles@1
+  displayName: 'Extract HPX Package'
+  condition: and(eq(variables['CheckVersion.NeedsInstall'], 'true'), eq(variables['CheckDownload.NeedsDownload'], 'true'), ne(variables['SelectedHpxZip'], ''))
+  inputs:
+    archiveFilePatterns: '$(SelectedHpxZip)'
+    destinationFolder: '$(System.ArtifactsDirectory)/HPX/Extracted'
+    cleanDestinationFolder: true
+
+# THIS STEP IS NOT NEEDED CURRENTLY. WE CAN TURN IT BACK ON WHEN NEEDED IN THE FUTURE.
+#- task: PowerShell@2
+#  displayName: 'Install Signing Certificate'
+#  condition: eq(variables['CheckVersion.NeedsInstall'], 'true')
+#  continueOnError: true  # Certificate installation is nice-to-have, don't fail the job
+#  inputs:
+#    targetType: 'inline'
+#    script: |
+#      $ErrorActionPreference = "Stop"
+#
+#      # Find the cert file dynamically
+#      $certPath = Get-ChildItem -Path "$(System.ArtifactsDirectory)/HPX/Extracted" -Recurse -Filter "*.cer" | Select-Object -First 1 -ExpandProperty FullName
+#
+#      Write-Host "Installing certificate: $certPath"
+#      Import-Certificate -FilePath $certPath -CertStoreLocation Cert:\LocalMachine\Root
+#      Import-Certificate -FilePath $certPath -CertStoreLocation Cert:\LocalMachine\TrustedPeople
+#
+#      Write-Host "Certificate installed successfully"
+
+- task: PowerShell@2
+  displayName: 'Remove Old myHP Installation'
+  condition: eq(variables['CheckVersion.NeedsInstall'], 'true')
+  inputs:
+    targetType: 'inline'
+    script: |
+      $package = Get-AppxPackage -Name "*myHP*" -ErrorAction SilentlyContinue
+      if ($package) {
+        Write-Host "Removing existing package: $($package.Name) v$($package.Version)"
+        Remove-AppxPackage -Package $package.PackageFullName
+        Write-Host "Removed old installation"
+      }
+
+- task: PowerShell@2
+  displayName: 'Install myHP Package'
+  condition: eq(variables['CheckVersion.NeedsInstall'], 'true')
+  inputs:
+    targetType: 'inline'
+    script: |
+      $ErrorActionPreference = "Stop"
+      
+      $searchRoot = "$(System.ArtifactsDirectory)/HPX/Extracted"
+
+      $candidates = Get-ChildItem -Path $searchRoot -Recurse -File -Filter "*_x64.msixbundle" -ErrorAction SilentlyContinue
+      if (-not $candidates -or $candidates.Count -eq 0) {
+        throw "MSIX bundle not found under: $searchRoot"
+      }
+
+      $scored = foreach ($c in $candidates) {
+        $sig = $null
+        try { $sig = Get-AuthenticodeSignature -FilePath $c.FullName } catch { }
+        $status = if ($sig) { $sig.Status.ToString() } else { "UnknownError" }
+        $hasSignature = ($status -ne 'NotSigned')
+        $isValid = ($status -eq 'Valid')
+        $isTest = ($c.FullName -match '(?i)\\_Test\\|\\Test\\')
+
+        [pscustomobject]@{
+          FullName     = $c.FullName
+          Status       = $status
+          HasSignature = $hasSignature
+          IsValid      = $isValid
+          IsTest       = $isTest
+        }
+      }
+
+      Write-Host "Discovered MSIX bundle candidates:"
+      $scored | Select-Object FullName, Status, HasSignature, IsTest | Format-Table -AutoSize | Out-String | Write-Host
+
+      if (-not ($scored | Where-Object { $_.HasSignature })) {
+        throw "All discovered .msixbundle files appear unsigned (Authenticode Status=NotSigned). Windows requires MSIX bundles to be digitally signed. Use a signed artifact (or provide a signed bundle) before installation can succeed."
+      }
+
+      $best = $scored |
+        Sort-Object @{Expression='IsValid';Descending=$true}, @{Expression='HasSignature';Descending=$true}, @{Expression='IsTest';Ascending=$true} |
+        Select-Object -First 1
+
+      $bundlePath = $best.FullName
+      
+      Write-Host "Installing bundle: $bundlePath"
+
+      try {
+        $bestSig = Get-AuthenticodeSignature -FilePath $bundlePath
+        Write-Host "Bundle signature status: $($bestSig.Status)"
+        if ($bestSig.SignerCertificate) {
+          Write-Host "Bundle signer: $($bestSig.SignerCertificate.Subject)"
+        }
+      } catch {
+        Write-Host "Bundle signature status: UnknownError"
+      }
+      
+      Add-AppxPackage -Path $bundlePath -ForceApplicationShutdown -ForceUpdateFromAnyVersion
+      
+      Write-Host "Installation complete!"
+  timeoutInMinutes: 5

@@ -1,0 +1,217 @@
+{
+    "Welcome_to_hp_text": {
+        "locator": {
+            "name": "Welcome to your HP"
+        }
+    },
+    "Audio_Control_Display": {
+        "locator": {
+            "name": "Audio control"
+        }
+    },
+    "Video_Control_Display": {
+        "locator": {
+            "name": "Video control"
+        }
+    },
+    "View_All_Controls_Link": {
+        "locator": {
+            "name": "View all controls"
+        }
+    },
+    "Support_Icon": {
+        "locator": {
+            "name": "Support Icon"
+        }
+    },
+    "Network_Booster_Item": {
+        "locator": {
+            "name": "Network Booster Item"
+        }
+    },
+    "Programmable_Key": {
+        "locator": {
+            "name": "Programmable Key Action Item"
+        }
+    },
+    "Take_Action": {
+        "locator": {
+            "id": "AUID_ControlYourPC_Section_SectionTitle"
+        }
+    },
+    "Minimize_Button":{
+        "locator": {
+            "id": "Minimize"
+        }
+    },
+    "Maximize_Button":{
+        "locator": {
+            "id": "Maximize"
+        }
+    },
+    "Close_Button":{
+        "locator": {
+            "id": "Close"
+        }
+    },
+    "AudioControl_card":{
+        "locator":{
+            "id":"AUID_ControlYourPC_pcaudio-core_FeatureCard"
+        }
+    },
+    "Programmable_Key_card":{
+        "locator":{
+            "id":"AUID_FeatureCard_FeatureCard_progkey-core"
+        }
+    },
+    "view_all_controls_text":{
+        "locator":{
+            "id":"AUID_ControlYourPC_Section_ViewAllControls_Link"
+        }
+    },
+    "audio_control_text":{
+        "locator":{
+            "id":"AUID_ControlYourPC_pcaudio-core_FeatureCard_title"
+        }
+    },
+    "Configure_to_optimize_audio_text":{
+        "locator":{
+            "id":"AUID_ControlYourPC_pcaudio-core_FeatureCard_description"
+        }
+    },
+    "video_control_text":{
+        "locator":{
+            "id":"AUID_FeatureCard_FeatureCard_smartcam-core"
+        }
+    },
+    "optimize_conference_streaming_text":{
+        "locator":{
+            "id":"AUID_ControlYourPC_smartcam_FeatureCard_description"
+        }
+    },
+    "prog_key_text":{
+        "locator":{
+            "id":"AUID_ControlYourPC_keyboard_FeatureCard_title"
+        }
+    },
+    "create_short_cut_text":{
+        "locator":{
+            "id":"AUID_ControlYourPC_keyboard_FeatureCard_description"
+        }
+    },
+    "display_control_card":{
+        "locator":{
+            "id":"AUID_ControlYourPC_pcdisplay-core_FeatureCard"
+        }
+    },
+    "display_control_title":{
+        "locator":{
+            "id":"AUID_ControlYourPC_PCDisplay_FeatureCard_title"
+        }
+    },
+    "manage_display_setting_text":{
+        "locator":{
+            "id":"AUID_ControlYourPC_PCDisplay_FeatureCard_description"
+        }
+    },
+    "get_most_put_of_hp": {
+        "locator": {
+            "name": "Get the most out of HP"
+        }
+    },
+    "Program_Key_Nav":{
+        "locator":{
+            "id":"AUID_progkey-core_NavBreadcrumb_Keyboard"
+        }
+    },
+    "support_card_title":{
+        "locator":{
+            "id":"AUID_ControlYourPC_support-core_FeatureCard_title"
+        }
+    },
+    "support_screen_header_title":{
+        "locator":{
+            "id":"AUID_Support_support-header"
+        }                 
+    },
+    "support_control_card": {
+        "locator":{
+            "id": "AUID_FeatureCard_FeatureCard_support-core"
+        }
+    },
+    "video_control_card":{
+        "locator":{
+            "id":"AUID_FeatureCard_FeatureCard_smartcam-core"
+        }
+    },
+    "support_screen_detail_page_title":{
+        "locator":{
+            "id":"AUID_ControlYourPC_support-core_FeatureCard_description"
+        }
+    },
+    "home_content_card": {
+        "locator": {
+            "id": "blte3523a03694dcbf8-image"
+        }
+    },
+    "maybe_later_btn":{
+        "locator":{
+            "id":"cta-buttons-0"
+        }
+    },
+    "back_arrow":{
+        "locator": {
+            "class name": "Button"
+        }
+    },
+    "home_title": {
+        "locator": {
+            "id": "AUID_PCAudio_NavBreadcrumb_Welcome-core"
+        }
+    },
+    "home_audio_title": {
+        "locator": {
+            "id": "AUID_PCAudio_NavBreadcrumb_Pcaudio-core"
+        }
+    },
+    "pc_diagtools_card": {
+        "locator": {
+            "id": "AUID_CEPRenderer_PromoTile_blt14f277ea92231a6c"
+        }
+    },
+    "visit_support_btn": {
+        "locator": {
+            "id": "AUID_CEPRenderer_ctabutton_0"
+        }
+    },
+    "prog_key_card":{
+        "locator":{
+            "id":"AUID_ControlYourPC_progkey-core_FeatureCard"
+        }
+    },
+    "home_module":{
+        "locator":{
+            "id":"welcome_core_NavigationViewItem_ID"
+        }
+    },
+    "system_control_card":{
+        "locator":{
+            "id":"AUID_FeatureCard_FeatureCard_pcsystemcontrol-core"
+        }
+    },
+    "get_help_anytime_card":{
+        "locator":{
+            "id":"AUID_CEPRenderer_PromoTile_blt48fccdd52bb54836"
+        }
+    },
+    "gesture_card":{
+        "locator":{
+            "id":"AUID_FeatureCard_FeatureCard_pcgesture-core"
+        }
+    },
+    "wifi_sharing_card":{
+        "locator":{
+            "id":"AUID_FeatureCard_FeatureCard_pcwificonxn-core"
+        }
+    }
+}

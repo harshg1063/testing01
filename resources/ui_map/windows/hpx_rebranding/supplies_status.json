@@ -1,0 +1,293 @@
+{
+    "tray_empty_or_open_warning":{
+        "locator": {
+            "id": "SMSDeviceStatus.SMSDeviceStatusWarning.TrayEmptyorOpenButton__list-item"
+        }
+    },
+    "paper_low_info":{
+        "locator": {
+            "id": "SMSDeviceStatus.SMSDeviceStatusWarning.PaperLowButton__list-item"
+        }
+    },
+    "ok_btn": {
+        "locator": {
+            "xpath": "//Button[@Name='OK']"
+        }
+    },
+    "yes_btn":{
+        "locator": {
+            "xpath": "//Button[@Name='Yes']"
+        }
+    },
+    "no_btn":{
+        "locator": {
+            "xpath": "//Button[@Name='No']"
+        }
+    },
+    "continue_btn":{
+        "locator": {
+            "xpath": "//Button[@Name='Continue']"
+        }
+    },
+    
+    "align_btn": {
+        "locator": {
+            "name": "Align"
+        }
+    },
+    "get_more_help_btn": {
+        "locator": {
+            "name": "Get More Help"
+        }
+    },
+    "get_supplies_btn": {
+        "locator": {
+            "name": "Get Supplies"
+        }
+    },
+    "supply_status_btn": {
+        "locator": {
+            "name": "Supply Status"
+        }
+    },
+    "printer_status_btn": {
+        "locator": {
+            "name": "Printer Status"
+        }
+    },
+    "printer_information_btn": {
+        "locator": {
+            "name": "Printer Information"
+        }
+    },
+    "network_infromation_btn": {
+        "locator": {
+            "name": "Network Information"
+        }
+    },
+    "printer_advanced_settings_btn": {
+        "locator": {
+            "name": "Advanced Settings"
+        }
+    },
+    "printer_reports_btn": {
+        "locator": {
+            "name": "Printer Reports"
+        }
+    },
+    "print_quality_tools_btn": {
+        "locator": {
+            "name":"Print Quality Tools"
+        }
+    },
+    "network_information_btn":{
+        "locator": {
+            "name": "Network Information"
+        }
+    },
+    "printer_status_image_alert_home_page": {
+        "locator": {
+            "xpath": "//Image[@ClassName='css-1n6btir']" 
+        }
+    },
+    "printer_status_image_very_low_alert_home_page": {
+        "locator": {
+            "xpath": "//Image[@ClassName='css-1jcsqi0']"
+        }
+    },
+    "return_cartridges_supplies_status":{
+        "locator": {
+            "xpath": "//ProgressBar[@ClassName='styles__Container-hpx-core-experiences-react-supply-levels-mfe__sc-184yqki-0 bjVwvG']"
+        }
+    },
+    "get_C_cartridge_supply_status": {
+        "locator": {
+            "xpath": "//ProgressBar[@ClassName='styles__Container-hpx-core-experiences-react-supply-levels-mfe__sc-184yqki-0 bjVwvG' and starts-with(@Name, 'C ')]"
+        }
+    },
+    "get_M_cartridge_supply_status": {
+        "locator": {
+            "xpath": "//ProgressBar[@ClassName='styles__Container-hpx-core-experiences-react-supply-levels-mfe__sc-184yqki-0 bjVwvG' and starts-with(@Name, 'M ')]"
+        }
+    },
+    "get_Y_cartridge_supply_status": {
+        "locator": {
+            "xpath": "//ProgressBar[@ClassName='styles__Container-hpx-core-experiences-react-supply-levels-mfe__sc-184yqki-0 bjVwvG' and starts-with(@Name, 'Y ')]"
+        }
+    },
+    "get_K_cartridge_supply_status": {
+        "locator": {
+            "xpath": "//ProgressBar[@ClassName='styles__Container-hpx-core-experiences-react-supply-levels-mfe__sc-184yqki-0 bjVwvG' and starts-with(@Name, 'K ')]"
+        }
+    },
+    "get_k_cartridge_value":{
+        "locator": {
+            "xpath": ["//ProgressBar[contains(@Name, 'K supply level')]","//ProgressBar[contains(@Name, 'K supply level is approximately')]","//ProgressBar[starts-with(@Name, 'K supply level')]"]
+        }
+    },
+    "get_m_cartridge_value":{
+        "locator": {
+            "xpath": ["//ProgressBar[contains(@Name, 'M supply level')]","//ProgressBar[contains(@Name, 'M supply level is approximately')]","//ProgressBar[starts-with(@Name, 'M supply level')]"]
+        }
+    },
+    "get_y_cartridge_value":{
+        "locator": {
+            "xpath": ["//ProgressBar[contains(@Name, 'Y supply level is low')]", "//ProgressBar[contains(@Name, 'Y supply level')]", "//ProgressBar[contains(@Name, 'Y cartridge')]", "(//ProgressBar[contains(@ClassName, 'styles__Container-hpx-core-experiences-react-supply-levels-mfe')])[3]"]
+        }
+    },
+    "get_c_cartridge_value":{
+        "locator": {
+            "xpath": ["//ProgressBar[contains(@Name, 'C supply level')]","//ProgressBar[contains(@Name, 'C supply level is approximately')]","//ProgressBar[starts-with(@Name, 'C supply level')]"]
+        }
+    },
+
+    "k_supply_level":{
+        "locator":{
+            "xpath": "//ProgressBar[starts-with(@Name, 'K supply level ')]"
+        }
+    },
+    "supply_status_error_message": {
+        "locator": {
+            "xpath": "//*[starts-with(@AutomationId, 'SMSDeviceStatus.SMSDeviceStatusUrgent.') and substring(@AutomationId, string-length(@AutomationId) - string-length('__status-label') + 1) = '__status-label']"
+        }
+    },
+    "supply_status_icon_error_alert_home_page": {
+        "locator": {
+            "xpath": "//Button[starts-with(@AutomationId, 'SMSDeviceStatus.SMSDeviceStatusUrgent.') and contains(@AutomationId, '__list-item')]//Image"
+        }
+    },
+    "supply_status_warning_message": {
+        "locator": {
+            "xpath": "//*[starts-with(@AutomationId, 'SMSDeviceStatus.SMSDeviceStatusWarning.') and substring(@AutomationId, string-length(@AutomationId) - string-length('__status-label') + 1) = '__status-label']"
+        }
+    },
+    "supply_status_icon_warning_alert_home_page": {
+        "locator": {
+            "xpath": "//Button[starts-with(@AutomationId, 'SMSDeviceStatus.SMSDeviceStatusWarning.') and contains(@AutomationId, '__list-item')]//Image"
+        }
+    },
+    "supply_status_information_message": {
+        "locator": {
+            "xpath": "//*[starts-with(@AutomationId, 'SMSDeviceStatus.SMSDeviceStatusInfo.') and substring(@AutomationId, string-length(@AutomationId) - string-length('__status-label') + 1) = '__status-label']"
+        }
+    },
+    "supply_status_icon_information_alert_home_page": {
+        "locator": {
+            "xpath": ["//Button[starts-with(@AutomationId, 'SMSDeviceStatus.SMSDeviceStatusInfo.')]//Image","//Button[starts-with(@AutomationId, 'SMSDeviceStatus.SMSDeviceStatusInfo.') and contains(@AutomationId, '__list-item')]//Image"]
+        }
+    },
+    "printer_status_body_text": {
+        "locator": {
+            "id": "FullTextBlock"
+        }
+    },
+    "cartridge_colour_icon": {
+        "locator": {
+            "id": "SupplyCodeLetter"
+        }
+    },
+    "cartridge_colour_icon_y":{
+        "locator": {
+            "xpath": "//Text[@AutomationId='SupplyCodeLetter' and @Name='Y']"
+        }
+    },
+    "cartridge_colour_icon_k":{
+        "locator": {
+            "xpath": "//Text[@AutomationId='SupplyCodeLetter' and @Name='K']"
+        }
+    },
+    "cartridge_colour_icon_m":{
+        "locator": {
+            "xpath": "//Text[@AutomationId='SupplyCodeLetter' and @Name='M']"
+        }
+    },
+    "cartridge_colour_icon_c":{
+        "locator": {
+            "xpath": "//Text[@AutomationId='SupplyCodeLetter' and @Name='C']"
+        }
+    },
+    "supply_status_alert_title_clicked":{
+        "locator": {
+            "xpath": "//Pane[@ClassName='ScrollViewer']//Text[1]"
+        }
+    },
+    "printer_status_alert_group": {
+        "locator": {
+            "class name": "styles__Container-hpx-core-experiences-react-device-status-messages-sms-mfe__sc-ia0b01-0 fybIlz"
+        }
+    },
+    "printer_card":{
+        "locator":{
+            "id":"DeviceList.DeviceList.PrimaryCard-1",
+            "xpath":"//Button[starts-with(@Name, 'OneSimulator') and contains(@AutomationId, 'DeviceList.DeviceList.PrimaryCard')]"
+        }
+    },
+    "printer_status_back_btn":{
+        "locator": {
+            "id":"ExitSetupButton",
+            "xpath": "//Button[starts-with(@Name, 'Back')]"
+        }
+    },
+    "first_error_priority":{
+        "locator": {
+            "xpath": "//List[@AutomationId='MasterListView']/ListItem[1]"
+        }
+    },
+    "second_warning_priority":{
+        "locator": {
+            "xpath": "//List[@AutomationId='MasterListView']/ListItem[2]"
+        }
+    },
+    "third_info_priority":{
+        "locator": {
+            "xpath": "//List[@AutomationId='MasterListView']/ListItem[3]"
+
+        }
+    },
+    "no_printers_found":{
+        "locator": {
+            "id": "NoPrnText"
+        }
+    },
+    "add_printer_by_using_ip_btn":{
+        "locator": {
+            "id": "IPButton"
+        }
+    },
+    "info_icon_in_pdp":{
+        "locator": {
+            "xpath": "//Image[@ClassName='css-qssc5n']"
+        }
+    },
+    "info_alert_title_in_pdp":{
+        "locator": {
+            "xpath": "//*[starts-with(@AutomationId, 'SMSDeviceStatus.SMSDeviceStatusInfo') and substring(@AutomationId, string-length(@AutomationId) - string-length('__status-label') + 1) = '__status-label']"
+        }
+    },
+    "error_icon_in_pdp":{
+        "locator": {
+            "xpath": "//Image[@ClassName='css-1n6btir']"
+        }
+    },
+    "error_alert_title_in_pdp":{
+        "locator": {
+            "xpath": "//*[starts-with(@AutomationId, 'SMSDeviceStatus.SMSDeviceStatusUrgent') and substring(@AutomationId, string-length(@AutomationId) - string-length('__status-label') + 1) = '__status-label']"
+        }
+    },
+    "warning_icon_in_pdp":{
+        "locator": {
+            "xpath": "//Image[@ClassName='css-1jcsqi0']"
+        }
+    },
+    "warning_alert_title_in_pdp":{
+        "locator": {
+            "xpath": "//*[starts-with(@AutomationId, 'SMSDeviceStatus.SMSDeviceStatusWarning') and substring(@AutomationId, string-length(@AutomationId) - string-length('__status-label') + 1) = '__status-label']"
+        }
+    },
+    "pdp_back_btn":{
+        "locator": {
+            "id": "NavBar.NavBarView.BackButton"
+        }
+    }
+
+}

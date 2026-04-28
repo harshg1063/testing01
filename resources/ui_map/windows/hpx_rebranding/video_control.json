@@ -1,0 +1,87 @@
+{
+    "camera_pop_up":{
+        "locator": {
+            "id": "PcDeviceCards.VideoControlModal.VideoControlModalDescription"
+        }
+    },
+    "camera_pop_up_description":{
+        "locator": {
+            "id": "PcDeviceCards.VideoControlModal.VideoControlModalDescription"
+        }
+    },
+    "camera_pop_up_cancel_button":{
+        "locator": {
+            "id": "PcDeviceCards.VideoControlModal.CancelButton"
+        }
+    },
+    "camera_pop_up_continue_button":{
+        "locator": {
+            "id": "PcDeviceCards.VideoControlModal.ContinueButton"
+        }
+    },
+    "camera_pop_up_header":{
+        "locator": {
+            "class name": "modal-title subtitle-large-medium clientos-ui-toolkit-modal__padding-top clientos-ui-toolkit-modal__padding-horizontal"
+        }
+    },
+    "hp_presence_window_pop_up":{
+        "locator": {
+            "xpath": "//*[@AutomationId = 'tutorialSwipeView']"
+        }
+    },
+    "poly_camera_accept_all_button":{
+        "locator": {
+            "name": "Accept All"
+        }
+    },
+    "poly_camera_continue_button":{
+        "locator": {
+            "id": "ContinueButton"
+        }
+    },
+    "poly_camera_install_button":{
+        "locator": {
+            "name": "Install"
+        }
+    },
+    "poly_camera_yes_button":{
+        "locator": {
+            "id": "Button1"
+        }
+    },
+    "poly_camera_window_pop_up":{
+        "locator": {
+            "name": "Poly Camera Pro"
+        }
+    },
+    "poly_camera_contextual_text":{
+        "locator": {
+            "id":"PcDeviceCards.PcDeviceActionCards.VideoXControlCard__subheader"
+        }
+    },
+    "auto_frame_title":{
+        "locator": {
+            "id": "AutoFrameLabel"
+        }
+    },
+    "tutorial_next_button": {
+        "locator": {
+            "id": "tutorial_next_button"
+        }
+    },
+    "video_card": {
+        "locator": {
+            "id": "PcDeviceCards.PcDeviceActionCards.VideoXControlCard"
+        }
+    },
+    "cancel_button_on_video_dialog": {
+        "locator": {
+            "id": "PcDeviceCards.VideoControlModal.CancelButton"
+        }
+    },
+    "hp_presence_video_contextual_text":{
+        "locator": {
+            "id":"PcDeviceCards.PcDeviceActionCards.VideoXControlCard__subheader"
+        }
+    }
+}

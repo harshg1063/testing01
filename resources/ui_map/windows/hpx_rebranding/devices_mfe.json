@@ -1,0 +1,267 @@
+{
+  "close_btn": {
+    "locator": {
+      "id": "Close"
+    }
+  },
+  "myhp_window": {
+    "locator": {
+      "xpath": "//Window[@Name='myHP']"
+    }
+  },
+  "new_hp_app_popup_skip_btn": {
+    "_comment": "Object have no id currently",
+    "locator": {
+      "xpath": [
+        "//android.widget.Button[@text='Skip']"
+      ]
+    }
+  },
+  "app_bar_mfe_section": {
+    "locator": {
+      "css selector": "div[id='AppBar.AppBarView.AppBarContainer']"
+    }
+  },
+  "device_status_section": {
+    "locator": {
+      "css selector": "section[id*='@hpx-core-experiences/react-device-statuses-mfe']"
+    }
+  },
+  "top_add_button": {
+    "locator": {
+      "id": "NavBar.NavBarView.AddDevicePlusIcon",
+      "css selector": "button:has(svg[aria-label='Plus'])"
+    }
+  },
+  "center_add_device_button": {
+    "locator": {
+      "xpath": "//Text[@Name='Let's get started!']/following-sibling::Button[1]"
+    }
+  },
+  "top_notifications_button": {
+    "locator": {
+      "xpath": "//Button[@Name='Notifications']"
+    }
+  },
+  "top_profile_button": {
+    "locator": {
+      "css selector": "button:has(svg[aria-label='Person'])",
+      "xpath": "//Button[@Name='Profile and Settings']"
+    }
+  },
+  "top_signin_button": {
+    "locator": {
+      "id": "Account.NavBarView.SignInButton",
+      "css selector": "button[id='AppBar.AppBarView.SignInButton']",
+      "xpath": "//Button[@Name='Sign In']"
+    }
+  },
+  "device_tile": {
+    "locator": {
+      "css selector": "div.card-wrapper"
+    }
+  },
+  "account_panel_section": {
+    "locator": {
+      "css selector": "section[id='@hpx-core-experiences/react-side-flyout-mfe']"
+    }
+  },
+  "account_panel_close_button": {
+    "locator": {
+      "css selector": "button:has(svg[aria-label='X'])"
+    }
+  },
+  "device_icon": {
+    "locator": {
+      "css selector": "div[id='DeviceList.Devices.PrimaryCard']"
+    }
+  },
+  "windows_dummy_printer_device": {
+    "locator": {
+      "xpath": "//Button[contains(@Name, '{}')]"
+    }
+  },
+  "fw_update_no_btn": {
+    "locator": {
+      "xpath": "//*[@Name='No']"
+    }
+  },
+  "fw_update_title": {
+    "locator": {
+      "xpath": "//Text[@Name='Firmware Update Available']"
+    }
+  },
+  "feature_unavailable_text": {
+    "locator": {
+      "xpath": "//Text[@Name='This feature is currently unavailable']"
+    }
+  },
+  "ok_btn": {
+    "locator": {
+      "xpath": "//Button[@Name='OK']"
+    }
+  },
+  "printer_button": {
+    "locator": {
+      "xpath": "//Group[@AutomationId='header-root']/following-sibling::Group[last()]/Button[1]"
+    }
+  },
+  "printer_friend_name": {
+    "locator": {
+      "xpath": "//Text[@Name='My printer']"
+    }
+  },
+  "printer_model_name": {
+    "locator": {
+      "xpath": "//Text[@Name='{}']"
+    }
+  },
+  "supply_levels_card": {
+    "locator": {
+      "xpath": "//Group[@Name='Supply levels card']"
+    }
+  },
+  "main_webview_pane": {
+    "locator": {
+      "xpath": "//Pane[@ClassName='Chrome_WidgetWin_1']"
+    }
+  },
+  "minimize_app": {
+    "locator": {
+      "id": "Minimize"
+    }
+  },
+  "maximize_myHP": {
+    "locator": {
+      "id": "Maximize"
+    }
+  },
+  "restore_myHP": {
+    "locator": {
+      "name": "Restore HP"
+    }
+  },
+  "close_myHP": {
+    "locator": {
+      "name": "Close myHP"
+    }
+  },
+  "device_card": {
+    "locator": {
+      "id": "DeviceList.DeviceList.PrimaryCard-0"
+    }
+  },
+  "device_card_pc": {
+    "locator": {
+      "xpath": "//Text[contains(@Name, 'PC')]"
+    }
+  },
+  "printer_icon": {
+    "locator": {
+      "class name": "clientos-ui-toolkit-button label clientos-ui-toolkit-button__primary clientos-ui-toolkit-button__large clientos-ui-toolkit-button__icon-button css-upwfw"
+    }
+  },
+  "shop_icon": {
+    "locator": {
+      "class name": "clientos-ui-toolkit-button label clientos-ui-toolkit-button__tertiary clientos-ui-toolkit-button__large clientos-ui-toolkit-button__icon-button css-upwfw"
+    }
+  },
+  "top_profile_icon": {
+    "locator": {
+      "xpath": "//*[@ClassName = 'css-6wdiej']"
+    }
+  },
+  "bell_icon": {
+    "locator": {
+      "id": [
+        "NavBar.NavBarView.BellNotificationIcon",
+        "BellNotifications.NavBarView.BellNotificationIcon"
+      ]
+    }
+  },
+  "profile_icon": {
+    "locator": {
+      "id": "Account.NavBarView.ProfileIcon-bite-button-icon"
+    }
+  },
+  "sign_in_button": {
+    "locator": {
+      "id": "NavBar.NavBarView.SignInButton"
+    }
+  },
+  "back_button_rebranding": {
+    "locator": {
+      "id": "NavBar.NavBarView.BackButton"
+    }
+  },
+  "myhp_on_task_bar": {
+    "locator": {
+      "xpath": "//*[contains(@AutomationId, 'AD2F1837.myHP_v10z8vjag6ke6!App') or contains(@AutomationId, 'Appid: AD2F1837.myHP_v10z8vjag6ke6!App') or contains(@AutomationId, 'Appid: AD2F1837.MYHP_V10Z8VJAG6KE6!APP')]"
+    }
+  },
+  "profile_and_settings_icon_button_lzero_page": {
+    "locator": {
+      "class name": "clientos-ui-toolkit-button label clientos-ui-toolkit-button__tertiary clientos-ui-toolkit-button__medium clientos-ui-toolkit-button__icon-button css-upwfw"
+    }
+  },
+  "navigation_bar_settings_card_arrow_lzero_page": {
+    "locator": {
+      "xpath": "//*[@ClassName='clientos-ui-toolkit-list-container__item padding-start padding-end hoverable'][2]"
+    }
+  },
+  "hpx_version_lzero_page": {
+    "locator": {
+      "class name": "clientos-ui-toolkit-list-container__item padding-start padding-end"
+    }
+  },
+  "menu_back_button_sign_in_side_navbar_lzero": {
+    "locator": {
+      "id": "SideFlyout.SideFlyoutView.NavigationBackArrowLeftIcon"
+    }
+  },
+  "close_button_sign_in_side_navbar_lzero": {
+    "locator": {
+      "id": "SideFlyout.SideFlyoutView.CloseButton"
+    }
+  },
+  "ok_btn_error_popup": {
+    "locator": {
+      "xpath": "//*[@AutomationId='RootWebArea']/Group/Window[@ClassName='vn-modal--content css-1mr4b13']/Button[starts-with(@ClassName,'clientos-ui-toolkit-button label clientos-ui-toolkit-button__pri')][@Name='OK']"
+    }
+  },
+  "pen_card": {
+    "locator": {
+      "xpath": "//*[contains(@Name, 'My Pen')]"
+    }
+  },
+  "charging_status": {
+    "locator": {
+      "class name": "clientos-ui-toolkit-status-list__status-label caption-large"
+    }
+  },
+  "dock_station_card": {
+    "locator": {
+      "xpath": "//*[contains(@Name, 'My Dock')]"
+    }
+  },
+  "device_card_stage_prod": {
+    "locator": {
+      "id": "DeviceList.DeviceList.PrimaryCard-0"
+    }
+  },
+  "feature_not_available_itg_pop_up": {
+    "locator": {
+      "name": "This feature is currently unavailable"
+    }
+  },
+  "itg_pop_up_ok_button": {
+    "locator": {
+      "name": "OK"
+    }
+  },
+  "hpai_assistant_button_on_header": {
+    "locator": {
+      "name": "hpaiassistant"
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+    "ask_me_anything_text_box_ltwo":{
+        "locator": {
+            "xpath": "//*[contains(@Name,'Ask me anything about optimizing device settings...')]"
+        }
+    },
+    "ask_me_anything_searchbox_arrow_button_ltwo":{
+        "locator": {
+            "name": "Primary"
+        }
+    },    
+    "aic_windows":{
+        "locator": {
+            "id": "container-layout"
+        }
+    },
+    "wheel_of_fun_item_on_home_page":{
+        "locator": {
+            "id": "AIAgent.AIAgentRootScreen.WheelOfFun"
+        }
+    },
+    "wheel_of_fun_item_on_result_page":{
+        "locator": {
+            "id": "AIAgent.AIAgentResultScreen.WheelOfFun"
+        }
+    },
+    "collapse_chevron_lthree_page":{
+        "locator": {
+            "xpath": "//Group[@AutomationId='container-layout']//Button[contains(@Name,'Chevron Down') and @ClassName='css-1x1n2cj']"
+        }
+    },
+    "copy_button":{
+        "locator": {
+            "id": "copy-button"
+        }
+    },
+    "hello_text_on_aic_home_page":{
+        "locator": {
+            "name": "Hello"
+        }
+    },
+    "how_can_help_you_text_on_aic_home_page":{
+        "locator": {
+            "name": "How can I help you today?"
+        }
+    },
+    "stop_icon_button_ltwo":{
+        "locator": {
+            "name": "Primary"
+        }
+    },
+    "intent_response_page":{
+        "locator": {
+            "id": "AIAgent.AIAgentResultScreen.AIResponseTitle__body__response__header"
+        }
+    },
+    "response_result":{
+        "locator": {
+            "xpath": "//*[contains(@Name, 'Your displays brightness')]"
+        }
+    },
+    "response_card_1":{
+        "locator": {
+            "xpath": "(//*[@ClassName ='css-hjbwtt'])[1]"
+        }
+    },
+    "response_card_2":{
+        "locator": {
+            "xpath": "(//*[@ClassName='css-hjbwtt'])[2]"
+        }
+    },
+    "search_box":{
+        "locator": {
+            "xpath": "//*[@className='clientos-ui-toolkit-ai-start-page__ai-container']"
+        }
+    },
+    "search_box_result_page":{
+        "locator": {
+           "id": "RootWebArea"
+        }
+    },
+    "aic_button_on_lzero_header":{
+        "locator": {
+            "name": "hpaiassistant"
+        }
+   },
+    "response_body":{
+        "locator": {
+            "xpath": "//p[contains(text(), 'Sure! To optimize')]"
+        }
+   },
+   "input_text_area":{
+        "locator": {
+            "id": "AIAgent.AIAgentResultScreen.SearchInput"
+        }
+   },
+   "input_text_area_1":{
+        "locator": {
+            "xpath": "//*[@className='clientos-ui-toolkit-ai-results-page__footer']"
+        }
+   },
+   "input_text_area_2":{
+        "locator": {
+            "xpath": "//*[@className='clientos-ui-toolkit-text-area__container clientos-ui-toolkit-text-area__container--default css-sj4dax']"
+         }
+   },
+   "response_card_on_aic_for_turn_on_camera":{
+        "locator": {
+            "id": "AIAgent.AIAgentResultScreen.AIResponseCard__accordion"
+        }
+   }
+}

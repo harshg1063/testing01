@@ -1,0 +1,14 @@
+{
+    "@hp-af/feature-switch/overrides": {
+      "support-x-core": true,
+      "support-x-devicedetails":true,
+      "support-x-contact":true,
+      "support-x-va":true,
+      "support-x-adddevice":true,
+      "support-x-case":true,
+      "support-x-warrantydetail":true,
+      "support-x-phone":true,
+      "support-x-chat":true,
+      "support-x-menu":true
+    }
+}

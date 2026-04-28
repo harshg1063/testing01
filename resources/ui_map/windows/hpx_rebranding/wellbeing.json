@@ -1,0 +1,289 @@
+{
+    "screen_time_overall card":{
+        "locator": {
+            "id": "ScreenTime.ScreenTimeScreen.ScreenTimeCard"
+        }
+    },
+    "screen_distance_overall_card":{
+        "locator": {
+            "id": "@pc-hw-enablers/react-pc-screendistance-mfe"
+        }
+    },
+    "screen_time_title":{
+        "locator": {
+            "name": "Screen time"
+        }
+    },
+    "send_a_reminder_title":{
+        "locator": {
+            "id": "screenTime.sendReminderLabel"
+        }
+    },
+    "screen_distance_title":{
+        "locator": {
+            "name": "Screen distance"
+        }
+    },
+    "alert_options_title":{
+        "locator": {
+            "name": "Alert options"
+        }
+    },
+    "set_preferred_distance_title":{
+        "locator": {
+            "name": "Set preferred distance"
+        }
+    },
+    "screen_time_subtitle":{
+        "locator": {
+            "name": "Manage and analyze the time you spend on your PC. This feature requires access to your camera."
+        }
+    },
+    "screen_time_toggle":{
+        "locator": {
+            "id": "ScreenTime.ScreenTime.ScreenTimeToggle__toggle"
+        }
+    },
+    "screen_time_bar_chart":{
+        "locator": {
+            "class name": "highcharts-root"
+        }
+    },
+    "screen_time_bar_chart_dialog":{
+        "locator": {
+            "name": "Turn on screen time to gather data"
+        }
+    },
+    "send_a_reminder_subtitle":{
+        "locator": {
+            "name": "Receive a reminder to take a break from looking at your screen."
+        }
+    },
+    "send_a_reminder_toggle":{
+        "locator": {
+            "id": "ScreenTime.ScreenTime.ReminderToggle__toggle"
+        }
+    },
+    "reminder_combobox":{
+        "locator": {
+            "id": "ScreenTime.ScreenTimeScreen.ReminderSelect"
+        }
+    },
+    "reminder_combobox_open_button":{
+        "locator": {
+            "name": "Turn on send a reminder to set a reminder"
+        }
+    },
+    "screen_time_bar_chart_sun":{
+        "locator": {
+            "name": "Sun"
+        }
+    },
+    "screen_time_bar_chart_mon":{
+        "locator": {
+            "name": "Mon"
+        }
+    },
+    "screen_time_bar_chart_tue":{
+        "locator": {
+            "name": "Tue"
+        }
+    },
+    "screen_time_bar_chart_wed":{
+        "locator": {
+            "name": "Wed"
+        }
+    },
+    "screen_time_bar_chart_thu":{
+        "locator": {
+            "name": "Thu"
+        }
+    },
+    "screen_time_bar_chart_fri":{
+        "locator": {
+            "name": "Fri"
+        }
+    },
+    "screen_time_bar_chart_sat":{
+        "locator": {
+            "name": "Sat"
+        }
+    },
+    "screen_time_bar_chart_0h":{
+        "locator": {
+            "name": "0h"
+        }
+    },
+    "screen_time_bar_chart_2h":{
+        "locator": {
+            "name": "2h"
+        }
+    },
+    "screen_time_bar_chart_4h":{
+        "locator": {
+            "name": "4h"
+        }
+    },
+    "screen_time_bar_chart_6h":{
+        "locator": {
+            "name": "6h"
+        }
+    },
+    "screen_time_bar_chart_8h":{
+        "locator": {
+            "name": "8h"
+        }
+    },
+    "screen_time_bar_chart_10h":{
+        "locator": {
+            "name": "10h"
+        }
+    },
+    "screen_time_bar_chart_12h":{
+        "locator": {
+            "name": "12h"
+        }
+    },
+    "screen_distance_toggle":{
+        "locator": {
+            "id": "ScreenDistance.ScreenDistance.ScreenDistanceToggle__toggle"
+        }
+    },
+    "screen_distance_discription":{
+        "locator": {
+            "class name": "styles__Description-pc-hw-enablers-react-pc-screendistance-mfe__sc-hywyeh-9 jIuHO body"
+        }
+    },
+    "set_preferred_icon":{
+        "locator": {
+            "class name": "clientos-ui-toolkit-button label clientos-ui-toolkit-button__primary clientos-ui-toolkit-button__medium clientos-ui-toolkit-button__disabled clientos-ui-toolkit-button__icon-button css-1wxh7tj"
+        }
+    },
+    "screen_time_tooltip":{
+        "locator": {
+            "name": "This feature only works when your built-in camera is facing you. This feature does not support external monitors. If Screen Time is turned off, daily data will not be collected."
+        }
+    },
+    "send_a_reminder_tooltip":{
+        "locator": {
+            "name": "Time intervals are measured by how much time is spent in front of the display."
+        }
+    },
+    "alert_options_tooltip":{
+        "locator": {
+            "name": "Nudge: Receive a minor notification. Alert: More options to snooze or dismiss are included."
+        }
+    },
+    "alert_options":{
+        "locator": {
+            "id": "clientos-ui-toolkit-list-container-tuwtx7b__tooltip__children"
+        }
+    },
+    "alert_options_drop_down_list":{
+        "locator": {
+            "id": "ScreenDistance.ScreenDistance.AlertOptionsSelect-select"
+        }
+    },
+    "set_preferred_distance":{
+        "locator": {
+            "id": "ScreenDistance.SetDistanceRow.Length"
+        }
+    },
+    "set_preferred_distance_toggle":{
+        "locator": {
+            "id": "ScreenDistance.ScreenDistance.SetDistanceButton"
+        }
+    },
+    "current_set_distance_dialog":{
+        "locator": {
+            "id": "ScreenDistance.SetDistanceRow.Length"
+        }
+    },
+    "current_set_distance_image":{
+        "locator": {
+            "id": "ScreenDistance.SetDistanceModal.Animation"
+        }
+    },
+    "set_button":{
+        "locator": {
+            "id": "ScreenDistance.SetDistanceModal.SetButton"
+
+        }
+    },
+    "cancel_button":{
+        "locator": {
+            "id": "ScreenDistance.SetDistanceModal.CancelButton"
+        }
+    },
+    "restore_default_button":{
+        "locator": {
+            "id": "Wellbeing.Wellbeing.RestoreDefaultButton"
+        }
+    },
+    "reminder_interval":{
+        "locator": {
+            "id": "ScreenTime.ScreenTime.ReminderSelect-select"
+        }
+    },
+    "reminder_interval_1_hour":{
+        "locator": {
+            "id": "ScreenTime.ScreenTime.ReminderSelect-select-option-1"
+        }
+    },
+    "reminder_interval_2_hour":{
+        "locator": {
+            "id": "ScreenTime.ScreenTime.ReminderSelect-select-option-2"
+        }
+    },
+    "reminder_interval_4_hour":{
+        "locator": {
+            "id": "ScreenTime.ScreenTime.ReminderSelect-select-option-3"
+        }
+    },
+    "reminder_interval_30_mins":{
+        "locator": {
+            "id": "ScreenTime.ScreenTime.ReminderSelect-select-option-0"
+
+        }
+    },
+    "nudge_options_show_on_drop_down_list":{
+        "locator": {
+            "id": "ScreenDistance.ScreenDistance.AlertOptionsSelect-option-0"
+        }
+    },
+    "alert_show_on_drop_down_list":{
+        "locator": {
+            "id": "ScreenDistance.ScreenDistance.AlertOptionsSelect-select-option-1"
+        }
+    },
+    "nudge_show_on_drop_down_list":{
+        "locator": {    
+            "id": "ScreenDistance.ScreenDistance.AlertOptionsSelect-select-option-0"
+        }
+    },
+    "posture_toggle": {
+        "locator": {
+            "id": "postureDetection__toggle"
+        }
+    },
+    "posture_icon":{
+        "locator": {
+            "name": "Turn on Posture detection to gather data"
+        }
+    },
+    "posture_alert_options_drop_down_list_menu":{
+        "locator": {
+            "id": "alertOptionsSelectInput-select-listbox"
+        }
+    },
+    "posture_alert_options_drop_down_list":{
+        "locator": {
+            "id": "alertOptionsSelectInput-select"
+        }
+    },
+    "posture_sensitivity_slider": {
+        "locator": {
+            "name": "Sensitivity"
+        }
+    }  
+}

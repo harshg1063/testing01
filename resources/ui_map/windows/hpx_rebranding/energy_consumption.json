@@ -1,0 +1,201 @@
+{
+    "energy_consumption": {
+        "locator": {
+            "id": "PcDeviceCards.PcDeviceActionCards.PcecometerXSettingsCard"
+        }
+    },"energy_consumption_header": {
+        "locator": {
+            "id": "EnergyConsumption.Title.EnergyConsumption"
+        }
+    },
+    "consistency_check_dropdown": {
+        "locator": {
+            "id": "EnergyConsumption.EnergyConsumption.ConsumptionTrendsDropDown-select"
+        }
+    },
+    "last_12_hours": {
+        "locator": {
+            "id": "EnergyConsumption.EnergyConsumption.ConsumptionTrendsDropDown-option-0"
+        }
+    },
+    "last_6_days": {
+        "locator": {
+            "id": "EnergyConsumption.EnergyConsumption.ConsumptionTrendsDropDown-select-option-1"
+        }
+    },
+    "last_6_months": {
+        "locator": {
+            "id": "EnergyConsumption.EnergyConsumption.ConsumptionTrendsDropDown-select-option-2"
+        }
+    },
+    "consumption_trends_subtitle": {
+        "locator": {
+            "id": "EnergyConsumption.EnergyConsumption.ConsumptionTrends.ConsumptionTrendsSubtitle"
+        }
+    },
+    "how_to_adjust_power_and_sleep_settings_in_windows_link":{
+        "locator": {
+            "id": "EnergyConsumption.EnergyConsumption.HowToAdjustPowerAndSleepSettingsInWindowsLink"
+        }
+    },
+    "caring_for_your_battery_in_windows_link":{
+        "locator": {
+            "id": "EnergyConsumption.EnergyConsumption.CaringForYourBatteryInWindowsLink"
+        }
+    },
+    "battery_saving_tips_for_windows_link":{
+        "locator": {
+            "id": "EnergyConsumption.EnergyConsumption.BatterySavingTipsForWindowsLink"
+        }
+    },
+    "change_the_power_mode_for_your_windows_pc_link":{
+        "locator": {
+            "id": "EnergyConsumption.EnergyConsumption.ChangeThePowerModeForYourWindowsPcLink"
+        }
+    },
+    "manage_background_activity_for_apps_in_windows_link":{
+        "locator": {
+            "id": "EnergyConsumption.EnergyConsumption.ManageBackgroundActivityForAppsInWindowsLink"
+        }
+    },
+    "learn_more_about_energy_recommendations_microsoft_support_link":{
+        "locator": {
+            "id": "EnergyConsumption.EnergyConsumption.LearnMoreAboutEnergyRecommendationsMicrosoftSupportLink"
+        }
+    },
+    "power_sleep_setting_webpage_url":{
+        "locator": {
+            "name": "Address and search bar"
+        }
+    },
+    "update_bios":{
+        "locator": {
+            "name": "Update BIOS"
+        }
+    },
+    "update_bios_description":{
+        "locator": {
+            "name": "To view your device's energy consumption data update your BIOS/EC to the latest version."
+        }
+    },
+    "learn_more_link":{
+        "locator": {
+            "xpath": "//*[@ClassName='clientos-ui-toolkit-link label has-underline'][@Name='Learn more']"
+        }
+    },
+    "data_unavailable":{
+        "locator": {
+            "id": "EnergyConsumption.DataStatus.DataUnavailable"
+        }
+    },
+    "total_energy_consumption":{
+        "locator": {
+            "id": "EnergyConsumption.TotalEnergyConsumption.Title"
+        }
+    },
+    "total_energy_consumption_dropdown":{
+        "locator": {
+            "id": "EnergyConsumption.EnergyConsumption.TotalEnergyConsumptionDropDown-select"
+        }
+    },
+    "last_week": {
+        "locator": {
+            "id": "EnergyConsumption.EnergyConsumption.TotalEnergyConsumptionDropDown-select-option-0"
+        }
+    },
+    "last_month": {
+        "locator": {
+            "id": "EnergyConsumption.EnergyConsumption.TotalEnergyConsumptionDropDown-select-option-1"
+        }
+    },
+    "product_carbon_footprint_report_title":{
+        "locator": {
+            "name": "Product Carbon Footprint"
+        }
+    },
+    "epa_home_page_title":{
+        "locator": {
+            "name": "Greenhouse Gas Equivalencies Calculator - Calculations and References | US EPA"
+        }
+    },
+    "energy_environment_report_title":{
+        "locator": {
+            "name": "Energy and the Environment"
+        }
+    },
+    "product_carbon_footprint_link":{
+        "locator": {
+            "name": "Product Carbon Footprint"
+        }
+    },
+    "energy_environment_link":{
+        "locator": {
+            "name": "Energy and the Environment - Epa.gov"
+        }
+    },
+    "myhp_on_task_bar": {
+        "locator": {
+            "xpath": "//*[contains(@AutomationId, 'AD2F1837.myHP_v10z8vjag6ke6!App') or contains(@AutomationId, 'Appid: AD2F1837.myHP_v10z8vjag6ke6!App')]"
+        }
+    },
+    "download_report_button":{
+        "locator": {
+            "name": "Download Report "
+        }
+    },
+    "hp_logo":{
+        "locator": {
+            "id": "EnergyConsumption.EnergySave.HPLogo"
+        }
+    },
+    "energy_recommendation_logo":{
+        "locator": {
+            "id": "EnergyConsumption.EnergySave.HandWithPlantLogo"
+        }
+    },
+    "hp_excite_msg":{
+        "locator": {
+            "id": "EnergyConsumption.EnergySave.Description"
+        }
+    },
+    "go_beyond_hyperlink":{
+        "locator": {
+            "id": "EnergyConsumption.EnergyConsumption.LearnMoreAboutGoBeyondLink"
+        }
+    },
+    "small_go_beyond_hyperlink":{
+        "locator": {
+            "id": "EnergyConsumption.EnergyConsumption.LearMoreGoBeyondLink"
+        }
+    },
+    "btn_ok":{
+        "locator": {
+            "Name": "OK"
+        }
+    },
+    "data_consumption_header": {
+        "locator": {          
+            "xpath": "//*[@ClassName='highcharts-root']"
+        }
+    },
+    "energy_consumption_header_text":{
+        "locator": {
+            "Name": "Energy Consumption"
+        }
+    },
+    "total_energy_consumption_show_less_button":{
+        "locator":{
+            "id":"EnergyConsumption.EnergyConsumption.TotalEnergyConsumptionShowMoreButton"
+        }
+    },
+    "total_energy_consumption_show_more_button":{
+        "locator":{
+            "id":"EnergyConsumption.EnergyConsumption.TotalEnergyConsumptionShowLessButton"
+        }
+    },
+    "energy_consumption_module_page":{
+        "locator": {
+            "name": "HPX Windows App"
+        }
+    }
+}

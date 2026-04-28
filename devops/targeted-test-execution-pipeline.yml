@@ -1,0 +1,856 @@
+# Targeted Test Execution Pipeline
+#
+# Flexible on-demand test execution with support for platform, device, build version, and marker filtering.
+# Automatically discovers agents and runs tests in parallel across matching configurations.
+#
+# FEATURES:
+# =========
+# - Dual execution modes: Targeted (platform/device filters) or Marker-Based (auto-discovery)
+# - Platform and device filtering with comma-separated lists (OR logic)
+# - Build version targeting: Latest build or specific version from ADO pipeline
+# - Marker filtering: Exclude/include tests based on custom markers (e.g., "not robotics")
+# - Parallel execution across all matching platform×device combinations
+# - Automatic agent discovery using Azure DevOps API
+# - Dynamic matrix generation based on online/enabled agents
+# - Comprehensive execution context display for visibility
+#
+# EXECUTION MODES:
+# ================
+# Mode 1: Targeted Filters (platform OR device specified)
+#   - User specifies platform(s) and/or device(s)
+#   - Pipeline queries Azure DevOps for matching agents
+#   - Tests run on all discovered platform×device combinations
+#   - Parallel execution via matrix strategy
+#   - Fastest when you know exactly which agents to target
+#
+# Mode 2: Marker-Based Discovery (platform AND device empty)
+#   - Pipeline parses @pytest.mark.platform() and @pytest.mark.connected_device() from test files
+#   - Queries Azure DevOps for available agent capabilities
+#   - Automatically matches test requirements to agents
+#   - Tests run on all marked platform×device combinations
+#   - Best for comprehensive testing without manual agent selection
+#
+# PARAMETERS:
+# ===========
+# testName (required)
+#   Example: "pen_control/test_pen_control_radial_menu_commercial.py::test_01_verify_default_radial_menu_values"
+#   Formats:
+#     - Module only: "pen_control" → runs all tests in pen_control module
+#     - Suite path: "pen_control/test_pen_control_radial.py" → runs all tests in that file
+#     - Specific test: "pen_control/test_pen_control_radial.py::test_01_verify" → runs single test
+#
+# platform (optional)
+#   Examples: "MasadaN" or "MasadaN,CashmereXI,Machu13x"
+#   Leave empty (' ') for marker-based discovery
+#   Comma-separated list uses OR logic: any matching agent
+#
+# device (optional)
+#   Examples: "roo" or "roo,trio"
+#   Leave empty (' ') for marker-based discovery
+#   Comma-separated list uses OR logic: any matching device
+#
+# markerFilter (optional)
+#   Examples: "not robotics" or "not image_comparison and not robotics"
+#   Leave empty (' ') to run all tests matching platform×device requirements
+#   Combined with platform×device filter using AND logic: (platform AND device) AND (marker filter)
+#   Useful for excluding slow/flaky/wip markers
+#
+# skipAppInstallation (optional)
+#   Type: boolean
+#   Default: false
+#   Examples: true or false
+#   When true: Skips all app installation steps (version checking, package download, installation)
+#   When false: Runs full installation pipeline
+#   Use this when the app is already installed on the device and you want to run tests immediately
+#   Note: When enabled, the buildVersion parameter is ignored (by design)
+#   WARNING: Ensure the required app version is already installed on the device before using this flag
+#   Device state must be clean with proper permissions and no corrupted data
+
+# buildVersion (optional)
+#   Examples: "53.42601.121.0"
+#   Leave empty (' ') to use latest build from selected build pipeline
+#   Must match exact build number from Azure DevOps build artifacts
+#
+# buildPipeline
+#   Select which build pipeline to use: Production, Stage, Integration, or Dev
+#   Default: Stage
+#
+# USAGE EXAMPLES:
+# ===============
+# Example 1: Single platform with latest build, run all tests
+#   testName: pen_control/test_pen_control_radial_menu_commercial.py
+#   platform: MasadaN
+#   device: (empty)
+#   markerFilter: (empty)
+#   buildVersion: (empty)
+#   → Runs all tests in file on MasadaN agents with latest build
+#
+# Example 2: Specific test on multiple platforms with specific build
+#   testName: pen_control/test_pen_control_radial_menu_commercial.py::test_01_verify_default_radial_menu_values
+#   platform: MasadaN,CashmereXI,Machu13x
+#   device: (empty)
+#   markerFilter: (empty)
+#   buildVersion: 53.42601.121.0
+#   → Runs single test on all 3 platforms with specific build version
+#
+# Example 3: Multiple devices with marker filter (exclude robotics tests)
+#   testName: audio/test_audio
+#   platform: (empty)
+#   device: roo,trio
+#   markerFilter: not robotics
+#   buildVersion: (empty)
+#   → Runs all audio tests on agents with roo OR trio devices, excluding robotics tests, latest build
+#
+# Example 4: Marker-based discovery (auto-detect all requirements)
+#   testName: pen_control
+#   platform: (empty)
+#   device: (empty)
+#   markerFilter: not image_comparison
+#   buildVersion: (empty)
+#   → Parses test markers, runs on all matching agents, excludes image_comparison tests, latest build
+#
+# Example 5: Specific suite on specific platform and device
+#   testName: pen_control/test_pen_control_accessibility_commercial.py
+#   platform: MasadaN
+#   device: roo
+#   markerFilter: (empty)
+#   buildVersion: (empty)
+#   → Runs accessibility tests on MasadaN agents with roo device, latest build
+#
+# Example 6: Skip app installation (app already installed on device)
+#   testName: pen_control/test_pen_control_radial_menu_commercial.py
+#   platform: MasadaN
+#   device: roo
+#   markerFilter: (empty)
+#   skipAppInstallation: true
+#   buildVersion: (ignored when skipAppInstallation is true)
+#   → Runs tests on MasadaN agents with roo device, skips app installation, uses existing app
+#   Useful for: Quick test iterations, testing without install wait time, pre-configured app state
+#
+# FILTER COMBINATION LOGIC:
+# =========================
+# When multiple filters are specified, they combine as follows:
+#
+#   (platform1 OR platform2 OR ...) AND
+#   (device1 OR device2 OR ...) AND
+#   (markerFilter1 AND markerFilter2 AND ...)
+#
+# Examples of combined filters:
+#   platform: MasadaN,CashmereXI
+#   device: roo,trio
+#   markerFilter: not robotics
+#   → Tests on agents with (MasadaN OR CashmereXI) AND (roo OR trio), excluding robotics
+#
+#   platform: (empty)
+#   device: roo
+#   markerFilter: not image_comparison and not robotics
+#   → Tests marked for any platform, require roo device, exclude both image_comparison AND robotics
+#
+# NOTE ON skipAppInstallation:
+# When skipAppInstallation is set to true, the app installation steps are completely bypassed,
+# regardless of the buildVersion parameter. Installation steps that are skipped include:
+#   - Version checking and validation
+#   - Package download from build artifacts
+#   - Certificate installation
+#   - MSI/package deployment to device
+#
+# This is useful for:
+#   - Running quick test iterations when app is already on device
+#   - Testing specific functionality without waiting for installation
+#   - Using a pre-configured app state
+#   - Reducing pipeline execution time for iterative testing
+#
+# CAUTION: Ensure your device has the correct app version installed before enabling this flag.
+# Device state must be clean with no corrupted data and proper file permissions.
+#
+# EXECUTION CONTEXT VISIBILITY:
+# =============================
+# Each job displays its execution context including:
+#   - Execution Context: Platform × Device combination
+#   - Platform: Currently executing platform
+#   - Device(s): Connected device(s) being tested
+#   - Target Agent: Expected agent from discovery
+#   - Actual Agent: Real Azure DevOps agent running job
+#   - Machine: Machine hostname
+#   - Test Path: Absolute path to test files
+#   - Test Filter: Specific test case (if provided)
+#   - Build Version: Build being installed (Latest or specific version)
+#   - Marker Filter: Marker-based filtering (Running all tests or specific filter)
+#
+# PREREQUISITES:
+# ==============
+# 1. Variable Groups:
+#    - 'secrets' group: Must contain AzureDevOpsPAT (Agents Read, Artifacts Read/Write permissions)
+#    - 'HP App Build Pipeline Variables' group: Must contain:
+#       * ProjectId: Azure DevOps project ID
+#       * Production: Build pipeline ID for production builds
+#       * Stage: Build pipeline ID for stage builds
+#       * Integration: Build pipeline ID for integration builds
+#       * Dev: Build pipeline ID for dev builds
+#
+# 2. Azure DevOps Agent Pool (ASQE-QAMA-General):
+#    - Must have agents with capabilities:
+#       * Platform: e.g., "Platform=MasadaN", "Platform=CashmereXI"
+#       * Devices: e.g., "roo=true", "trio=true" (case-insensitive)
+#    - Agents must be online and enabled
+#    - Appium server configuration on agents
+#
+# 3. Test Code:
+#    - Use @pytest.mark.platform('PlatformName') decorator on test classes/methods
+#    - Use @pytest.mark.connected_device('devicename') for device requirements
+#    - Use custom markers for filtering (e.g., @pytest.mark.robotics, @pytest.mark.image_comparison)
+#
+# TROUBLESHOOTING:
+# ================
+# Issue: "No agents found matching criteria"
+#   → Verify platform/device names match agent capabilities exactly (case-insensitive)
+#   → Check agents are online and enabled in Azure DevOps
+#   → Use marker-based mode to auto-discover available agents
+#
+# Issue: "Build with build number 'X' not found"
+#   → Verify build version matches exact version string in ADO pipeline
+#   → Check build pipeline selection matches where version was built
+#   → Leave buildVersion empty to use latest build
+#
+# Issue: "No tests matched the marker filter"
+#   → Verify marker filter syntax is correct pytest marker syntax
+#   → Check test files have @pytest.mark decorators
+#   → Try without marker filter to see all tests
+#
+# Issue: "Test fails immediately when skipAppInstallation is true"
+#   → Verify the app is installed on the device
+#   → Check that the app version is compatible with your tests
+#   → Check app state is clean (no corrupted data, proper permissions)
+#   → Disable skipAppInstallation and run with fresh install if uncertain
+#
+# Issue: "buildVersion parameter is being ignored"
+#   → Check if skipAppInstallation is set to true
+#   → When skipAppInstallation=true, buildVersion is always ignored (by design)
+#   → Disable skipAppInstallation if you need to install a specific build version
+# PERFORMANCE NOTES:
+# ==================
+# - Parallel execution via matrix strategy: all platform×device combinations run simultaneously
+# - Agent discovery uses Azure DevOps REST API (cached for 5 minutes)
+# - Build download is skipped if already cached on agent
+# - Typical test run: 5-15 minutes depending on test count and agent count
+
+trigger: none
+pr: none
+
+parameters:
+  - name: testName
+    displayName: 'Test Name (module[/suite.py[::testcase]]) e.g.. pen_control/test_pen_control_radial_menu_commercial.py::test_01_verify_default_radial_menu_values'
+    type: string
+    default: ''
+  - name: platform
+    displayName: 'Platform(s) - comma-separated (leave empty for marker-based)'
+    type: string
+    default: ' '
+  - name: device
+    displayName: 'Device(s) - comma-separated (leave empty for marker-based)'
+    type: string
+    default: ' '
+  - name: markerFilter
+    displayName: 'Marker Filter (optional, e.g., "not image_comparison and not robotics")'
+    type: string
+    default: ' '
+  - name: skipAppInstallation
+    displayName: 'Skip App Installation (⚠️ App MUST be pre-installed on device)'
+    type: boolean
+    default: false
+  - name: buildVersion
+    displayName: 'Build Version (leave empty for latest build)'
+    type: string
+    default: ' '
+  - name: buildPipeline
+    displayName: 'Build Pipeline'
+    type: string
+    default: 'Production'
+    values:
+      - Production
+      - Stage
+      - Integration
+      - Dev
+
+variables:
+  - group: secrets  # Contains AzureDevOpsPAT
+  - group: HP App Build Pipeline Variables  # Contains Project ID, Stage
+  - name: testSuiteBasePath
+    value: 'tests/hp_app'
+  - ${{ if eq(parameters.buildPipeline, 'Production') }}:
+      - name: selectedPipelineId
+        value: $[variables['Production']]
+  - ${{ if eq(parameters.buildPipeline, 'Stage') }}:
+      - name: selectedPipelineId
+        value: $[variables['Stage']]
+  - ${{ if eq(parameters.buildPipeline, 'Integration') }}:
+      - name: selectedPipelineId
+        value: $[variables['Integration']]
+  - ${{ if eq(parameters.buildPipeline, 'Dev') }}:
+      - name: selectedPipelineId
+        value: $[variables['Dev']]
+  - ${{ if eq(parameters.buildVersion, ' ') }}:
+      - name: buildVersionToDownload
+        value: latest
+  - ${{ if ne(parameters.buildVersion, ' ') }}:
+      - name: buildVersionToDownload
+        value: specific
+  - name: organization
+    value: 'hpcodeway'
+  - name: poolName
+    value: 'ASQE-QAMA-General'
+
+stages:
+  # ============================================================================
+  # Stage 0: Parse Parameters (Common for Both Modes)
+  # ============================================================================
+  - stage: ParseParameters
+    displayName: 'Parse Test Parameters'
+    jobs:
+      - job: ParseTestName
+        displayName: 'Validate and Parse Test Name'
+        pool:
+          name: ASQE-QAMA-VM
+
+        steps:
+          - task: PowerShell@2
+            name: ParseTestName
+            displayName: 'Parse Test Name'
+            inputs:
+              targetType: 'inline'
+              script: |
+                $ErrorActionPreference = "Stop"
+
+                # Parse test name
+                $testname = "${{ parameters.testName }}"
+                Write-Host "##[section]Parsing Test Name: $testname"
+
+                if ([string]::IsNullOrEmpty($testname)) {
+                  Write-Host "##[error]testName parameter is required"
+                  exit 1
+                }
+
+                # Extract module, suite, testcase
+                $parts = $testname -split '/'
+                $module = $parts[0]
+                $rest = ($parts | Select-Object -Skip 1) -join '/'
+                $suite = ($rest -split '::')[0]
+                $testcase = ''
+                if ($rest -match '::(.+)$') { $testcase = $Matches[1] }
+
+                Write-Host "  Module: $module"
+                Write-Host "  Suite: $suite"
+                Write-Host "  Test Case: $testcase"
+
+                if ([string]::IsNullOrEmpty($module)) {
+                  Write-Host "##[error]Module is required in test name"
+                  exit 1
+                }
+
+                # Build test path
+                if (-not [string]::IsNullOrEmpty($suite)) {
+                  $testPath = "$(testSuiteBasePath)/$module/$suite"
+                } else {
+                  $testPath = "$(testSuiteBasePath)/$module"
+                }
+
+                # Trim whitespace from parameters
+                $platform = '${{ parameters.platform }}'.Trim()
+                $device = '${{ parameters.device }}'.Trim()
+                $buildVersion = '${{ parameters.buildVersion }}'.Trim()
+                $markerFilter = '${{ parameters.markerFilter }}'.Trim().Replace('"','').Replace("'","")
+
+                # Parse comma-separated lists
+                $platformList = if ($platform) { $platform -split ',' | ForEach-Object { $_.Trim() } | Where-Object { $_ } } else { @() }
+                $deviceList = if ($device) { $device -split ',' | ForEach-Object { $_.Trim() } | Where-Object { $_ } } else { @() }
+
+                # Determine execution mode
+                $executionMode = if ($platformList.Count -eq 0) { "Marker-Based" } else { "Platforms: $($platformList -join ', ')" }
+                if ($deviceList.Count -gt 0) {
+                  $executionMode += " | Devices: $($deviceList -join ', ')"
+                }
+
+                Write-Host "##[section]Parsed Parameters:"
+                Write-Host "  Test Path: $testPath"
+                $testFilterDisplay = if ($testcase) { $testcase } else { '<none>' }
+                Write-Host "  Test Filter: $testFilterDisplay"
+                Write-Host "  Execution Mode: $executionMode"
+                $platformFilterDisplay = if ($platformList.Count -eq 0) { '<marker-based>' } else { $($platformList -join ', ') }
+                Write-Host "  Platform Filter: $platformFilterDisplay"
+                $deviceFilterDisplay = if ($deviceList.Count -eq 0) { '<marker-based>' } else { $($deviceList -join ', ') }
+                Write-Host "  Device Filter: $deviceFilterDisplay"                
+                Write-Host "  Build Version: $(if ([string]::IsNullOrEmpty($buildVersion)) { 'Latest' } else { $buildVersion })"
+                Write-Host "  Marker Filter: $(if ([string]::IsNullOrEmpty($markerFilter)) { 'Running all tests' } else { $markerFilter })"
+
+                # Set output variables
+                Write-Host "##vso[task.setvariable variable=testPath;isOutput=true]$testPath"
+                Write-Host "##vso[task.setvariable variable=testFilter;isOutput=true]$testcase"
+                Write-Host "##vso[task.setvariable variable=platformTrimmed;isOutput=true]$platform"
+                Write-Host "##vso[task.setvariable variable=deviceTrimmed;isOutput=true]$device"
+                Write-Host "##vso[task.setvariable variable=buildVersionTrimmed;isOutput=true]$buildVersion"
+                Write-Host "##vso[task.setvariable variable=markerFilterTrimmed;isOutput=true]$markerFilter"
+  # ============================================================================
+  # Stage 1A: Discover Agents - Platform/Device Specified Mode
+  # Runs when: Either platform OR device parameter is provided (non-empty after trim)
+  # Purpose: Uses lookup-test-targets-by-platform-and-device.py to find agents matching the filter criteria
+  # ============================================================================
+  - ${{ if or(ne(parameters.platform, ' '), ne(parameters.device, ' ')) }}:
+      - stage: DiscoverAgentsAndPrepare
+        displayName: 'Discover Agents for Platform/Device Filters'
+        dependsOn: ParseParameters
+        jobs:
+          - job: DiscoverDevices
+            displayName: 'Discover Devices with Filters'
+            pool:
+              name: ASQE-QAMA-VM
+
+            variables:
+              platformTrimmed: $[ stageDependencies.ParseParameters.ParseTestName.outputs['ParseTestName.platformTrimmed'] ]
+              deviceTrimmed: $[ stageDependencies.ParseParameters.ParseTestName.outputs['ParseTestName.deviceTrimmed'] ]
+
+            steps:
+              # Step 1: Lookup devices with platform and/or device filter
+              - task: PowerShell@2
+                name: BuildLookupArgs
+                displayName: 'Build Lookup Arguments'
+                inputs:
+                  targetType: 'inline'
+                  script: |
+                    $platform = '$(platformTrimmed)'
+                    $device = '$(deviceTrimmed)'
+                    
+                    # Validate that at least one filter is provided
+                    if ([string]::IsNullOrEmpty($platform) -and [string]::IsNullOrEmpty($device)) {
+                      Write-Host "##[error]At least one of platform or device must be provided"
+                      exit 1
+                    }
+                    
+                    $args = '--organization "$(organization)" --pool-name "$(poolName)" --json --json-output-file "$(Build.ArtifactStagingDirectory)/device-lookup-results.json"'
+                    
+                    if ($platform) { 
+                      $args = '--platform "' + $platform + '" ' + $args
+                      Write-Host "Added platform filter: $platform"
+                    }
+                    if ($device) { 
+                      $args = $args + ' --device "' + $device + '"'
+                      Write-Host "Added device filter: $device"
+                    }
+                    
+                    Write-Host "Final arguments: $args"
+                    Write-Host "##vso[task.setvariable variable=lookupArgs]$args"
+
+              - task: PythonScript@0
+                name: LookupDevices
+                displayName: 'Lookup Devices'
+                env:
+                  AZUREDEVOPSPAT: $(AzureDevOpsPAT)
+                inputs:
+                  scriptSource: 'filePath'
+                  scriptPath: '$(Build.SourcesDirectory)/devops/utils/agent-management/lookup-test-targets-by-platform-and-device.py'
+                  arguments: '$(lookupArgs)'
+                  workingDirectory: '$(Build.SourcesDirectory)/devops/utils/agent-management'
+                  continueOnError: false
+
+              # Step 2: Create execution matrix from device lookup results
+              - task: PowerShell@2
+                name: CreateMatrix
+                displayName: 'Create Execution Matrix'
+                inputs:
+                  targetType: 'filePath'
+                  filePath: '$(Build.SourcesDirectory)/devops/utils/test-execution/create-execution-matrix.ps1'
+                  arguments: '-JsonFilePath "$(Build.ArtifactStagingDirectory)/device-lookup-results.json" -PoolName "$(poolName)"'
+                  workingDirectory: '$(Build.SourcesDirectory)/devops/utils/test-execution'
+
+  # ============================================================================
+  # Stage 1B: Discover Agents - Marker-Based Mode
+  # Runs when: Both platform AND device parameters are empty (default ' ' after trim = '')
+  # Purpose: Parses pytest markers from test files and matches to available agents
+  # ============================================================================
+  - ${{ if and(eq(parameters.platform, ' '), eq(parameters.device, ' ')) }}:
+      - stage: DiscoverAgentsMarkerBased
+        displayName: 'Discover Agents Using Marker-Based Discovery'
+        dependsOn: ParseParameters
+        jobs:
+          - job: DiscoverMarkers
+            displayName: 'Parse Markers & Generate Matrix'
+            pool:
+              name: ASQE-QAMA-VM
+
+            variables:
+              requirementsFile: '$(Build.ArtifactStagingDirectory)/marker-requirements.json'
+              testPath: $[ stageDependencies.ParseParameters.ParseTestName.outputs['ParseTestName.testPath'] ]
+
+            steps:
+              # Step 1: Parse test markers from Python files
+              - task: PythonScript@0
+                displayName: 'Parse Test Markers'
+                continueOnError: true
+                inputs:
+                  scriptSource: 'filePath'
+                  scriptPath: '$(Build.Repository.LocalPath)/devops/utils/test-execution/parse-test-markers.py'
+                  arguments: '--suite-path "$(testPath)" --output "$(requirementsFile)"'
+                  workingDirectory: '$(Build.Repository.LocalPath)'
+                  failOnStderr: false
+
+              # Step 2: Generate agent matrix from requirements
+              - task: PowerShell@2
+                name: CreateMatrix
+                displayName: 'Generate Agent Execution Matrix'
+                continueOnError: true
+                env:
+                  AZUREDEVOPSPAT: $(AzureDevOpsPAT)
+                inputs:
+                  targetType: 'filePath'
+                  filePath: '$(Build.SourcesDirectory)/devops/utils/test-execution/generate-marker-matrix.ps1'
+                  arguments: '-RequirementsFile "$(requirementsFile)"'
+                  workingDirectory: '$(Build.SourcesDirectory)/devops/utils/test-execution'
+                  failOnStderr: false
+
+  # ============================================================================
+  # Stage 2A: Execute Tests - Platform/Device Specified Mode
+  # Runs when: Either platform OR device parameter is provided
+  # Uses: Execution matrix from DiscoverAgentsAndPrepare stage
+  # ============================================================================
+  - ${{ if or(ne(parameters.platform, ' '), ne(parameters.device, ' ')) }}:
+      - stage: ExecuteTests
+        displayName: 'Execute Tests with Filters'
+        dependsOn:
+          - ParseParameters
+          - DiscoverAgentsAndPrepare
+        condition: and(succeeded(), eq(dependencies.DiscoverAgentsAndPrepare.outputs['DiscoverDevices.CreateMatrix.foundAgents'], 'true'))
+
+        variables:
+          testPath: $[ stageDependencies.ParseParameters.ParseTestName.outputs['ParseTestName.testPath'] ]
+          testFilter: $[ stageDependencies.ParseParameters.ParseTestName.outputs['ParseTestName.testFilter'] ]
+          buildVersion: $[ stageDependencies.ParseParameters.ParseTestName.outputs['ParseTestName.buildVersionTrimmed'] ]
+          markerFilter: $[ stageDependencies.ParseParameters.ParseTestName.outputs['ParseTestName.markerFilterTrimmed'] ]
+
+        jobs:
+          - job: RunTests
+            displayName: 'Execute Tests'
+            timeoutInMinutes: 240
+
+            # Matrix strategy - runs in parallel across all platform×device combinations
+            # Azure DevOps will append matrix key (e.g., "cashmere_roo") to displayName
+            strategy:
+              matrix: $[ stageDependencies.DiscoverAgentsAndPrepare.DiscoverDevices.outputs['CreateMatrix.executionMatrix'] ]
+
+            pool:
+              name: $(poolName)
+              demands:
+                - Agent.Name -equals $(agentName)
+
+            variables:
+              # Matrix variables: agentName, platformName, deviceName
+              # Environment variables for pytest
+              CURRENT_PLATFORM: $(platformName)
+              CONNECTED_DEVICE: $(deviceName)
+              repoRoot: '$(Build.SourcesDirectory)'
+
+            steps:
+              # Step 1: Checkout repository
+              - checkout: self
+                displayName: 'Checkout Test Repository'
+
+              # Step 2: Display execution context
+              - task: PowerShell@2
+                displayName: 'Display Execution Context'
+                inputs:
+                  targetType: 'inline'
+                  script: |
+                    # Format device display name (capitalize first letter, replace underscores)
+                    $deviceRaw = "$(deviceName)"
+                    if ($deviceRaw -ne 'no_device') {
+                      $devices = $deviceRaw -split '_'
+                      $deviceDisplay = ($devices | ForEach-Object { 
+                        if ($_.Length -gt 1) { $_.Substring(0,1).ToUpper() + $_.Substring(1) } else { $_.ToUpper() }
+                      }) -join ', '
+                      $contextDisplay = "$(platformName) × $deviceDisplay"
+                    } else {
+                      $contextDisplay = "$(platformName)"
+                    }
+                    
+                    Write-Host "##[section]Execution Context: $contextDisplay"
+                    Write-Host "  Platform: $(platformName)"
+                    Write-Host "  Device(s): $(deviceName)"
+                    Write-Host "  Target Agent: $(agentName)"
+                    Write-Host "  Actual Agent: $(Agent.Name)"
+                    Write-Host "  Machine: $(Agent.MachineName)"
+                    Write-Host "  Test Path: $(testPath)"
+                    Write-Host "  Test Filter: $(if ([string]::IsNullOrEmpty('$(testFilter)')) { '<none>' } else { '$(testFilter)' })"
+                    Write-Host "  Build Version: $(if ([string]::IsNullOrEmpty('$(buildVersion)')) { 'Latest' } else { '$(buildVersion)' })"     
+                    Write-Host "  Marker Filter: $(if ([string]::IsNullOrEmpty('$(markerFilter)')) { 'Running all tests' } else { '$(markerFilter)' })"
+                    Write-Host "  Skip App Installation: ${{ parameters.skipAppInstallation }}"
+
+              # Step 3: Check and start Appium server
+              - task: PowerShell@2
+                displayName: 'Check and Start Appium Server on $(Agent.Name)'
+                inputs:
+                  targetType: 'filePath'
+                  filePath: $(appiumScriptPath)
+                  arguments: '-AgentName "$(Agent.Name)" -Mode "specific-device"'
+                  workingDirectory: '$(Build.Repository.LocalPath)/devops/utils'
+
+              # Step 4: Install myHP application
+              - ${{ if eq(parameters.skipAppInstallation, false) }}:
+                    - template: templates/step templates/install-myhp.yml
+                      parameters:
+                        pipelineId: '$(selectedPipelineId)'
+                        buildVersionToDownload: '$(buildVersionToDownload)'
+                        buildVersion: '$(buildVersion)'
+
+              # Step 5: Build pytest marker filter
+              - task: PowerShell@2
+                displayName: 'Build Pytest Marker Filter'
+                name: BuildMarkerFilter
+                inputs:
+                  targetType: 'filePath'
+                  filePath: '$(repoRoot)/devops/utils/test-execution/build-marker-filter.ps1'
+                  arguments: '-PlatformName "$(platformName)" -DeviceName "$(deviceName)" -AdditionalMarkerFilter ''$(markerFilter)'''
+
+              - powershell: |
+                  $date = Get-Date -Format "yyyyMMdd-HHmmss"
+                  Write-Host "##vso[task.setvariable variable=dateSuffix]$date"
+                displayName: 'Set Date Suffix Variable'
+                condition: always()
+
+              # Step 6: Execute pytest tests
+              - template: templates/step templates/run-pytest-suite.yml
+                parameters:
+                  suitePath: '$(testPath)'
+                  testPattern: 'test_*.py'
+                  pytestArgs: '-v --tb=short --junit-xml=$(Agent.TempDirectory)/test-results-$(platformName)-$(deviceName)-$(dateSuffix).xml'
+                  markerFilter: '$(BuildMarkerFilter.markerFilter)'
+                  testFilter: '$(testFilter)'
+                  testTarget: 'localhost'
+                  workingDirectory: '$(repoRoot)'
+
+              # Step 7: Publish test results XML as pipeline artifact
+              - task: PublishPipelineArtifact@1
+                displayName: 'Publish Test Results XML'
+                condition: always()
+                continueOnError: true
+                inputs:
+                  targetPath: '$(Agent.TempDirectory)/test-results-$(platformName)-$(deviceName)-$(dateSuffix).xml'
+                  artifactName: 'test-results-$(platformName)-$(deviceName)-$(dateSuffix)'
+                  publishLocation: 'pipeline'
+
+              # Step 8: Publish test results to Tests tab
+              - task: PublishTestResults@2
+                displayName: 'Publish Test Results to Tests Tab'
+                condition: always()
+                inputs:
+                  testResultsFormat: 'JUnit'
+                  testResultsFiles: '$(Agent.TempDirectory)/test-results-$(platformName)-$(deviceName)-$(dateSuffix).xml'
+                  testRunTitle: 'Tests: $(platformName) × $(deviceName) ($(agentName))'
+                  mergeTestResults: false
+                  failTaskOnFailedTests: false
+
+              # Step 9: Publish test artifacts (screenshots, logs, recordings)
+              - task: PublishBuildArtifacts@1
+                displayName: 'Publish Test Artifacts'
+                condition: always()
+                continueOnError: true
+                inputs:
+                  PathtoPublish: '$(repoRoot)/results'
+                  ArtifactName: 'test-artifacts-$(platformName)-$(deviceName)-$(dateSuffix)'
+                  publishLocation: 'Container'
+
+  # ============================================================================
+  # Stage 2B: Execute Tests - Marker-Based Mode
+  # Runs when: Both platform AND device parameters are empty
+  # Uses: Execution matrix from DiscoverAgentsMarkerBased stage based on pytest markers
+  # ============================================================================
+  - ${{ if and(eq(parameters.platform, ' '), eq(parameters.device, ' ')) }}:
+      - stage: ExecuteTestsMarkerBased
+        displayName: 'Execute Tests Using Marker-Based Discovery'
+        dependsOn:
+          - ParseParameters
+          - DiscoverAgentsMarkerBased
+        condition: and(in(dependencies.DiscoverAgentsMarkerBased.result, 'Succeeded', 'SucceededWithIssues'), eq(dependencies.DiscoverAgentsMarkerBased.outputs['DiscoverMarkers.CreateMatrix.foundAgents'], 'true'))
+
+        variables:
+          testPath: $[ stageDependencies.ParseParameters.ParseTestName.outputs['ParseTestName.testPath'] ]
+          testFilter: $[ stageDependencies.ParseParameters.ParseTestName.outputs['ParseTestName.testFilter'] ]
+          buildVersion: $[ stageDependencies.ParseParameters.ParseTestName.outputs['ParseTestName.buildVersionTrimmed'] ]
+          markerFilter: $[ stageDependencies.ParseParameters.ParseTestName.outputs['ParseTestName.markerFilterTrimmed'] ]
+
+        jobs:
+          - job: RunTestsMarkers
+            displayName: 'Execute Tests'
+            timeoutInMinutes: 240
+
+            # Matrix strategy from marker-based discovery
+            # Azure DevOps will append matrix key (e.g., "Cashmere with Roo") to displayName
+            strategy:
+              matrix: $[ stageDependencies.DiscoverAgentsMarkerBased.DiscoverMarkers.outputs['CreateMatrix.agentMatrix'] ]
+
+            pool:
+              name: $(poolName)
+              demands:
+                - Agent.Name -equals $(agentName)
+
+            variables:
+              # Matrix variables: agentName, platformName, deviceName
+              # Environment variables for pytest
+              CURRENT_PLATFORM: $(platformName)
+              CONNECTED_DEVICE: $(deviceName)
+              repoRoot: '$(Build.SourcesDirectory)'
+
+            steps:
+              - checkout: self
+                displayName: 'Checkout Test Repository'
+
+              - task: PowerShell@2
+                displayName: 'Display Execution Context'
+                inputs:
+                  targetType: 'inline'
+                  script: |
+                    # Format device display name (capitalize first letter, replace underscores)
+                    $deviceRaw = "$(deviceName)"
+                    if ($deviceRaw -ne 'no_device' -and -not [string]::IsNullOrWhiteSpace($deviceRaw)) {
+                      $devices = $deviceRaw -split '_' | Where-Object { $_ }
+                      $deviceDisplay = ($devices | ForEach-Object {
+                        if ($_.Length -gt 1) {
+                          $_.Substring(0,1).ToUpper() + $_.Substring(1)
+                        } else {
+                          $_.ToUpper()
+                        }
+                      }) -join ', '
+                      $contextDisplay = "$(platformName) × $deviceDisplay"
+                    } else {
+                      $contextDisplay = "$(platformName)"
+                    }
+                    
+                    Write-Host "##[section]Execution Context: $contextDisplay"
+                    Write-Host "  Platform: $(platformName)"
+                    Write-Host "  Device(s): $(deviceName)"
+                    Write-Host "  Target Agent: $(agentName)"
+                    Write-Host "  Actual Agent: $(Agent.Name)"
+                    Write-Host "  Test Path: $(testPath)"
+                    Write-Host "  Test Filter: $(if ([string]::IsNullOrEmpty('$(testFilter)')) { '<none>' } else { '$(testFilter)' })"
+                    Write-Host "  Build Version: $(if ([string]::IsNullOrEmpty('$(buildVersion)')) { 'Latest' } else { '$(buildVersion)' })"
+                    Write-Host "  Marker Filter: $(if ([string]::IsNullOrEmpty('$(markerFilter)')) { 'Running all tests' } else { '$(markerFilter)' })"
+                    Write-Host "  Skip App Installation: ${{ parameters.skipAppInstallation }}"
+
+              # Check and start Appium server
+              - task: PowerShell@2
+                displayName: 'Check and Start Appium Server (Specific Device:$(Agent.Name))'
+                inputs:
+                  targetType: 'filePath'
+                  filePath: $(appiumScriptPath)
+                  arguments: '-AgentName "$(Agent.Name)" -Mode "specific-device"'
+                  workingDirectory: '$(Build.Repository.LocalPath)/devops/utils'
+
+              - ${{ if eq(parameters.skipAppInstallation, false) }}:
+                    - template: templates/step templates/install-myhp.yml
+                      parameters:
+                        pipelineId: '$(selectedPipelineId)'
+                        buildVersionToDownload: '$(buildVersionToDownload)'
+                        buildVersion: '$(buildVersion)'
+
+              - task: PowerShell@2
+                displayName: 'Build Marker Filter'
+                name: BuildMarkerFilter
+                inputs:
+                  targetType: 'filePath'
+                  filePath: '$(repoRoot)/devops/utils/test-execution/build-marker-filter.ps1'
+                  arguments: '-PlatformName "$(platformName)" -DeviceName "$(deviceName)" -AdditionalMarkerFilter ''$(markerFilter)'''
+
+              - powershell: |
+                  $date = Get-Date -Format "yyyyMMdd-HHmmss"
+                  Write-Host "##vso[task.setvariable variable=dateSuffix]$date"
+                displayName: 'Set Date Suffix Variable'
+                condition: always()
+
+              - template: templates/step templates/run-pytest-suite.yml
+                parameters:
+                  suitePath: '$(testPath)'
+                  testPattern: 'test_*.py'
+                  pytestArgs: '-v --tb=short --junit-xml=$(Agent.TempDirectory)/test-results-$(platformName)-$(deviceName)-$(dateSuffix).xml'
+                  markerFilter: '$(BuildMarkerFilter.markerFilter)'
+                  testFilter: '$(testFilter)'
+                  testTarget: 'localhost'
+                  workingDirectory: '$(repoRoot)'
+
+              - task: PublishPipelineArtifact@1
+                displayName: 'Publish Test Results XML'
+                condition: always()
+                continueOnError: true
+                inputs:
+                  targetPath: '$(Agent.TempDirectory)/test-results-$(platformName)-$(deviceName)-$(dateSuffix).xml'
+                  artifactName: 'test-results-$(platformName)-$(deviceName)-$(dateSuffix)'
+                  publishLocation: 'pipeline'
+
+              - task: PublishTestResults@2
+                displayName: 'Publish Test Results to Tests Tab'
+                condition: always()
+                inputs:
+                  testResultsFormat: 'JUnit'
+                  testResultsFiles: '$(Agent.TempDirectory)/test-results-$(platformName)-$(deviceName)-$(dateSuffix).xml'
+                  testRunTitle: 'Tests: $(platformName) × $(deviceName)'
+                  mergeTestResults: false
+                  failTaskOnFailedTests: false
+
+              - task: PublishBuildArtifacts@1
+                displayName: 'Publish Test Artifacts'
+                condition: always()
+                continueOnError: true
+                inputs:
+                  PathtoPublish: '$(repoRoot)/results'
+                  ArtifactName: 'test-artifacts-$(platformName)-$(deviceName)-$(dateSuffix)'
+                  publishLocation: 'Container'
+
+  # ============================================================================
+  # Stage 3: Summary Results - Send test report email
+  # Runs after whichever execution stage completed (always runs)
+  # ============================================================================
+  - stage: SummaryResults
+    displayName: 'Test Run Summary'
+    dependsOn:
+      - ${{ if or(ne(parameters.platform, ' '), ne(parameters.device, ' ')) }}:
+        - ExecuteTests
+      - ${{ if and(eq(parameters.platform, ' '), eq(parameters.device, ' ')) }}:
+        - ExecuteTestsMarkerBased
+    condition: always()
+
+    jobs:
+      - job: AggregateAndReport
+        displayName: 'Aggregate Results and Send Report'
+        pool:
+          name: ASQE-QAMA-VM
+
+        steps:
+          - checkout: self
+            clean: false
+            fetchDepth: 1
+
+          # Download test results XML artifacts from all execution jobs
+          - task: DownloadPipelineArtifact@2
+            displayName: 'Download Test Results'
+            continueOnError: true
+            inputs:
+              buildType: 'current'
+              targetPath: '$(Pipeline.Workspace)/TestResults'
+
+          - task: PowerShell@2
+            displayName: 'Aggregate Test Results'
+            inputs:
+              targetType: 'filePath'
+              filePath: '$(Build.SourcesDirectory)/scripts/Aggregate-TestResults.ps1'
+              arguments: '-TestResultsPath "$(Pipeline.Workspace)/TestResults"'
+            continueOnError: true
+
+          - task: PowerShell@2
+            displayName: 'Send Test Report Email'
+            condition: always()
+            continueOnError: true
+            inputs:
+              targetType: 'inline'
+              script: |
+                Write-Host "Sending test report email to pipeline requester: $(Build.RequestedForEmail)"                
+                python "$(Build.SourcesDirectory)/scripts/send_test_report.py" `
+                  --test-results-path "$(Pipeline.Workspace)/TestResults" `
+                  --pipeline-name "$(Build.DefinitionName)" `
+                  --build-url "$(System.TeamFoundationCollectionUri)$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)" `
+                  --recipients "$(Build.RequestedForEmail)"
